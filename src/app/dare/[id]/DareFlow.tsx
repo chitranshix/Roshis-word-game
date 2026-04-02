@@ -91,13 +91,18 @@ export default function DareFlow({ dare }: DareFlowProps) {
         {/* ── HINT STAGE (wrong sentence) ── */}
         {stage === 'hint' && (
           <>
-            <div className={[styles.feedbackHero, styles.wrong].join(' ')}>Not quite.</div>
+            <div className={styles.feedbackLabel}>Not quite.</div>
 
             <div className={styles.hintBox}>
               <div className={styles.hintLabel}>Here's how it's used</div>
               <div className={styles.hintSentence}>
-                {sentences.find(s => s.correct)?.sentence
-                  .replace(dare.word, `<em>${dare.word}</em>`)}
+                {(() => {
+                  const sentence = sentences.find(s => s.correct)?.sentence ?? ''
+                  const parts    = sentence.split(dare.word)
+                  return parts.length === 2
+                    ? <>{parts[0]}<em>{dare.word}</em>{parts[1]}</>
+                    : sentence
+                })()}
               </div>
             </div>
 
