@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roshi — Theme Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+    transition: background 0.25s, color 0.25s;
+  }
+
+  /* ── Theme A: Midnight Blue (Duolingo-inspired dark, scholarly) ── */
+  body.theme-a {
+    --bg:       #0f1729;
+    --surface:  #182038;
+    --surface2: #1f2a48;
+    --text:     #dce8f8;
+    --muted:    #6a82a8;
+    --accent:   #5b8fd4;
+    --correct:  #3ab87a;
+    --wrong:    #e05a3a;
+    --border:   rgba(91,143,212,0.12);
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* ── Theme B: Parchment & Ink ── */
+  body.theme-b {
+    --bg:       #f2e8d5;
+    --surface:  #fdf6e8;
+    --surface2: #e8dcc4;
+    --text:     #1c1408;
+    --muted:    #8a7455;
+    --accent:   #9a6e20;
+    --correct:  #3a7a54;
+    --wrong:    #b04a2a;
+    --border:   rgba(28,20,8,0.08);
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* ── Theme C: Bold & Flat ── */
+  body.theme-c {
+    --bg:       #ffffff;
+    --surface:  #f4f4f0;
+    --surface2: #e8e8e4;
+    --text:     #111111;
+    --muted:    #888888;
+    --accent:   #e8a020;
+    --correct:  #2a9d5c;
+    --wrong:    #e84040;
+    --border:   rgba(0,0,0,0.07);
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* ── Toggle ── */
+  .toggle-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 40px;
+    background: rgba(128,128,128,0.12);
+    padding: 4px;
+    border-radius: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .toggle-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background: transparent;
+    color: #888;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .toggle-btn.active {
+    background: #3a6aaa;
+    color: #fff;
+  }
+
+  .mode-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  /* ── Phone shell ── */
+  .phone {
+    width: 375px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* ── App header ── */
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 2px 12px;
+  }
+
+  .app-name {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 22px 20px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 2px 4px;
+  }
+
+  /* ── Daily word card ── */
+  .daily-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .daily-word {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 18px;
+  }
+
+  .friend-dots {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .friend-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    border: 2px solid var(--border);
+    transition: all 0.2s;
+  }
+
+  .dot.done {
+    background: var(--correct);
+    color: #fff;
+    border-color: var(--correct);
+  }
+
+  .dot-name {
+    font-size: 9px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Dare card ── */
+  .dare-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dare-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .dare-name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .dare-name.waiting {
+    color: var(--muted);
+  }
+
+  .go-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 0;
+  }
+
+  /* ── Word screen ── */
+  .word-screen {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 28px 22px 24px;
+    border: 1px solid var(--border);
+  }
+
+  .screen-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .challenger-line {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .hero-word {
+    font-family: 'Fraunces', serif;
+    font-size: 54px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .word-pos {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .roshi-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .roshi-wrap img {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    /* remove white bg so it works on both themes */
+    mix-blend-mode: multiply;
+  }
+
+  body.theme-a .roshi-wrap img {
+    /* on dark bg multiply doesn't work — use luminosity or just show as-is */
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+  }
+
+  body.theme-b .roshi-wrap img {
+    mix-blend-mode: multiply;
+  }
+
+  /* ── MCQ ── */
+  .mcq-prompt {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .option {
+    padding: 13px 15px;
+    background: var(--surface2);
+    border-radius: 12px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s;
+  }
+
+  .option.selected {
+    border-color: var(--accent);
+  }
+
+  /* ── Dare CTA ── */
+  .dare-cta {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body class="theme-a">
+
+<div class="mode-label">Theme</div>
+<div class="toggle-bar">
+  <button class="toggle-btn active" onclick="setTheme('a',this)">🌙 Dark — Midnight Blue</button>
+  <button class="toggle-btn" onclick="setTheme('b',this)">☀️ Light — Parchment</button>
+</div>
+
+<div class="phone">
+
+  <!-- Header -->
+  <div class="app-header">
+    <div class="app-name">Roshi</div>
+    <div class="avatar">You</div>
+  </div>
+
+  <!-- Daily Word -->
+  <div class="card">
+    <div class="daily-label">Today's Word</div>
+    <div class="daily-word">pellucid</div>
+    <div class="friend-dots">
+      <div class="friend-dot">
+        <div class="dot done">S</div>
+        <div class="dot-name">Sam</div>
+      </div>
+      <div class="friend-dot">
+        <div class="dot done">A</div>
+        <div class="dot-name">Alex</div>
+      </div>
+      <div class="friend-dot">
+        <div class="dot">P</div>
+        <div class="dot-name">Priya</div>
+      </div>
+      <div class="friend-dot">
+        <div class="dot">You</div>
+        <div class="dot-name">You</div>
+      </div>
+    </div>
+    <button class="btn-primary">Play →</button>
+  </div>
+
+  <!-- Your move -->
+  <div class="section-label">Your move</div>
+  <div class="card">
+    <div class="dare-row">
+      <div>
+        <div class="dare-meta">Sam · 2h ago</div>
+        <div class="dare-name">???</div>
+      </div>
+      <div class="go-circle">→</div>
+    </div>
+  </div>
+
+  <!-- Their move -->
+  <div class="section-label">Their move</div>
+  <div class="card">
+    <div class="dare-meta">Alex · 6h ago</div>
+    <div class="dare-name waiting">⏳ thinking...</div>
+  </div>
+
+  <div class="divider" style="margin: 8px 0 4px;"></div>
+
+  <!-- Dare / Word Screen -->
+  <div class="word-screen">
+    <div class="screen-eyebrow">The Dare</div>
+    <div class="challenger-line">Sam challenged you</div>
+    <div class="hero-word">loquacious</div>
+    <div class="word-pos">adjective</div>
+
+    <!-- Roshi -->
+    <div class="roshi-wrap">
+      <img src="Gemini_Generated_Image_5mfxl5mfxl5mfxl5.png" alt="Roshi" />
+    </div>
+    <div class="roshi-wrap" style="display:none"><svg width="170" height="115" viewBox="0 0 170 115" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- Drop shadow -->
+        <ellipse cx="66" cy="78" rx="36" ry="7" fill="black" opacity="0.07"/>
+
+        <!-- Shell -->
+        <ellipse cx="66" cy="66" rx="36" ry="26" fill="#4a6b40"/>
+        <!-- Shell centre plate -->
+        <ellipse cx="66" cy="64" rx="22" ry="15" fill="#3a5530"/>
+        <!-- Shell segments -->
+        <line x1="66" y1="49" x2="66" y2="79" stroke="#2e4426" stroke-width="1.5" opacity="0.65"/>
+        <line x1="48" y1="58" x2="84" y2="70" stroke="#2e4426" stroke-width="1.5" opacity="0.65"/>
+        <line x1="48" y1="70" x2="84" y2="58" stroke="#2e4426" stroke-width="1.5" opacity="0.65"/>
+        <!-- Shell rim -->
+        <ellipse cx="66" cy="64" rx="36" ry="26" fill="none" stroke="#6a8f5a" stroke-width="1" opacity="0.35"/>
+
+        <!-- Back legs -->
+        <ellipse cx="44" cy="85" rx="10" ry="6" fill="#5a7a50" transform="rotate(-15 44 85)"/>
+        <ellipse cx="88" cy="87" rx="10" ry="6" fill="#5a7a50" transform="rotate(10 88 87)"/>
+
+        <!-- Neck -->
+        <rect x="90" y="54" width="14" height="16" rx="7" fill="#6a8f60"/>
+
+        <!-- Head -->
+        <circle cx="106" cy="50" r="18" fill="#6a8f60"/>
+
+        <!-- ── ECCENTRIC FACE ── -->
+
+        <!-- Raised right eyebrow — arched way up, knowing/smug -->
+        <path d="M108 36 Q113 31 119 34" stroke="#2e4426" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+        <!-- Left eyebrow — furrowed low, asymmetric -->
+        <path d="M97 40 Q101 38 105 40" stroke="#2e4426" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+        <!-- Wide wild right eye — bigger than it should be -->
+        <ellipse cx="113" cy="44" rx="6" ry="7" fill="white"/>
+        <!-- Pupil — slightly off-centre, staring at you -->
+        <circle cx="114" cy="45" r="4" fill="#0d1a0a"/>
+        <!-- Pupil shine — tiny, adds life -->
+        <circle cx="116" cy="43" r="1.3" fill="white"/>
+
+        <!-- Left eye — narrow squint, just a slit -->
+        <path d="M99 44 Q103 41 107 44" stroke="#2e4426" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <!-- Squint crease below -->
+        <path d="M100 46 Q103 48 107 46" stroke="#2e4426" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+        <!-- Wide grin — too wide, slightly uneven -->
+        <path d="M94 57 Q101 67 116 60" stroke="#2e4426" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <!-- Teeth — slightly uneven widths, adds character -->
+        <rect x="99"  y="59" width="4.5" height="4" rx="1" fill="#f8f5e8"/>
+        <rect x="104" y="60" width="5"   height="4" rx="1" fill="#f8f5e8"/>
+        <rect x="110" y="59" width="4"   height="3.5" rx="1" fill="#f8f5e8"/>
+
+        <!-- White chin tuft — old eccentric man energy -->
+        <ellipse cx="97"  cy="67" rx="5.5" ry="3"   fill="white" opacity="0.90"/>
+        <ellipse cx="102" cy="70" rx="4.5" ry="2.5" fill="white" opacity="0.80"/>
+        <ellipse cx="94"  cy="70" rx="3.5" ry="2"   fill="white" opacity="0.70"/>
+
+        <!-- Front leg — nudging Mojo mid-conversation -->
+        <ellipse cx="110" cy="88" rx="11" ry="6" fill="#6a8f60" transform="rotate(-20 110 88)"/>
+
+        <!-- Mojo the football -->
+        <circle cx="144" cy="86" r="17" fill="#f5f5ee" stroke="#ddd" stroke-width="0.5"/>
+        <!-- Centre pentagon -->
+        <polygon points="144,73 150,79 148,86 140,86 138,79" fill="#1a1a1a" opacity="0.85"/>
+        <!-- Side patches -->
+        <polygon points="129,80 135,76 138,79 136,86 130,87" fill="#1a1a1a" opacity="0.4"/>
+        <polygon points="159,80 153,76 150,79 152,86 158,87" fill="#1a1a1a" opacity="0.4"/>
+        <polygon points="132,93 136,87 140,86 142,91 139,95" fill="#1a1a1a" opacity="0.3"/>
+        <polygon points="156,93 152,87 148,86 147,91 149,95" fill="#1a1a1a" opacity="0.3"/>
+
+      </svg></div>
+
+    <div class="mcq-prompt">Which sentence uses this word correctly?</div>
+
+    <div class="options">
+      <div class="option">The loquacious man sat in silence all evening.</div>
+      <div class="option selected">She was loquacious, never pausing her stream of stories.</div>
+      <div class="option">The loquacious path wound through the forest slowly.</div>
+      <div class="option">He gave a short, loquacious nod and left the room.</div>
+    </div>
+
+    <button class="btn-primary">Confirm →</button>
+  </div>
+
+  <button class="dare-cta">+ Dare someone</button>
+
+</div>
+
+<script>
+  function setTheme(t, btn) {
+    document.body.className = 'theme-' + t;
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
