@@ -39,6 +39,12 @@ export const MOCK_DARES: Dare[] = [
 ]
 
 export const MOCK_SENTENCES: Record<string, { sentence: string; correct: boolean }[]> = {
+  pellucid: [
+    { sentence: 'The pellucid waters of the lagoon revealed every stone below.', correct: true },
+    { sentence: 'His pellucid temper made everyone nervous around him.', correct: false },
+    { sentence: 'She wore a pellucid expression, impossible to read.', correct: false },
+    { sentence: 'The pellucid darkness of the cave pressed in from all sides.', correct: false },
+  ],
   loquacious: [
     { sentence: 'The loquacious man sat in silence all evening.', correct: false },
     { sentence: 'She was loquacious, never pausing her stream of stories.', correct: true },

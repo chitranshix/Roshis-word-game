@@ -46,7 +46,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             aria-label="Toggle theme"
             title={isDark ? 'Switch to land (light)' : 'Switch to water (dark)'}
           >
-            {isDark ? '☀️' : '🌊'}
+            {isDark ? '🏔️' : '🌊'}
           </button>
           <div className={styles.avatar}>{initials}</div>
         </div>

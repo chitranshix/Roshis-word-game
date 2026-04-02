@@ -152,16 +152,26 @@
   font-weight: 600;
 }
 
-/* ── Feedback label (not quite / nice) ── */
+/* ── Feedback label (not quite) — secondary ── */
 .feedbackLabel {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   text-align: center;
-  font-family: var(--font-display);
+  color: var(--muted);
 }
 
-.feedbackLabel.correct { color: var(--correct); }
-.feedbackLabel.wrong   { color: var(--wrong); }
+/* ── Feedback hero (Nice! / You got it!) — dominant ── */
+.feedbackHero {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.feedbackHero.correct { color: var(--correct); }
+.feedbackHero.wrong   { color: var(--wrong); }
 
 /* ── Result ── */
 .pointsBadge {

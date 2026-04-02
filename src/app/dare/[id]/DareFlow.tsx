@@ -91,8 +91,7 @@ export default function DareFlow({ dare }: DareFlowProps) {
         {/* ── HINT STAGE (wrong sentence) ── */}
         {stage === 'hint' && (
           <>
-            <div className={[styles.feedbackLabel, styles.wrong].join(' ')}>Not quite.</div>
-            <div className={styles.heroWord}>{dare.word}</div>
+            <div className={[styles.feedbackHero, styles.wrong].join(' ')}>Not quite.</div>
 
             <div className={styles.hintBox}>
               <div className={styles.hintLabel}>Here's how it's used</div>
@@ -121,10 +120,10 @@ export default function DareFlow({ dare }: DareFlowProps) {
         {/* ── DEFINITION STAGE (correct sentence) ── */}
         {stage === 'definition' && (
           <>
-            <div className={[styles.feedbackLabel, styles.correct].join(' ')}>Nice.</div>
-            <div className={styles.heroWord}>{dare.word}</div>
-
-            <div className={styles.defPrompt}>Now define it in your own words.</div>
+            <div className={[styles.feedbackHero, styles.correct].join(' ')}>Nice.</div>
+            <div className={styles.defPrompt}>
+              Now try to define <strong>{dare.word}</strong> in your own words.
+            </div>
             <textarea
               className={styles.defInput}
               placeholder="Type your definition..."
