@@ -161,7 +161,9 @@ export default function DareFlow({ dare }: DareFlowProps) {
             )}
 
             <Link href="/dare/new" style={{ display: 'block' }}>
-              <Button>Dare {dare.from} back</Button>
+              <Button>
+                {dare.from === 'Roshi' ? 'Dare a friend →' : `Dare ${dare.from} back →`}
+              </Button>
             </Link>
 
             <div className={styles.divider} />
