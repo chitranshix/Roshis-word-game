@@ -2,19 +2,25 @@
 
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import styles from './AppShell.module.css'
 
-interface AppShellProps {
-  children: React.ReactNode
-  playerName?: string
-}
-
-export default function AppShell({ children, playerName }: AppShellProps) {
+export default function AppShell({ children }: { children: React.ReactNode }) {
   const { resolvedTheme, setTheme } = useTheme()
-  const [scrolled, setScrolled] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const router = useRouter()
+  const [scrolled, setScrolled]     = useState(false)
+  const [ready, setReady]           = useState(false)
+  const [playerName, setPlayerName] = useState('')
 
-  useEffect(() => { setMounted(true) }, [])
+  useEffect(() => {
+    const name = localStorage.getItem('roshi_name')
+    if (!name) {
+      router.replace('/onboarding')
+      return
+    }
+    setPlayerName(name)
+    setReady(true)
+  }, [router])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4)
@@ -22,19 +28,26 @@ export default function AppShell({ children, playerName }: AppShellProps) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Don't render anything until name check resolves (prevents flash)
+  if (!ready) return null
+
   const toggleTheme = () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-  const initials = playerName ? playerName.slice(0, 2) : '?'
+  const initials    = playerName.slice(0, 2).toUpperCase()
+  const isDark      = resolvedTheme === 'dark'
 
   return (
     <div className={styles.shell}>
       <header className={[styles.header, scrolled ? styles.scrolled : ''].join(' ')}>
         <span className={styles.logo}>Roshi</span>
         <div className={styles.headerRight}>
-          {mounted && (
-            <button className={styles.themeToggle} onClick={toggleTheme} aria-label="Toggle theme">
-              {resolvedTheme === 'dark' ? '☀️' : '🌙'}
-            </button>
-          )}
+          <button
+            className={styles.themeToggle}
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            title={isDark ? 'Switch to land (light)' : 'Switch to water (dark)'}
+          >
+            {isDark ? '☀️' : '🌊'}
+          </button>
           <div className={styles.avatar}>{initials}</div>
         </div>
       </header>

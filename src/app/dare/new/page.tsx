@@ -41,7 +41,7 @@ export default function NewDarePage() {
   const displayWord = search.trim() || selectedWord
 
   return (
-    <AppShell playerName={MOCK_PLAYER}>
+    <AppShell>
       <div className={styles.screen}>
         <Link href="/" className={styles.backBtn}>← Back</Link>
         <div className={styles.heading}>Dare someone</div>

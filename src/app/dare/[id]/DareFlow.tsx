@@ -53,7 +53,7 @@ export default function DareFlow({ dare }: DareFlowProps) {
   const maxPts = Math.max(...MOCK_SCORES.map(s => s.pts), points + 18)
 
   return (
-    <AppShell playerName={MOCK_PLAYER}>
+    <AppShell>
       <div className={styles.screen}>
 
         {/* ── Back ── */}
