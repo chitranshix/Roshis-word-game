@@ -20,7 +20,7 @@ export default function OnboardingPage() {
     <div className={styles.screen}>
       <div className={styles.logo}>Roshi</div>
       <div className={styles.body}>
-        <div className={styles.heading}>What's your name?</div>
+        <div className={styles.heading}>What&apos;s your name?</div>
         <div className={styles.sub}>No account needed. Just your name.</div>
         <input
           className={styles.input}
@@ -32,7 +32,7 @@ export default function OnboardingPage() {
           maxLength={20}
         />
         <Button onClick={handleJoin} disabled={name.trim().length < 2}>
-          Let's play →
+          Let&apos;s play →
         </Button>
       </div>
     </div>

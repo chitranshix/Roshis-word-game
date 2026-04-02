@@ -10,7 +10,7 @@ export default function Home() {
 
       {/* ── Daily Word ── */}
       <div className={styles.dailyCard}>
-        <div className={styles.dailyLabel}>Today's Word</div>
+        <div className={styles.dailyLabel}>Today&apos;s Word</div>
         <div className={styles.dailyWord}>{MOCK_DAILY.word}</div>
 
         <div className={styles.friendDots}>
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
 
         <Link href="/daily">
-          <Button>Play today's word →</Button>
+          <Button>Play today&apos;s word →</Button>
         </Link>
       </div>
 
@@ -73,7 +73,7 @@ export default function Home() {
         ].join(' ')
 
         const wordDisplay = isYourTurn
-          ? '??? '               // hidden — suspense
+          ? '???'               // hidden — suspense
           : dare.word           // visible for sent/completed
 
         const inner = (

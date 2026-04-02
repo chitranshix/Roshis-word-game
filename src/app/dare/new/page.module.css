@@ -134,4 +134,11 @@
   font-weight: 500;
 }
 
+.sectionLabelNote {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 11px;
+}
+
 .spacer { flex: 1; }

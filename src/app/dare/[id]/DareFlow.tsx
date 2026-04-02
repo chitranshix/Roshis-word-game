@@ -8,7 +8,7 @@ import { MOCK_PLAYER, MOCK_SENTENCES } from '@/lib/mock'
 import type { Dare } from '@/lib/mock'
 import styles from './dare.module.css'
 
-type Stage = 'sentence' | 'definition' | 'hint' | 'result'
+type Stage = 'sentence' | 'definition' | 'result'
 
 interface DareFlowProps { dare: Dare }
 
@@ -28,26 +28,45 @@ const DEFINITION_MAP: Record<string, { pos: string; text: string }> = {
 export default function DareFlow({ dare }: DareFlowProps) {
   const [stage, setStage]           = useState<Stage>('sentence')
   const [selected, setSelected]     = useState<number | null>(null)
+  const [sentenceCorrect, setSentenceCorrect] = useState(false)
   const [definition, setDefinition] = useState('')
   const [points, setPoints]         = useState(0)
+  const [checking, setChecking]     = useState(false)
+  const [defCorrect, setDefCorrect] = useState<boolean | null>(null)
 
   const sentences = MOCK_SENTENCES[dare.word] ?? []
   const defInfo   = DEFINITION_MAP[dare.word]
 
   const confirmSentence = () => {
     if (selected === null) return
-    const isCorrect = sentences[selected]?.correct
+    const isCorrect = sentences[selected]?.correct ?? false
+    setSentenceCorrect(isCorrect)
     if (isCorrect) {
       setStage('definition')
     } else {
-      setStage('hint')
+      setPoints(0)
+      setStage('result')
     }
   }
 
-  const submitDefinition = (afterHint: boolean) => {
-    const earned = afterHint ? 3 : 5
-    setPoints(earned)
-    setStage('result')
+  const submitDefinition = async () => {
+    setChecking(true)
+    try {
+      const res = await fetch('/api/evaluate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word: dare.word, definition }),
+      })
+      const { correct } = await res.json()
+      setDefCorrect(correct)
+      setPoints(correct ? 10 : 3)
+    } catch {
+      setDefCorrect(null)
+      setPoints(3)
+    } finally {
+      setChecking(false)
+      setStage('result')
+    }
   }
 
   const maxPts = Math.max(...MOCK_SCORES.map(s => s.pts), points + 18)
@@ -88,25 +107,13 @@ export default function DareFlow({ dare }: DareFlowProps) {
           </>
         )}
 
-        {/* ── HINT STAGE (wrong sentence) ── */}
-        {stage === 'hint' && (
+        {/* ── DEFINITION STAGE (correct sentence only) ── */}
+        {stage === 'definition' && (
           <>
-            <div className={styles.feedbackLabel}>Not quite.</div>
-
-            <div className={styles.hintBox}>
-              <div className={styles.hintLabel}>Here's how it's used</div>
-              <div className={styles.hintSentence}>
-                {(() => {
-                  const sentence = sentences.find(s => s.correct)?.sentence ?? ''
-                  const parts    = sentence.split(dare.word)
-                  return parts.length === 2
-                    ? <>{parts[0]}<em>{dare.word}</em>{parts[1]}</>
-                    : sentence
-                })()}
-              </div>
+            <div className={[styles.feedbackHero, styles.correct].join(' ')}>Nice.</div>
+            <div className={styles.defPrompt}>
+              Now define <strong>{dare.word}</strong> in your own words.
             </div>
-
-            <div className={styles.defPrompt}>Now define it in your own words.</div>
             <textarea
               className={styles.defInput}
               placeholder="Type your definition..."
@@ -116,30 +123,8 @@ export default function DareFlow({ dare }: DareFlowProps) {
             <div className={styles.defHint}>Plain English is fine.</div>
 
             <div className={styles.spacer} />
-            <Button onClick={() => submitDefinition(true)} disabled={definition.trim().length < 4}>
-              Submit →
-            </Button>
-          </>
-        )}
-
-        {/* ── DEFINITION STAGE (correct sentence) ── */}
-        {stage === 'definition' && (
-          <>
-            <div className={[styles.feedbackHero, styles.correct].join(' ')}>Nice.</div>
-            <div className={styles.defPrompt}>
-              Now try to define <strong>{dare.word}</strong> in your own words.
-            </div>
-            <textarea
-              className={styles.defInput}
-              placeholder="Type your definition..."
-              value={definition}
-              onChange={e => setDefinition(e.target.value)}
-            />
-            <div className={styles.defHint}>Don't overthink it. Plain English is fine.</div>
-
-            <div className={styles.spacer} />
-            <Button onClick={() => submitDefinition(false)} disabled={definition.trim().length < 4}>
-              Submit →
+            <Button onClick={submitDefinition} disabled={definition.trim().length < 4 || checking}>
+              {checking ? 'Checking…' : 'Submit →'}
             </Button>
           </>
         )}
@@ -149,7 +134,11 @@ export default function DareFlow({ dare }: DareFlowProps) {
           <>
             <div className={styles.pointsBadge}>+{points}</div>
             <div className={styles.pointsLabel}>
-              {points === 5 ? 'You nailed it.' : 'You got there.'}
+              {!sentenceCorrect
+                ? 'Better luck next time.'
+                : defCorrect === true
+                  ? 'You nailed it.'
+                  : 'Close, but not quite.'}
             </div>
 
             {defInfo && (

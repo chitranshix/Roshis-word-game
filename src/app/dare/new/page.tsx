@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import AppShell from '@/components/layout/AppShell'
 import Button from '@/components/ui/Button'
-import { MOCK_PLAYER } from '@/lib/mock'
 import styles from './page.module.css'
 
 const SUGGESTED_WORDS = [
@@ -72,7 +71,7 @@ export default function NewDarePage() {
         )}
 
         {/* Friend selection */}
-        <div className={styles.sectionLabel}>Dare who? <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400, fontSize: 11 }}>(tap all that apply)</span></div>
+        <div className={styles.sectionLabel}>Dare who? <span className={styles.sectionLabelNote}>(tap all that apply)</span></div>
         <div className={styles.friendList}>
           {FRIENDS.map(name => (
             <div

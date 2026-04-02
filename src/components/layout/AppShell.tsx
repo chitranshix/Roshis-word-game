@@ -8,19 +8,14 @@ import styles from './AppShell.module.css'
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const { resolvedTheme, setTheme } = useTheme()
   const router = useRouter()
-  const [scrolled, setScrolled]     = useState(false)
-  const [ready, setReady]           = useState(false)
-  const [playerName, setPlayerName] = useState('')
+  const [scrolled, setScrolled] = useState(false)
+  const [playerName] = useState<string | null>(() =>
+    typeof window !== 'undefined' ? localStorage.getItem('roshi_name') : null
+  )
 
   useEffect(() => {
-    const name = localStorage.getItem('roshi_name')
-    if (!name) {
-      router.replace('/onboarding')
-      return
-    }
-    setPlayerName(name)
-    setReady(true)
-  }, [router])
+    if (!playerName) router.replace('/onboarding')
+  }, [playerName, router])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4)
@@ -28,8 +23,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Don't render anything until name check resolves (prevents flash)
-  if (!ready) return null
+  if (!playerName) return null
 
   const toggleTheme = () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
   const initials    = playerName.slice(0, 2).toUpperCase()

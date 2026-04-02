@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Roshi
 
-## Getting Started
+A social vocabulary game. Dare your friends to identify and define words you pick — earn points for getting it right.
 
-First, run the development server:
+## How it works
+
+1. Pick a word and dare a friend
+2. They see 4 sentences — pick the one that uses the word correctly
+3. If correct, they try to define the word in their own words
+4. Claude evaluates the definition — 10 pts for a good one, 3 pts for a decent attempt, 0 for wrong
+
+Wrong sentence = no definition attempt, just see the meaning and try again next time.
+
+## Stack
+
+- **Next.js 16** (App Router, TypeScript)
+- **Anthropic API** (Claude Haiku — definition evaluation)
+- **next-themes** (parchment light / midnight blue dark)
+- **CSS Modules** throughout, no Tailwind
+- **Supabase** — planned, not yet connected (mock data in `src/lib/mock.ts`)
+
+## Running locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev -- -p 3001   # or any port
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Requires `.env.local`:
+```
+ANTHROPIC_API_KEY=your_key_here
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Get an API key at [console.anthropic.com](https://console.anthropic.com).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+```
+src/
+  app/
+    page.tsx                  # Home feed — daily word + dare cards
+    daily/page.tsx            # Daily word challenge
+    dare/
+      [id]/
+        page.tsx              # Dare detail (fetches dare by id)
+        DareFlow.tsx          # Full game flow — sentence → definition → result
+      new/page.tsx            # Send a dare to a friend
+    api/
+      evaluate/route.ts       # POST — checks definition correctness via Claude
+    onboarding/page.tsx       # Name entry on first visit
+  components/
+    layout/AppShell.tsx       # Header, theme toggle, onboarding gate
+    ui/Button.tsx             # Primary / ghost / subtle variants
+  lib/
+    mock.ts                   # Placeholder data — replace with Supabase queries
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Scoring
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Outcome | Points |
+|---|---|
+| Wrong sentence | 0 |
+| Right sentence + correct definition | 10 |
+| Right sentence + wrong definition | 3 |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Player name stored in `localStorage` under `roshi_name` — no auth for MVP
+- Themes: parchment (land) and midnight blue (water), toggled with 🏔️ / 🌊
+- Definition evaluation uses Claude Haiku — cheap (fractions of a cent per call)
+- `DEFINITION_MAP` in `DareFlow.tsx` and `MOCK_SENTENCES` in `mock.ts` are temporary — real definitions and sentence data will come from the database

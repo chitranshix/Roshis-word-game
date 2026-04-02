@@ -1,4 +1,4 @@
-import { MOCK_DAILY, MOCK_DARES } from '@/lib/mock'
+import { MOCK_DAILY } from '@/lib/mock'
 import DareFlow from '@/app/dare/[id]/DareFlow'
 
 // Reuse the dare flow with a synthetic daily dare object
