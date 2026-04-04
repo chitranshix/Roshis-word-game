@@ -20,7 +20,7 @@
 }
 
 .heading {
-  font-family: var(--font-display);
+  font-family: var(--font-roshi);
   font-size: 28px;
   font-weight: 700;
   color: var(--text);
@@ -76,7 +76,7 @@
 }
 
 .chipWord {
-  font-family: var(--font-display);
+  font-family: var(--font-roshi);
   font-size: 18px;
   font-weight: 700;
   color: var(--text);

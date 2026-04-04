@@ -3,42 +3,121 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px 32px;
+  padding: 0 28px 52px;
   max-width: 430px;
   margin: 0 auto;
+  gap: 20px;
 }
 
+/* ── Header ── */
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 0 8px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Logo ── */
 .logo {
-  font-family: var(--font-display);
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-  margin-bottom: 48px;
+  font-family: var(--font-logo);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1;
+  user-select: none;
 }
 
+/* ── Nav row (back + dots) ── */
+.navRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 32px;
+}
+
+/* ── Back button ── */
+.backBtn {
+  align-self: flex-start;
+  font-size: 20px;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px 4px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Progress dots ── */
+.dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.dotActive {
+  background: var(--accent);
+  transform: scale(1.4);
+}
+
+/* ── Body (vertically centered content) ── */
 .body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+}
+
+/* ── Mascot ── */
+.mascotArea {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Speech bubble ── */
+.bubble {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 20px 22px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
+  animation: slideIn 0.3s cubic-bezier(0.34, 1.2, 0.64, 1) both;
 }
 
-.heading {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 700;
+@keyframes slideIn {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.bubbleLine {
+  font-family: var(--font-roshi);
+  font-size: 15px;
   color: var(--text);
-  letter-spacing: -0.02em;
+  line-height: 1.65;
+  margin: 0;
 }
 
-.sub {
-  font-size: 14px;
-  color: var(--muted);
-  margin-top: -4px;
-}
-
+/* ── Name input ── */
 .input {
   width: 100%;
   background: var(--surface);

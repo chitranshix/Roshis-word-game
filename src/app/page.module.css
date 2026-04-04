@@ -16,7 +16,7 @@
 }
 
 .dailyWord {
-  font-family: var(--font-display);
+  font-family: var(--font-roshi);
   font-size: 40px;
   font-weight: 700;
   color: var(--text);
@@ -131,7 +131,7 @@
 }
 
 .dareWord {
-  font-family: var(--font-display);
+  font-family: var(--font-roshi);
   font-size: 28px;
   font-weight: 700;
   color: var(--text);

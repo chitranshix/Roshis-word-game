@@ -1,0 +1,99 @@
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  pointer-events: none;
+  width: 110px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.18));
+  transform-origin: bottom left;
+}
+
+.wrapper svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes legSwingF {
+  from { transform: rotate(-18deg) translateY(0); }
+  to   { transform: rotate(14deg)  translateY(3px); }
+}
+@keyframes legSwingB {
+  from { transform: rotate(14deg)  translateY(0); }
+  to   { transform: rotate(-18deg) translateY(3px); }
+}
+
+/* ── IDLE ── */
+.idle .legFL { animation: legSwingF 0.5s ease-in-out infinite alternate; }
+.idle .legFR { animation: legSwingF 0.5s ease-in-out infinite alternate-reverse; }
+.idle .legBL { animation: legSwingB 0.5s ease-in-out infinite alternate; }
+.idle .legBR { animation: legSwingB 0.5s ease-in-out infinite alternate-reverse; }
+
+.idle .head {
+  animation: headBob 1.8s ease-in-out infinite;
+  transform-origin: 88px 38px;
+}
+@keyframes headBob {
+  0%   { transform: translateY(0)    rotate(0deg); }
+  30%  { transform: translateY(-4px) rotate(-5deg); }
+  60%  { transform: translateY(2px)  rotate(3deg); }
+  100% { transform: translateY(0)    rotate(0deg); }
+}
+
+.idle .pupilL { animation: eyeRoll 3s ease-in-out infinite; }
+.idle .pupilR { animation: eyeRoll 3s ease-in-out infinite 0.15s; }
+@keyframes eyeRoll {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(3px, -2px); }
+  50%  { transform: translate(-3px, 2px); }
+  75%  { transform: translate(2px, 3px); }
+  100% { transform: translate(0, 0); }
+}
+
+.idle .leaf {
+  animation: chew 0.6s ease-in-out infinite alternate;
+  transform-origin: 108px 41px;
+}
+@keyframes chew {
+  from { transform: rotate(0deg)  scaleY(1); }
+  to   { transform: rotate(-6deg) scaleY(0.85); }
+}
+
+/* ── BONK: head recoil ── */
+.bonkHead {
+  animation: bonkRecoil 0.38s ease-out forwards !important;
+  transform-origin: 88px 38px;
+}
+@keyframes bonkRecoil {
+  0%   { transform: translateX(0)     rotate(0deg); }
+  25%  { transform: translateX(-10px) rotate(-14deg); }
+  65%  { transform: translateX(4px)   rotate(6deg); }
+  100% { transform: translateX(0)     rotate(0deg); }
+}
+
+/* ── HAPPY: fast bouncy ── */
+.happy .legFL { animation: legSwingF 0.18s ease-in-out infinite alternate; }
+.happy .legFR { animation: legSwingF 0.18s ease-in-out infinite alternate-reverse; }
+.happy .legBL { animation: legSwingB 0.18s ease-in-out infinite alternate; }
+.happy .legBR { animation: legSwingB 0.18s ease-in-out infinite alternate-reverse; }
+
+.happy .head {
+  animation: happyBob 0.28s ease-in-out infinite alternate;
+  transform-origin: 88px 38px;
+}
+@keyframes happyBob {
+  from { transform: translateY(0)     rotate(-10deg); }
+  to   { transform: translateY(-12px) rotate(7deg); }
+}
+
+/* ── DISAPPOINTED: angry tilt → dive ── */
+.disappointed {
+  animation: angryDive 2.4s cubic-bezier(0.4, 0, 0.9, 1) forwards;
+  transform-origin: bottom center;
+}
+@keyframes angryDive {
+  0%   { bottom: 0;      rotate: 0deg;   }
+  18%  { bottom: 12px;   rotate: -22deg; }
+  38%  { bottom: 6px;    rotate: -26deg; }
+  100% { bottom: -240px; rotate: -65deg; }
+}

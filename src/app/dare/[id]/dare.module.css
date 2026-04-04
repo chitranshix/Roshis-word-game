@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: calc(100dvh - 70px);
-  padding: 8px 20px 40px;
+  padding: 8px 20px 160px; /* extra bottom padding for feedback bar */
   max-width: 430px;
   margin: 0 auto;
   gap: 14px;
@@ -18,6 +18,45 @@
   color: var(--muted);
   padding: 12px 0 4px;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Progress bar ── */
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0 0;
+}
+
+.progressStep {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.progressDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.progressActive { color: var(--accent); }
+.progressActive .progressDot { background: var(--accent); }
+
+.progressDim { color: var(--border); }
+.progressDim .progressDot { background: var(--border); }
+
+.progressLine {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  border-radius: 1px;
 }
 
 .eyebrow {
@@ -37,7 +76,7 @@
 
 /* ── Hero word ── */
 .heroWord {
-  font-family: var(--font-display);
+  font-family: var(--font-roshi);
   font-size: clamp(44px, 12vw, 60px);
   font-weight: 700;
   color: var(--text);
@@ -91,10 +130,24 @@
   background: var(--surface);
 }
 
+/* Answer state coloring */
+.optionCorrect {
+  border-color: var(--correct) !important;
+  background: color-mix(in srgb, var(--correct) 12%, var(--surface)) !important;
+  color: var(--correct) !important;
+}
+
+.optionWrong {
+  border-color: var(--wrong) !important;
+  background: color-mix(in srgb, var(--wrong) 12%, var(--surface)) !important;
+  color: var(--wrong) !important;
+}
+
 /* ── Definition input ── */
 .defPrompt {
-  font-size: 14px;
-  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
   text-align: center;
   line-height: 1.5;
 }
@@ -122,61 +175,15 @@
   text-align: center;
 }
 
-/* ── Hint reveal ── */
-.hintBox {
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  padding: 18px;
-  border: 1px solid var(--border);
-}
-
-.hintLabel {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.hintSentence {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--text);
-  font-style: italic;
-}
-
-.hintSentence em {
-  font-style: normal;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* ── Feedback label (defeats) — quiet, not shouted ── */
-.feedbackLabel {
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  color: var(--muted);
-  letter-spacing: 0.01em;
-}
-
-/* ── Feedback hero (Nice! / You got it!) — dominant ── */
-.feedbackHero {
-  font-family: var(--font-display);
-  font-size: 52px;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.feedbackHero.correct { color: var(--correct); }
-.feedbackHero.wrong   { color: var(--wrong); }
-
 /* ── Result ── */
+.resultRoshi {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 0;
+}
+
 .pointsBadge {
-  font-family: var(--font-display);
+  font-family: var(--font-roshi);
   font-size: 64px;
   font-weight: 700;
   color: var(--accent);
@@ -185,7 +192,8 @@
 }
 
 .pointsLabel {
-  font-size: 14px;
+  font-family: var(--font-roshi);
+  font-size: 18px;
   color: var(--muted);
   text-align: center;
   margin-top: -4px;
@@ -199,7 +207,7 @@
 }
 
 .definitionWord {
-  font-family: var(--font-display);
+  font-family: var(--font-roshi);
   font-size: 22px;
   font-weight: 700;
   color: var(--text);
@@ -262,3 +270,72 @@
 }
 
 .spacer { flex: 1; }
+
+/* ── Slide-up feedback bar ── */
+.feedbackBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  padding: 20px 20px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  animation: slideUp 0.35s cubic-bezier(0.34, 1.2, 0.64, 1) both;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.feedbackBar_correct {
+  background: var(--correct);
+}
+
+.feedbackBar_wrong {
+  background: var(--wrong);
+}
+
+.feedbackBarContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.feedbackBarHeadline {
+  font-family: var(--font-roshi);
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.feedbackBarSub {
+  font-family: var(--font-roshi);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.45;
+}
+
+.feedbackBarBtn {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.feedbackBarBtn:active {
+  background: rgba(255,255,255,0.35);
+}
