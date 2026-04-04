@@ -24,6 +24,7 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
+
 export const metadata: Metadata = {
   title: "Roshi's Word Game",
   description: 'Dare your friends with words. Prove you know them.',

@@ -1,9 +1,21 @@
-/* ─── Design rules ─────────────────────────────────────────────
-   - One card style everywhere: var(--surface) + 1px var(--border)
-   - All vocabulary words: var(--accent), font-roshi
-   - Section labels: 11px, 600, uppercase, var(--muted) — always outside cards
-   - Spacing unit: 20px between sections, 10px inside
+/* ─── Design tokens used here ───────────────────────────────────
+   Spacing:  4 / 8 / 12 / 16 / 20 / 28
+   Cards:    var(--surface) + 1px var(--border) + radius-lg
+   Words:    accent color, 700 weight, DM Sans
+   Labels:   11px 600 uppercase muted — always outside cards
    ─────────────────────────────────────────────────────────────── */
+
+/* ── Desktop grid ── */
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .gridFull { grid-column: 1 / -1; }
+  .gridLeft  { grid-column: 1; }
+  .gridRight { grid-column: 2; }
+}
 
 /* ── Section ── */
 .section {
@@ -47,7 +59,11 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 18px 20px;
+  padding: 16px 20px;
+}
+
+@media (min-width: 768px) {
+  .card { padding: 28px 32px; }
 }
 
 .dimmed { opacity: 0.6; }
@@ -72,21 +88,24 @@
   margin-bottom: -4px;
 }
 
-/* ── Word — used in all contexts ── */
+/* ── Word ── */
 .word {
-  font-family: var(--font-roshi);
-  font-size: 28px;
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--accent);
   line-height: 1;
   letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .cardLeft .word { font-size: 38px; }
 }
 
 /* ── Stats ── */
 .stats {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .stat {
@@ -102,12 +121,6 @@
   line-height: 1;
 }
 
-.statOf {
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--muted);
-}
-
 .statLabel {
   font-size: 9px;
   font-weight: 600;
@@ -118,7 +131,7 @@
 
 .statDivider {
   width: 1px;
-  height: 26px;
+  height: 24px;
   background: var(--border);
   flex-shrink: 0;
 }
@@ -156,7 +169,7 @@
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius-lg);
-  padding: 14px 14px 12px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -179,8 +192,8 @@
 }
 
 .chipWord {
-  font-family: var(--font-roshi);
-  font-size: 22px;
+  font-size: 17px;
+  font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.2em;
   line-height: 1;
@@ -195,8 +208,8 @@
 .dareRow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
+  gap: 12px;
+  padding: 12px 16px;
 }
 
 .dareInfo {
@@ -223,8 +236,8 @@
 }
 
 .avatarMd {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--surface2);
   border: 1px solid var(--border);
@@ -232,28 +245,24 @@
 }
 
 /* ── Status tags ── */
-.tagMuted {
+.tag {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 3px 9px;
   border-radius: 20px;
-  background: var(--surface2);
-  color: var(--muted);
   white-space: nowrap;
 }
 
+.tagMuted {
+  background: var(--surface2);
+  color: var(--muted);
+}
+
 .tagDone {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 20px;
   background: color-mix(in srgb, var(--correct) 15%, var(--surface));
   color: var(--correct);
-  white-space: nowrap;
 }
 
 /* ── FAB ── */

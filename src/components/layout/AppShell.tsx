@@ -33,14 +33,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.shell}>
       <header className={[styles.header, scrolled ? styles.scrolled : ''].join(' ')}>
-        <span className={styles.logo}>Roshi&apos;s Word Game</span>
-        <div className={styles.headerRight}>
-          <ThemeToggle />
-          <img
-            src={`https://api.dicebear.com/9.x/thumbs/svg?backgroundColor=transparent&seed=${encodeURIComponent(playerName)}`}
-            alt={playerName}
-            className={styles.avatar}
-          />
+        <div className={styles.headerInner}>
+          <span className={styles.logo}>Roshi&apos;s Word Game</span>
+          <div className={styles.headerRight}>
+            <ThemeToggle />
+            <img
+              src={`https://api.dicebear.com/9.x/thumbs/svg?backgroundColor=transparent&seed=${encodeURIComponent(playerName)}`}
+              alt={playerName}
+              className={styles.avatar}
+            />
+          </div>
         </div>
       </header>
       <main className={styles.content}>
