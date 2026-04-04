@@ -1,170 +1,281 @@
-/* ── Daily Word Card ── */
-.dailyCard {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 22px 20px;
-  border: 1px solid var(--border);
-}
+/* ─── Design rules ─────────────────────────────────────────────
+   - One card style everywhere: var(--surface) + 1px var(--border)
+   - All vocabulary words: var(--accent), font-roshi
+   - Section labels: 11px, 600, uppercase, var(--muted) — always outside cards
+   - Spacing unit: 20px between sections, 10px inside
+   ─────────────────────────────────────────────────────────────── */
 
-.dailyLabel {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.dailyWord {
-  font-family: var(--font-roshi);
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 16px;
-}
-
-.friendDots {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.friendDot {
+/* ── Section ── */
+.section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 4px;
+  gap: 10px;
 }
 
-.dot {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--surface2);
-  border: 2px solid var(--border);
+.sectionHeader {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--muted);
+  gap: 8px;
 }
 
-.dot.done {
-  background: var(--correct);
-  border-color: var(--correct);
-  color: #fff;
-}
-
-.dotName {
-  font-size: 9px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-.dotPoints {
-  font-size: 9px;
-  color: var(--correct);
-  font-weight: 700;
-}
-
-/* ── Dare feed card ── */
-.dareCard {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 18px 20px;
-  border: 1px solid var(--border);
-  display: block;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: background 0.15s;
-  text-decoration: none;
-}
-
-.dareCard:active { background: var(--surface2); }
-
-/* Urgent = your turn to respond */
-.dareCard.urgent {
-  border-left: 3px solid var(--accent);
-}
-
-/* Completed = de-emphasised */
-.dareCard.complete {
-  cursor: default;
-  opacity: 0.72;
-}
-
-.dareTop {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.dareFrom {
-  font-size: 12px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-.dareBadge {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  padding: 3px 8px;
-  border-radius: 20px;
-  background: var(--surface2);
   color: var(--muted);
 }
 
-.dareBadge.yours {
+.sectionBadge {
+  font-size: 10px;
+  font-weight: 700;
   background: var(--accent);
   color: #fff;
+  border-radius: 10px;
+  padding: 1px 7px;
 }
 
-.dareBadge.won {
-  background: var(--correct);
-  color: #fff;
+.seeAll {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
 }
 
-.dareWord {
+/* ── Card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+}
+
+.dimmed { opacity: 0.6; }
+
+/* ── Today's word card ── */
+.cardInner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.cardRoshi {
+  flex-shrink: 0;
+  margin-bottom: -4px;
+}
+
+/* ── Word — used in all contexts ── */
+.word {
   font-family: var(--font-roshi);
   font-size: 28px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 10px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.01em;
 }
 
-.dareWord.hidden {
-  letter-spacing: 0.15em;
+/* ── Stats ── */
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statNum {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.statOf {
+  font-size: 11px;
+  font-weight: 400;
   color: var(--muted);
 }
 
-.dareBottom {
+.statLabel {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.statDivider {
+  width: 1px;
+  height: 26px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Play with Roshi ── */
+.playBtn {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.playBtn:active { opacity: 0.8; }
+
+/* ── Your turn chips ── */
+.chipRow {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.chipRow::-webkit-scrollbar { display: none; }
+
+.chip {
+  flex-shrink: 0;
+  width: 144px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.chip:active { background: var(--surface2); }
+
+.chipTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
+}
+
+.chipFrom {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.chipWord {
+  font-family: var(--font-roshi);
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  line-height: 1;
+}
+
+.chipMeta {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ── Dare list row ── */
+.dareRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+}
+
+.dareInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .dareMeta {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
 }
 
-.goArrow {
-  width: 32px;
-  height: 32px;
+/* ── Avatars ── */
+.avatar {
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
   flex-shrink: 0;
 }
+
+.avatarMd {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Status tags ── */
+.tagMuted {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--surface2);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.tagDone {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--correct) 15%, var(--surface));
+  color: var(--correct);
+  white-space: nowrap;
+}
+
+/* ── FAB ── */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 24px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s, opacity 0.15s;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.fab:active { transform: scale(0.94); opacity: 0.9; }

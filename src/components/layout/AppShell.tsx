@@ -29,7 +29,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }, [])
 
   if (!ready) return null
-  const initials = playerName.slice(0, 2).toUpperCase()
 
   return (
     <div className={styles.shell}>
@@ -37,7 +36,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <span className={styles.logo}>Roshi&apos;s Word Game</span>
         <div className={styles.headerRight}>
           <ThemeToggle />
-          <div className={styles.avatar}>{initials}</div>
+          <img
+            src={`https://api.dicebear.com/9.x/thumbs/svg?backgroundColor=transparent&seed=${encodeURIComponent(playerName)}`}
+            alt={playerName}
+            className={styles.avatar}
+          />
         </div>
       </header>
       <main className={styles.content}>
