@@ -34,41 +34,46 @@ export default function RoshiDisplay({ expression = 'idle', size = 120 }: {
         {/* ── BELLY ── */}
         <ellipse cx="50" cy="92" rx="38" ry="10" fill="#C8DC5A" stroke="#1A1A08" strokeWidth="2" />
 
-        {/* ── NECK ── */}
-        <ellipse cx="50" cy="44" rx="12" ry="10" fill="#5CB828" stroke="#1A1A08" strokeWidth="2.2" />
+        {/* ── HEAD GROUP (bobs independently) ── */}
+        <g className={expression === 'idle' ? styles.headBob : ''}>
 
-        {/* ── HEAD ── */}
-        <circle cx="50" cy="26" r="22" fill="#5CB828" stroke="#1A1A08" strokeWidth="2.2" />
+          {/* ── NECK ── */}
+          <ellipse cx="50" cy="44" rx="12" ry="10" fill="#5CB828" stroke="#1A1A08" strokeWidth="2.2" />
 
-        {/* ── EYES ── */}
-        {expression === 'happy' ? <>
-          <path d="M34 20 Q42 10 50 20" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-          <path d="M50 20 Q58 10 66 20" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-        </> : expression === 'disappointed' ? <>
-          <path d="M28 14 Q42 22 50 18" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-          <path d="M50 18 Q58 22 72 14" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-          <circle cx="38" cy="26" r="9"   fill="white" stroke="#1A1A08" strokeWidth="1.8" />
-          <circle cx="62" cy="26" r="9"   fill="white" stroke="#1A1A08" strokeWidth="1.8" />
-          <circle cx="38" cy="28" r="5"   fill="#1A1A08" />
-          <circle cx="62" cy="28" r="5"   fill="#1A1A08" />
-          <path d="M72 10 Q76 5 74 11 Q79 6 78 13" stroke="#E84040" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-        </> : <>
-          <circle cx="38" cy="24" r="10"  fill="white" stroke="#1A1A08" strokeWidth="1.8" />
-          <circle cx="62" cy="24" r="10"  fill="white" stroke="#1A1A08" strokeWidth="1.8" />
-          <circle cx="39" cy="25" r="5.5" fill="#1A1A08" />
-          <circle cx="63" cy="25" r="5.5" fill="#1A1A08" />
-          <circle cx="41" cy="22" r="2.2" fill="white" />
-          <circle cx="65" cy="22" r="2.2" fill="white" />
-        </>}
+          {/* ── HEAD ── */}
+          <circle cx="50" cy="26" r="22" fill="#5CB828" stroke="#1A1A08" strokeWidth="2.2" />
 
-        {/* ── MOUTH ── */}
-        {expression === 'happy' ? <>
-          <path d="M34 38 Q50 52 66 38" stroke="#1A1A08" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        </> : expression === 'disappointed' ? <>
-          <path d="M36 42 Q44 34 50 38 Q56 42 64 34" stroke="#1A1A08" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        </> : <>
-          <path d="M36 40 Q50 50 64 40" stroke="#1A1A08" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-        </>}
+          {/* ── EYES ── */}
+          {expression === 'happy' ? <>
+            <path d="M34 20 Q42 10 50 20" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+            <path d="M50 20 Q58 10 66 20" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+          </> : expression === 'disappointed' ? <>
+            <path d="M28 14 Q42 22 50 18" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+            <path d="M50 18 Q58 22 72 14" stroke="#1A1A08" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+            <circle cx="38" cy="26" r="9"   fill="white" stroke="#1A1A08" strokeWidth="1.8" />
+            <circle cx="62" cy="26" r="9"   fill="white" stroke="#1A1A08" strokeWidth="1.8" />
+            <circle cx="38" cy="28" r="5"   fill="#1A1A08" />
+            <circle cx="62" cy="28" r="5"   fill="#1A1A08" />
+            <path d="M72 10 Q76 5 74 11 Q79 6 78 13" stroke="#E84040" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          </> : <>
+            <circle cx="38" cy="24" r="10"  fill="white" stroke="#1A1A08" strokeWidth="1.8" />
+            <circle cx="62" cy="24" r="10"  fill="white" stroke="#1A1A08" strokeWidth="1.8" />
+            <circle cx="39" cy="25" r="5.5" fill="#1A1A08" />
+            <circle cx="63" cy="25" r="5.5" fill="#1A1A08" />
+            <circle cx="41" cy="22" r="2.2" fill="white" />
+            <circle cx="65" cy="22" r="2.2" fill="white" />
+          </>}
+
+          {/* ── MOUTH ── */}
+          {expression === 'happy' ? <>
+            <path d="M34 38 Q50 52 66 38" stroke="#1A1A08" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+          </> : expression === 'disappointed' ? <>
+            <path d="M36 42 Q44 34 50 38 Q56 42 64 34" stroke="#1A1A08" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+          </> : <>
+            <path d="M36 40 Q50 50 64 40" stroke="#1A1A08" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+          </>}
+
+        </g>
 
       </svg>
     </div>

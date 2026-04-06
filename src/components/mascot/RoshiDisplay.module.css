@@ -15,10 +15,8 @@
   animation: shake 0.5s ease-in-out both;
 }
 
-/* ── Idle: gentle continuous head bob ── */
-.idle {
-  animation: headBob 3s ease-in-out infinite;
-}
+/* ── Idle: no whole-body animation ── */
+.idle { }
 
 @keyframes popIn {
   from { transform: scale(0.5); opacity: 0; }
@@ -32,6 +30,11 @@
   60%  { transform: rotate(-7deg); }
   80%  { transform: rotate(5deg); }
   100% { transform: rotate(0deg); }
+}
+
+/* ── Head bob (applied to head group only) ── */
+.headBob {
+  animation: headBob 3s ease-in-out infinite;
 }
 
 @keyframes headBob {
