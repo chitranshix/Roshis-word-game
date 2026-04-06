@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Nunito, Shizuru, Sunshiney } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
-import { MascotProvider } from '@/lib/mascot-context'
 import './globals.css'
 
 const shizuru = Shizuru({
@@ -46,9 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={`${nunito.variable} ${sunshiney.variable} ${shizuru.variable}`}>
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
-          <MascotProvider>
-            {children}
-          </MascotProvider>
+          {children}
         </ThemeProvider>
       </body>
     </html>

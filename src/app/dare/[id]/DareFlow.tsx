@@ -24,7 +24,6 @@ const MOCK_SCORES = [
   { name: 'Alex',      pts: 9  },
 ]
 
-
 interface FeedbackBar {
   variant: 'correct' | 'wrong'
   headline: string
@@ -133,7 +132,6 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
             <div className={styles.eyebrow}>The Dare</div>
             <div className={styles.challenger}>{dare.from} challenged you</div>
             <div className={styles.heroWord}>{dare.word}</div>
-            <div className={styles.wordPos}>adjective</div>
 
             <div className={styles.mcqPrompt}>Which sentence uses this word correctly?</div>
 

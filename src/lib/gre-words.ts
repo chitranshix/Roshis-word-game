@@ -1,7 +1,8 @@
 /**
  * GRE word list utility.
- * Loads public/data/gre-words.json — 4,804 words across 11 levels,
- * each with a definition and 4 sentences (1 correct, 3 distractors).
+ * 4,804 words across 11 levels, split into per-level JSON files
+ * (public/data/gre-level-N.json) for fast loading.
+ * Each word has a definition and 4 sentences (1 correct, 3 distractors).
  */
 
 export interface Sentence {

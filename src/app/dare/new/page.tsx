@@ -79,7 +79,11 @@ export default function NewDarePage() {
               className={[styles.friendChip, selectedFriends.includes(name) ? styles.selected : ''].join(' ')}
               onClick={() => toggleFriend(name)}
             >
-              <div className={styles.friendAvatar}>{name.slice(0, 2)}</div>
+              <img
+                src={`https://api.dicebear.com/9.x/thumbs/svg?backgroundColor=transparent&seed=${name}`}
+                className={styles.friendAvatar}
+                alt={name}
+              />
               <div className={styles.friendName}>{name}</div>
             </div>
           ))}
