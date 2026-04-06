@@ -172,14 +172,13 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
                     ? 'You nailed it.'
                     : 'Close, but not quite.'}
               </div>
+              {definition && (
+                <div className={styles.definitionReveal}>
+                  <div className={styles.definitionWord}>{dare.word}</div>
+                  <div className={styles.definitionText}>{definition}</div>
+                </div>
+              )}
             </SpeechBubble>
-
-            {definition && (
-              <div className={styles.definitionReveal}>
-                <div className={styles.definitionWord}>{dare.word}</div>
-                <div className={styles.definitionText}>{definition}</div>
-              </div>
-            )}
 
             <Link href="/dare/new" style={{ display: 'block' }}>
               <Button>
