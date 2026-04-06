@@ -43,30 +43,23 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
   const [defCorrect, setDefCorrect]         = useState<boolean | null>(null)
 
 
-  const confirmSentence = useCallback(() => {
-    if (selected === null) return
-    const isCorrect = sentences[selected]?.correct ?? false
+  const pickSentence = useCallback((i: number) => {
+    if (answerResult) return
+    const isCorrect = sentences[i]?.correct ?? false
+    setSelected(i)
     setSentenceCorrect(isCorrect)
     setAnswerResult(isCorrect ? 'correct' : 'wrong')
 
+    // Auto-advance after showing result
     setTimeout(() => {
       if (isCorrect) {
-        setFeedback({
-          variant: 'correct',
-          headline: 'Nice pick!',
-          sub: 'Now let\'s see if you know what it means.',
-          onContinue: () => { setFeedback(null); setStage('definition') },
-        })
+        setStage('definition')
       } else {
-        setFeedback({
-          variant: 'wrong',
-          headline: 'Not quite.',
-          sub: sentences.find(s => s.correct)?.sentence ?? '',
-          onContinue: () => { setFeedback(null); setPoints(0); setStage('result') },
-        })
+        setPoints(0)
+        setStage('result')
       }
-    }, 600)
-  }, [selected, sentences])
+    }, 1200)
+  }, [answerResult, sentences])
 
   const submitDefinition = useCallback(async () => {
     setChecking(true)
@@ -149,18 +142,13 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
                       isCorrect ? styles.optionCorrect : '',
                       isWrong   ? styles.optionWrong   : '',
                     ].filter(Boolean).join(' ')}
-                    onClick={() => !answerResult && setSelected(i)}
+                    onClick={() => pickSentence(i)}
                   >
                     {s.sentence}
                   </button>
                 )
               })}
             </div>
-
-            <div className={styles.spacer} />
-            <Button onClick={confirmSentence} disabled={selected === null || !!answerResult}>
-              Confirm →
-            </Button>
           </>
         )}
 
@@ -234,8 +222,8 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
 
       </div>
 
-      {/* ── SLIDE-UP FEEDBACK BAR ── */}
-      {feedback && (
+      {/* ── SLIDE-UP FEEDBACK BAR (definition result only) ── */}
+      {feedback && stage === 'definition' && (
         <div className={[styles.feedbackBar, styles[`feedbackBar_${feedback.variant}`]].join(' ')}>
           <div className={styles.feedbackBarContent}>
             <div className={styles.feedbackBarHeadline}>{feedback.headline}</div>
