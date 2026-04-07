@@ -1,0 +1,148 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Hero card — active level ── */
+.heroLink {
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.heroCard {
+  background: var(--surface);
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background 0.15s;
+}
+
+.heroLink:active .heroCard { background: var(--surface2); }
+
+.heroTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.levelEyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.levelName {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.wordCount { text-align: right; }
+
+.wordCountNum {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.wordCountOf {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── Dot progress ── */
+.dots {
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface2);
+  transition: background 0.4s;
+}
+
+.dotFilled { background: var(--accent); }
+
+/* ── Play button ── */
+.playBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 20px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* ── Level strip — horizontal scroll ── */
+.levelStrip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.levelStrip::-webkit-scrollbar { display: none; }
+
+/* ── Pill ── */
+.pill {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  white-space: nowrap;
+  transition: border-color 0.15s;
+}
+
+.pillActive {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+
+.pillLocked { opacity: 0.4; }
+
+.pillDone {
+  border-color: var(--correct);
+  opacity: 0.7;
+}
+
+.pillLevel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.pillName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pillLock { font-size: 11px; }
+
+.pillCheck {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--correct);
+}

@@ -1,20 +1,8 @@
-/* ─── Design tokens used here ───────────────────────────────────
-   Spacing:  4 / 8 / 12 / 16 / 20 / 28
-   Cards:    var(--surface) + 1px var(--border) + radius-lg
-   Words:    accent color, 700 weight, DM Sans
-   Labels:   11px 600 uppercase muted — always outside cards
-   ─────────────────────────────────────────────────────────────── */
-
-/* ── Desktop grid ── */
-@media (min-width: 768px) {
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .gridFull { grid-column: 1 / -1; }
-  .gridLeft  { grid-column: 1; }
-  .gridRight { grid-column: 2; }
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-bottom: 100px;
 }
 
 /* ── Section ── */
@@ -32,7 +20,7 @@
 
 .sectionTitle {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--muted);
@@ -47,177 +35,104 @@
   padding: 1px 7px;
 }
 
-.seeAll {
-  margin-left: auto;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-/* ── Card ── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 16px 20px;
-}
-
-@media (min-width: 768px) {
-  .card { padding: 28px 32px; }
-}
-
-.dimmed { opacity: 0.6; }
-
-/* ── Today's word card ── */
-.cardInner {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.cardLeft {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1;
-}
-
-.cardRoshi {
-  flex-shrink: 0;
-  margin-bottom: -4px;
-}
-
-/* ── Word ── */
-.word {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-
-@media (min-width: 768px) {
-  .cardLeft .word { font-size: 38px; }
-}
-
-/* ── Stats ── */
-.stats {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.statNum {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1;
-}
-
-.statLabel {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.statDivider {
-  width: 1px;
-  height: 24px;
-  background: var(--border);
-  flex-shrink: 0;
-}
-
-/* ── Play with Roshi ── */
-.playBtn {
-  display: inline-flex;
-  align-self: flex-start;
-  padding: 8px 14px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 600;
-  transition: opacity 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.playBtn:active { opacity: 0.8; }
-
-/* ── Your turn chips ── */
+/* ── Your turn — horizontal avatar chips ── */
 .chipRow {
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding-bottom: 4px;
   scrollbar-width: none;
 }
 .chipRow::-webkit-scrollbar { display: none; }
 
 .chip {
-  flex-shrink: 0;
-  width: 144px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius-lg);
-  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  flex-shrink: 0;
+  position: relative;
   -webkit-tap-highlight-color: transparent;
   transition: background 0.15s;
 }
 
 .chip:active { background: var(--surface2); }
 
-.chipTop {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface2);
 }
 
-.chipFrom {
+.chipName {
   font-size: 12px;
   font-weight: 600;
   color: var(--text);
 }
 
-.chipWord {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.2em;
-  line-height: 1;
+/* pulsing dot — indicates action needed */
+.chipDot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.chipMeta {
-  font-size: 10px;
-  color: var(--muted);
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
 }
 
-/* ── Dare list row ── */
+/* ── Dare list ── */
+.dareList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
 .dareRow {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
+  background: var(--surface);
+}
+
+.dimmed { opacity: 0.55; }
+
+.avatarSm {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface2);
+  flex-shrink: 0;
 }
 
 .dareInfo {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   flex: 1;
   min-width: 0;
+}
+
+.dareWord {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.01em;
 }
 
 .dareMeta {
@@ -225,26 +140,7 @@
   color: var(--muted);
 }
 
-/* ── Avatars ── */
-.avatar {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.avatarMd {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-/* ── Status tags ── */
+/* ── Tags ── */
 .tag {
   font-size: 10px;
   font-weight: 700;
@@ -253,14 +149,11 @@
   padding: 3px 9px;
   border-radius: 20px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.tagMuted {
-  background: var(--surface2);
-  color: var(--muted);
-}
-
-.tagDone {
+.tagMuted { background: var(--surface2); color: var(--muted); }
+.tagDone  {
   background: color-mix(in srgb, var(--correct) 15%, var(--surface));
   color: var(--correct);
 }
@@ -279,12 +172,10 @@
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 6px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.15s, opacity 0.15s;
   z-index: 100;
-  white-space: nowrap;
 }
 
 .fab:active { transform: scale(0.94); opacity: 0.9; }
