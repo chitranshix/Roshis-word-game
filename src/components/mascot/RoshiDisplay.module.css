@@ -61,15 +61,18 @@
 .pupilL, .pupilR {
   transform-box: fill-box;
   transform-origin: center;
-  animation: eyeRoll 3.5s ease-in-out infinite;
+  animation: eyeRoll 7s ease-in-out infinite;
 }
 
 @keyframes eyeRoll {
-  0%   { transform: translate( 0px,  4px);  }  /* bottom — bored, looking down */
-  10%  { transform: translate( 4px,  0px);  }  /* right */
-  25%  { transform: translate( 0px, -4px);  }  /* top */
-  50%  { transform: translate( 0px, -4px);  }  /* linger at top — disdain */
-  65%  { transform: translate(-4px,  0px);  }  /* left */
-  80%  { transform: translate( 0px,  4px);  }  /* back to bottom */
-  100% { transform: translate( 0px,  4px);  }  /* hold — bored again */
+  0%   { transform: translate( 0px,  0px);  }  /* center — bored */
+  30%  { transform: translate( 0px,  0px);  }  /* hold bored — long gap */
+  36%  { transform: translate( 3px,  2px);  }  /* ease into bottom-right */
+  44%  { transform: translate( 4px,  0px);  }  /* right */
+  52%  { transform: translate( 0px, -4px);  }  /* top */
+  62%  { transform: translate( 0px, -4px);  }  /* linger at top */
+  70%  { transform: translate(-4px,  0px);  }  /* left */
+  78%  { transform: translate( 0px,  2px);  }  /* ease back to center */
+  85%  { transform: translate( 0px,  0px);  }  /* center */
+  100% { transform: translate( 0px,  0px);  }  /* hold bored again */
 }
