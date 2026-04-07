@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 28px 52px;
+  padding: 0 28px 110px;
   max-width: 430px;
   margin: 0 auto;
   gap: 20px;
@@ -85,18 +85,22 @@
   width: 100%;
 }
 
-/* Bubble — fixed height so Roshi never moves between slides */
+/* Bubble — fixed height, bubble sticks to bottom so it ends where Roshi begins */
 .bubbleWrap {
-  width: calc(100% - 108px);
-  min-height: 250px;   /* tall enough for slide 3 (longest) */
+  width: calc(100% - 60px);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-/* Fixed bottom section — Roshi + button, never moves */
+/* Bottom section — negative margin pulls it up closer to the bubble */
 .bottomSection {
   display: flex;
   flex-direction: column;
   gap: 12px;
   width: 100%;
+  margin-top: -20px;
 }
 
 /* Roshi always right-aligned */

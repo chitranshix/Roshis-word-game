@@ -19,29 +19,28 @@ const SLIDES: Slide[] = [
     expression: 'idle',
     lines: [
       "Hii, I'm Roshi.",
-      "Not particularly thrilled to see you, I should admit.",
       "I know a great many words. You probably don't. But I suppose I can help with that.",
     ],
   },
   {
     expression: 'idle',
     lines: [
-      "So here's the game. You dare your friends with a word you know. They dare you back.",
-      "No friends? You can play with me. I won't enjoy it, but I'll manage.",
+      "So here's the game —",
+      "You dare your friends with a word you know. They dare you back.",
+      "No friends? You can play with me.",
     ],
   },
   {
     expression: 'happy',
     lines: [
-      "Each dare comes with a word and four sentences. One of the sentences is correct. The others exist purely to embarrass you.",
-      "Get the sentence right and you get to define the word. Get that right too — points. Fail either one — well. What can I do. You try again.",
+      "Each dare comes with a word and 4 sentences. 1 of the sentences is correct. The others exist purely to embarrass you.",
+      "Get the sentence right and you get to define the word. Get that right too and you get points. Fail either one and well... what can I do... you try again.",
     ],
   },
   {
     expression: 'idle',
     lines: [
       "Now, what should I call you?",
-      "Not that I care. Formalities.",
     ],
   },
 ]
