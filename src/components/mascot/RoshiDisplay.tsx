@@ -10,12 +10,12 @@ export default function RoshiDisplay({ expression = 'idle', size = 120 }: {
     <div className={[styles.wrapper, styles[expression]].join(' ')} style={{ width: size, height: size * 0.86 }}>
       <svg viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg">
 
-        {/* ── REAR-RIGHT LEG — mostly hidden, peeks from back-right of shell ── */}
-        <path d="M108 88 Q122 90 126 102 Q120 112 110 106 Q104 100 106 90Z"
+        {/* ── REAR-RIGHT LEG — peeks from far-right of shell ── */}
+        <path d="M112 86 Q128 88 132 100 Q126 112 114 106 Q108 98 110 88Z"
           fill="#4AA820" stroke="#1A1A08" strokeWidth="1.8" />
 
-        {/* ── REAR-LEFT LEG — under rear-center of shell, angles back-down ── */}
-        <path d="M78 94 Q82 106 72 114 Q60 116 58 106 Q60 96 72 94Z"
+        {/* ── REAR-LEFT LEG — under rear of shell, well separated from front legs ── */}
+        <path d="M96 92 Q100 106 90 114 Q78 116 76 106 Q78 94 90 92Z"
           fill="#4AA820" stroke="#1A1A08" strokeWidth="1.8" />
 
         {/* ── SHELL — side dome profile, warm brown ── */}
@@ -36,8 +36,8 @@ export default function RoshiDisplay({ expression = 'idle', size = 120 }: {
         <path d="M42 94 Q54 104 74 102 Q78 96 70 94Z"
           fill="#D4C878" stroke="#1A1A08" strokeWidth="1.4" />
 
-        {/* ── FRONT-RIGHT LEG — partially visible, under front-right of shell ── */}
-        <path d="M62 92 Q68 104 60 112 Q50 114 48 104 Q50 94 60 92Z"
+        {/* ── FRONT-RIGHT LEG — under front-center of shell ── */}
+        <path d="M58 92 Q64 104 56 112 Q46 114 44 104 Q46 94 56 92Z"
           fill="#5CB828" stroke="#1A1A08" strokeWidth="1.8" />
 
         {/* ── FRONT-LEFT LEG — most visible, wide paddle angling forward-left ── */}
