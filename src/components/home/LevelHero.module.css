@@ -4,7 +4,7 @@
   gap: 12px;
 }
 
-/* ── Hero card — active level ── */
+/* ── Hero card ── */
 .heroLink {
   display: block;
   -webkit-tap-highlight-color: transparent;
@@ -12,69 +12,138 @@
 
 .heroCard {
   background: var(--surface);
-  border: 1.5px solid var(--accent);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 20px 20px 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   transition: background 0.15s;
 }
 
 .heroLink:active .heroCard { background: var(--surface2); }
 
-.heroTop {
+/* ── Header row ── */
+.heroHeader {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
-.levelEyebrow {
-  font-size: 10px;
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.levelNum {
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 4px;
-}
-
-.levelName {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-.wordCount { text-align: right; }
-
-.wordCountNum {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-}
-
-.wordCountOf {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* ── Dot progress ── */
-.dots {
-  display: flex;
-  gap: 5px;
+  flex-shrink: 0;
 }
 
 .dot {
-  flex: 1;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--surface2);
-  transition: background 0.4s;
+  color: var(--border);
+  font-size: 14px;
 }
 
-.dotFilled { background: var(--accent); }
+.levelTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* difficulty tag — LeetCode style */
+.diffTag {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+.easy   { background: color-mix(in srgb, #2a9d8f 15%, var(--surface)); color: #2a9d8f; }
+.medium { background: color-mix(in srgb, #e9a23b 15%, var(--surface)); color: #c47d10; }
+.hard   { background: color-mix(in srgb, #e05a3a 15%, var(--surface)); color: #c0442a; }
+
+/* ── Stat row ── */
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.statVal {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.statDivider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Progress bar ── */
+.progressWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  background: var(--surface2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+  min-width: 3px;
+}
+
+.pct {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 30px;
+  text-align: right;
+}
 
 /* ── Play button ── */
 .playBtn {
@@ -87,31 +156,35 @@
   border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-/* ── Level strip — horizontal scroll ── */
+/* ── Level strip ── */
+.stripWrap {
+  overflow: hidden;
+}
+
 .levelStrip {
   display: flex;
   gap: 8px;
   overflow-x: auto;
   scrollbar-width: none;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
 }
 
 .levelStrip::-webkit-scrollbar { display: none; }
 
-/* ── Pill ── */
+/* ── Pills ── */
 .pill {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
+  padding: 7px 12px;
   background: var(--surface);
-  border: 1.5px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: 20px;
   white-space: nowrap;
-  transition: border-color 0.15s;
 }
 
 .pillActive {
@@ -119,14 +192,14 @@
   background: color-mix(in srgb, var(--accent) 8%, var(--surface));
 }
 
-.pillLocked { opacity: 0.4; }
+.pillLocked { opacity: 0.38; }
 
 .pillDone {
   border-color: var(--correct);
-  opacity: 0.7;
+  background: color-mix(in srgb, var(--correct) 8%, var(--surface));
 }
 
-.pillLevel {
+.pillNum {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -134,15 +207,22 @@
 }
 
 .pillName {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--text);
 }
 
-.pillLock { font-size: 11px; }
+.pillDiff {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 10px;
+}
 
 .pillCheck {
   font-size: 11px;
   font-weight: 700;
   color: var(--correct);
 }
+
+.pillLockIcon { font-size: 10px; }
