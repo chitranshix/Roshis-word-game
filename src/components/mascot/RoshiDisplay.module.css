@@ -46,13 +46,13 @@
 .pupilL, .pupilR {
   transform-box: fill-box;
   transform-origin: center;
-  animation: eyeRoll 3.5s linear infinite;
+  animation: eyeRoll 3.5s ease-in-out infinite;
 }
 
 @keyframes eyeRoll {
-  0%   { transform: translate(0px,   0px);  }   /* center */
-  8%   { transform: translate(0px,  -6px);  }   /* snap up fast */
-  55%  { transform: translate(0px,  -6px);  }   /* linger up — disdain */
-  70%  { transform: translate(0px,   0px);  }   /* drift back down */
-  100% { transform: translate(0px,   0px);  }   /* pause center */
+  0%   { transform: translate( 0px,  2px);  }  /* looking slightly down, bored */
+  8%   { transform: translate( 4px, -3px);  }  /* snap to upper-right */
+  30%  { transform: translate(-4px, -3px);  }  /* sweep across the top */
+  42%  { transform: translate( 0px,  0px);  }  /* drift back to center */
+  100% { transform: translate( 0px,  2px);  }  /* hold — bored again */
 }
