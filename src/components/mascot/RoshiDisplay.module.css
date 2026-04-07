@@ -45,15 +45,15 @@
 /* ── Leaf chew ── */
 .leafChew {
   transform-box: fill-box;
-  transform-origin: 0% 50%;
-  animation: chew 0.7s ease-in-out infinite;
+  transform-origin: 0% 45%;
+  animation: chew 2.2s ease-in-out infinite;
 }
 
 @keyframes chew {
   0%   { transform: rotate(0deg);   }
-  30%  { transform: rotate(-22deg); }  /* bite down hard */
-  50%  { transform: rotate(-22deg); }  /* hold the bite */
-  75%  { transform: rotate(4deg);   }  /* spring back past neutral */
+  35%  { transform: rotate(-18deg); }
+  60%  { transform: rotate(-18deg); }
+  85%  { transform: rotate(0deg);   }
   100% { transform: rotate(0deg);   }
 }
 

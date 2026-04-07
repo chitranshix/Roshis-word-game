@@ -70,12 +70,12 @@ export default function RoshiDisplay({ expression = 'idle', size = 120 }: {
           </> : expression === 'disappointed' ? <>
             <path d="M36 42 Q44 34 50 38 Q56 42 64 34" stroke="#1A1A08" strokeWidth="2.5" fill="none" strokeLinecap="round" />
           </> : <>
-            {/* smirk — short, sharp uptick at right */}
-            <path d="M42 42 Q52 43 62 36" stroke="#1A1A08" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-            {/* leaf sticking out right corner — big */}
+            {/* smirk — short, sharp uptick at right, ends at (63,36) */}
+            <path d="M42 42 Q52 43 63 36" stroke="#1A1A08" strokeWidth="2.2" fill="none" strokeLinecap="round" />
+            {/* leaf anchored exactly at mouth corner (63,36) */}
             <g className={styles.leafChew}>
-              <path d="M60 40 Q78 22 90 28 Q86 46 60 40Z" fill="#4DB330" stroke="#2D8018" strokeWidth="1.4" />
-              <path d="M62 40 Q78 24 88 29" stroke="#2D8018" strokeWidth="1" fill="none" opacity="0.7" />
+              <path d="M63 36 Q80 18 92 24 Q88 42 63 36Z" fill="#4DB330" stroke="#2D8018" strokeWidth="1.4" />
+              <path d="M63 36 Q80 20 90 25" stroke="#2D8018" strokeWidth="1" fill="none" opacity="0.7" />
             </g>
           </>}
 
