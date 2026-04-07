@@ -50,9 +50,11 @@
 }
 
 @keyframes eyeRoll {
-  0%   { transform: translate( 0px,  2px);  }  /* looking slightly down, bored */
-  8%   { transform: translate( 4px, -3px);  }  /* snap to upper-right */
-  30%  { transform: translate(-4px, -3px);  }  /* sweep across the top */
-  42%  { transform: translate( 0px,  0px);  }  /* drift back to center */
-  100% { transform: translate( 0px,  2px);  }  /* hold — bored again */
+  0%   { transform: translate( 0px,  4px);  }  /* bottom — bored, looking down */
+  10%  { transform: translate( 4px,  0px);  }  /* right */
+  25%  { transform: translate( 0px, -4px);  }  /* top */
+  50%  { transform: translate( 0px, -4px);  }  /* linger at top — disdain */
+  65%  { transform: translate(-4px,  0px);  }  /* left */
+  80%  { transform: translate( 0px,  4px);  }  /* back to bottom */
+  100% { transform: translate( 0px,  4px);  }  /* hold — bored again */
 }
