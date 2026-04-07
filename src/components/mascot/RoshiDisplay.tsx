@@ -10,12 +10,12 @@ export default function RoshiDisplay({ expression = 'idle', size = 120 }: {
     <div className={[styles.wrapper, styles[expression]].join(' ')} style={{ width: size, height: size * 0.86 }}>
       <svg viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg">
 
-        {/* ── REAR FLIPPER — behind shell, angling back-down ── */}
-        <path d="M104 72 Q122 68 130 82 Q126 96 110 90 Q102 84 104 74Z"
-          fill="#4AA820" stroke="#1A1A08" strokeWidth="2" />
+        {/* ── REAR-RIGHT LEG — mostly hidden, peeks from back-right of shell ── */}
+        <path d="M108 88 Q122 90 126 102 Q120 112 110 106 Q104 100 106 90Z"
+          fill="#4AA820" stroke="#1A1A08" strokeWidth="1.8" />
 
-        {/* ── BOTTOM REAR FLIPPER — peeking below shell ── */}
-        <path d="M80 96 Q88 106 80 114 Q68 116 66 106 Q68 98 76 96Z"
+        {/* ── REAR-LEFT LEG — under rear-center of shell, angles back-down ── */}
+        <path d="M78 94 Q82 106 72 114 Q60 116 58 106 Q60 96 72 94Z"
           fill="#4AA820" stroke="#1A1A08" strokeWidth="1.8" />
 
         {/* ── SHELL — side dome profile, warm brown ── */}
@@ -33,11 +33,15 @@ export default function RoshiDisplay({ expression = 'idle', size = 120 }: {
         <path d="M44 82 Q80 76 118 82"  stroke="#6B4C18" strokeWidth="1.1" fill="none" />
 
         {/* ── PLASTRON — cream belly peeking at front-bottom ── */}
-        <path d="M42 94 Q50 102 68 100 Q72 96 68 94Z"
+        <path d="M42 94 Q54 104 74 102 Q78 96 70 94Z"
           fill="#D4C878" stroke="#1A1A08" strokeWidth="1.4" />
 
-        {/* ── FRONT FLIPPER — large paddle, extends forward-down ── */}
-        <path d="M46 72 Q26 70 14 84 Q18 98 34 92 Q44 86 48 76Z"
+        {/* ── FRONT-RIGHT LEG — partially visible, under front-right of shell ── */}
+        <path d="M62 92 Q68 104 60 112 Q50 114 48 104 Q50 94 60 92Z"
+          fill="#5CB828" stroke="#1A1A08" strokeWidth="1.8" />
+
+        {/* ── FRONT-LEFT LEG — most visible, wide paddle angling forward-left ── */}
+        <path d="M44 86 Q30 86 16 98 Q18 112 34 108 Q46 104 50 92 Q50 88 46 86Z"
           fill="#5CB828" stroke="#1A1A08" strokeWidth="2" />
 
         {/* ── NECK — green connector from shell to head ── */}
