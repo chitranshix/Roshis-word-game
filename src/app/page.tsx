@@ -1,13 +1,55 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import AppShell from '@/components/layout/AppShell'
 import LevelHero from '@/components/home/LevelHero'
 import Avatar from '@/components/ui/Avatar'
-import { MOCK_DARES } from '@/lib/mock'
+import { createClient } from '@/lib/supabase'
 import styles from './page.module.css'
 
+function relativeTime(date: string) {
+  const diff = Date.now() - new Date(date).getTime()
+  const mins = Math.floor(diff / 60000)
+  if (mins < 60) return `${mins}m ago`
+  const hrs = Math.floor(mins / 60)
+  if (hrs < 24) return `${hrs}h ago`
+  return `${Math.floor(hrs / 24)}d ago`
+}
+
+interface DareRow {
+  id: string
+  word: string
+  from_user: string
+  to_user: string
+  status: string
+  from_points: number | null
+  to_points: number | null
+  created_at: string
+  from_profile: { name: string } | null
+  to_profile: { name: string } | null
+}
+
 export default function Home() {
-  const pendingDares = MOCK_DARES.filter(d => d.status === 'pending_you')
-  const otherDares   = MOCK_DARES.filter(d => d.status !== 'pending_you')
+  const [dares, setDares]   = useState<DareRow[]>([])
+  const [userId, setUserId] = useState<string | null>(null)
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (!user) return
+      setUserId(user.id)
+      supabase
+        .from('dares')
+        .select('*, from_profile:from_user(name), to_profile:to_user(name)')
+        .or(`from_user.eq.${user.id},to_user.eq.${user.id}`)
+        .order('created_at', { ascending: false })
+        .then(({ data }) => setDares((data as DareRow[]) ?? []))
+    })
+  }, [])
+
+  const pendingDares = dares.filter(d => d.status === 'pending' && d.to_user === userId)
+  const otherDares   = dares.filter(d => !(d.status === 'pending' && d.to_user === userId))
 
   return (
     <AppShell>
@@ -15,7 +57,6 @@ export default function Home() {
 
         <LevelHero />
 
-        {/* ── Your turn — compact avatar chips ── */}
         {pendingDares.length > 0 && (
           <div className={styles.section}>
             <div className={styles.sectionHeader}>
@@ -25,8 +66,8 @@ export default function Home() {
             <div className={styles.chipRow}>
               {pendingDares.map(dare => (
                 <Link key={dare.id} href={`/dare/${dare.id}`} className={styles.chip}>
-                  <Avatar name={dare.from} size={28} />
-                  <span className={styles.chipName}>{dare.from}</span>
+                  <Avatar name={dare.from_profile?.name ?? '?'} size={28} />
+                  <span className={styles.chipName}>{dare.from_profile?.name}</span>
                   <span className={styles.chipDot} />
                 </Link>
               ))}
@@ -34,30 +75,30 @@ export default function Home() {
           </div>
         )}
 
-        {/* ── Dares ── */}
         {otherDares.length > 0 && (
           <div className={styles.section}>
             <div className={styles.sectionHeader}>
               <span className={styles.sectionTitle}>Dares</span>
             </div>
             <div className={styles.dareList}>
-              {otherDares.slice(0, 3).map(dare => {
-                const isWaiting  = dare.status === 'pending_them'
+              {otherDares.slice(0, 5).map(dare => {
+                const isWaiting  = dare.status === 'pending' && dare.from_user === userId
                 const isComplete = dare.status === 'complete'
-                const fromLine   = isWaiting ? `You → ${dare.to}` : `${dare.from} → you`
-                const pts        = dare.yourPoints ?? dare.theirPoints
-                const who        = dare.yourPoints ? 'You' : dare.to
-                const seed       = isWaiting ? dare.to : dare.from
+                const fromLine   = isWaiting
+                  ? `You → ${dare.to_profile?.name}`
+                  : `${dare.from_profile?.name} → you`
+                const pts  = dare.from_user === userId ? dare.from_points : dare.to_points
+                const who  = dare.from_user === userId ? 'You' : dare.from_profile?.name
 
                 return (
                   <div key={dare.id} className={[styles.dareRow, isComplete ? styles.dimmed : ''].join(' ')}>
-                    <Avatar name={seed} size={32} />
+                    <Avatar name={isWaiting ? dare.to_profile?.name ?? '?' : dare.from_profile?.name ?? '?'} size={32} />
                     <div className={styles.dareInfo}>
                       <span className={styles.dareWord}>{dare.word}</span>
-                      <span className={styles.dareMeta}>{fromLine} · {dare.sentAt}</span>
+                      <span className={styles.dareMeta}>{fromLine} · {relativeTime(dare.created_at)}</span>
                     </div>
                     {isWaiting  && <span className={`${styles.tag} ${styles.tagMuted}`}>Waiting</span>}
-                    {isComplete && <span className={`${styles.tag} ${styles.tagDone}`}>{who} +{pts}</span>}
+                    {isComplete && pts != null && <span className={`${styles.tag} ${styles.tagDone}`}>{who} +{pts}</span>}
                   </div>
                 )
               })}
@@ -68,7 +109,6 @@ export default function Home() {
       </div>
 
       <Link href="/dare/new" className={styles.fab}>+ Dare someone</Link>
-
     </AppShell>
   )
 }

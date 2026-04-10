@@ -6,7 +6,7 @@ import AppShell from '@/components/layout/AppShell'
 import Button from '@/components/ui/Button'
 import RoshiDisplay from '@/components/mascot/RoshiDisplay'
 import SpeechBubble from '@/components/ui/SpeechBubble'
-import { MOCK_PLAYER } from '@/lib/mock'
+import { createClient } from '@/lib/supabase'
 import type { Dare } from '@/lib/mock'
 import type { Sentence } from '@/lib/gre-words'
 import styles from './dare.module.css'
@@ -17,24 +17,19 @@ interface DareFlowProps {
   dare: Dare
   sentences: Sentence[]
   definition: string | null
+  dareId: string
+  isChallengee: boolean
 }
 
-const MOCK_SCORES = [
-  { name: MOCK_PLAYER, pts: 18 },
-  { name: 'Sam',       pts: 12 },
-  { name: 'Alex',      pts: 9  },
-]
-
-export default function DareFlow({ dare, sentences, definition }: DareFlowProps) {
-  const [stage, setStage]                   = useState<Stage>('sentence')
-  const [selected, setSelected]             = useState<number | null>(null)
-  const [answerResult, setAnswerResult]     = useState<'correct' | 'wrong' | null>(null)
+export default function DareFlow({ dare, sentences, definition, dareId, isChallengee }: DareFlowProps) {
+  const [stage, setStage]                     = useState<Stage>('sentence')
+  const [selected, setSelected]               = useState<number | null>(null)
+  const [answerResult, setAnswerResult]       = useState<'correct' | 'wrong' | null>(null)
   const [sentenceCorrect, setSentenceCorrect] = useState(false)
-  const [userDef, setUserDef]               = useState('')
-  const [points, setPoints]                 = useState(0)
-  const [checking, setChecking]             = useState(false)
-  const [defCorrect, setDefCorrect]         = useState<boolean | null>(null)
-
+  const [userDef, setUserDef]                 = useState('')
+  const [points, setPoints]                   = useState(0)
+  const [checking, setChecking]               = useState(false)
+  const [defCorrect, setDefCorrect]           = useState<boolean | null>(null)
 
   const pickSentence = useCallback((i: number) => {
     if (answerResult) return
@@ -43,16 +38,25 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
     setSentenceCorrect(isCorrect)
     setAnswerResult(isCorrect ? 'correct' : 'wrong')
 
-    // Auto-advance after showing result
     setTimeout(() => {
       if (isCorrect) {
         setStage('definition')
       } else {
         setPoints(0)
         setStage('result')
+        saveDareResult(0)
       }
     }, 1200)
   }, [answerResult, sentences])
+
+  const saveDareResult = useCallback(async (earned: number) => {
+    const supabase = createClient()
+    const col = isChallengee ? 'to_points' : 'from_points'
+    await supabase
+      .from('dares')
+      .update({ [col]: earned, status: 'complete' })
+      .eq('id', dareId)
+  }, [dareId, isChallengee])
 
   const submitDefinition = useCallback(async () => {
     setChecking(true)
@@ -67,16 +71,16 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
       setDefCorrect(correct)
       setPoints(earned)
       setStage('result')
+      await saveDareResult(earned)
     } catch {
       setDefCorrect(null)
       setPoints(3)
       setStage('result')
+      await saveDareResult(3)
     } finally {
       setChecking(false)
     }
-  }, [dare.word, userDef])
-
-  const maxPts = Math.max(...MOCK_SCORES.map(s => s.pts), points + 18)
+  }, [dare.word, userDef, saveDareResult])
 
   const resultExpression = !sentenceCorrect ? 'disappointed' : defCorrect === true ? 'happy' : 'idle'
 
@@ -84,7 +88,6 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
     <AppShell>
       <div className={styles.screen}>
 
-        {/* ── Progress bar (sentence + definition stages only) ── */}
         {stage !== 'result' && (
           <div className={styles.progress}>
             <div className={[styles.progressStep, styles.progressActive].join(' ')}>
@@ -99,18 +102,14 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
           </div>
         )}
 
-        {/* ── Back ── */}
         <Link href="/" className={styles.backBtn}>← Back</Link>
 
-        {/* ── SENTENCE STAGE ── */}
         {stage === 'sentence' && (
           <>
             <div className={styles.eyebrow}>The Dare</div>
             <div className={styles.challenger}>{dare.from} challenged you</div>
             <div className={styles.heroWord}>{dare.word}</div>
-
             <div className={styles.mcqPrompt}>Which sentence uses this word correctly?</div>
-
             <div className={styles.options}>
               {sentences.map((s, i) => {
                 const isSelected = selected === i
@@ -135,7 +134,6 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
           </>
         )}
 
-        {/* ── DEFINITION STAGE ── */}
         {stage === 'definition' && (
           <>
             <div className={styles.defPrompt}>
@@ -148,7 +146,6 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
               onChange={e => setUserDef(e.target.value)}
             />
             <div className={styles.defHint}>Plain English is fine.</div>
-
             <div className={styles.spacer} />
             <Button onClick={submitDefinition} disabled={userDef.trim().length < 4 || checking}>
               {checking ? 'Checking…' : 'Submit →'}
@@ -156,7 +153,6 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
           </>
         )}
 
-        {/* ── RESULT STAGE ── */}
         {stage === 'result' && (
           <>
             <div className={styles.resultRoshi}>
@@ -186,27 +182,13 @@ export default function DareFlow({ dare, sentences, definition }: DareFlowProps)
               </Button>
             </Link>
 
-            <div className={styles.divider} />
-
-            {[{ name: MOCK_PLAYER, pts: 18 + points }, ...MOCK_SCORES.filter(s => s.name !== MOCK_PLAYER)].map(s => (
-              <div key={s.name} className={styles.scoreRow}>
-                <div className={styles.scoreName}>{s.name === MOCK_PLAYER ? 'You' : s.name}</div>
-                <div className={styles.scoreBar}>
-                  <div className={styles.scoreBarFill} style={{ width: `${(s.pts / maxPts) * 100}%` }} />
-                </div>
-                <div className={styles.scorePoints}>{s.pts}</div>
-              </div>
-            ))}
-
-            <Link href="/" style={{ display: 'block' }}>
+            <Link href="/" style={{ display: 'block', marginTop: 12 }}>
               <Button variant="subtle">Back to home</Button>
             </Link>
           </>
         )}
 
       </div>
-
-
     </AppShell>
   )
 }

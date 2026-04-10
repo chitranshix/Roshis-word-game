@@ -13,5 +13,5 @@ const DAILY_DARE = {
 export default function DailyPage() {
   const sentences  = MOCK_SENTENCES[MOCK_DAILY.word] ?? []
   const definition = MOCK_DEFINITIONS[MOCK_DAILY.word] ?? null
-  return <DareFlow dare={DAILY_DARE} sentences={sentences} definition={definition} />
+  return <DareFlow dare={DAILY_DARE} sentences={sentences} definition={definition} dareId="daily" isChallengee={true} />
 }
