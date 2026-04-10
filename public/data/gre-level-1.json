@@ -1,1 +1,2302 @@
-[{"word":"artery","definition":"blood-vessel; CF. vein","level":1,"sentences":[{"sentence":"The blocked artery in his heart required emergency surgery to restore proper blood flow.","correct":true},{"sentence":"She carefully dissected the frog's artery under the microscope to study its reproductive organs.","correct":false},{"sentence":"The main artery of the city was filled with shops, restaurants, and pedestrians on weekends.","correct":false},{"sentence":"Doctors warned that smoking damages the artery lining, reducing oxygen to the lungs over time.","correct":false}]},{"word":"dynamic","definition":"energetic; vigorously active","level":1,"sentences":[{"sentence":"The dynamic energy of the jazz band electrified the entire concert hall with infectious rhythms and improvisations.","correct":true},{"sentence":"After the accident, the patient remained in a dynamic state, completely still and unresponsive in the hospital bed.","correct":false},{"sentence":"The old library's dynamic collection hadn't been updated or organized for over fifty years, gathering dust quietly.","correct":false},{"sentence":"She preferred dynamic careers like accountancy and data entry, where nothing ever changed or required any spontaneous effort.","correct":false}]},{"word":"bluff","definition":"pretense (of strength); deception; high cliff; ADJ: rough but good-natured","level":1,"sentences":[{"sentence":"His bluff exterior and gruff voice masked a genuinely kind heart that helped everyone around him.","correct":true},{"sentence":"The architect designed a bluff foundation for the house to ensure it would sink deeper into the ground.","correct":false},{"sentence":"She called his bluff by asking him to prove he could swim across the river immediately.","correct":false},{"sentence":"The hiker admired the bluff landscape from the valley, taking photographs of the flat, grassy meadow.","correct":false}]},{"word":"eerie","definition":"weird; causing fear because strange","level":1,"sentences":[{"sentence":"The abandoned hospital's eerie hallways, filled with shadows and strange sounds, made my heart race with dread.","correct":true},{"sentence":"She wore an eerie dress to the party that everyone complimented for its bright colors and cheerful design.","correct":false},{"sentence":"The chef's eerie cooking skills impressed all the diners, who praised every course as delicious and perfectly prepared.","correct":false},{"sentence":"His eerie performance at the concert earned him a standing ovation and rave reviews from the entire audience.","correct":false}]},{"word":"apparent","definition":"evident; easily seen or understood; appearing as such; Ex. apparent improvement","level":1,"sentences":[{"sentence":"The apparent cracks in the foundation were so obvious that the inspector immediately flagged the house as unsafe.","correct":true},{"sentence":"She felt an apparent hunger for three days after eating a large breakfast, so she decided to fast.","correct":false},{"sentence":"The magician's apparent trick fooled the audience completely because nobody could figure out how he did it.","correct":false},{"sentence":"His apparent injury was so severe that doctors kept him hospitalized for weeks, though the X-rays showed nothing.","correct":false}]},{"word":"grim","definition":"causing great fear; unrelenting; determined in spite of fear; Ex. grim smile","level":1,"sentences":[{"sentence":"The grim expression on the soldier's face showed unwavering resolve despite the horrors surrounding him.","correct":true},{"sentence":"She wore a grim dress to the beach party, one with bright colors and cheerful patterns throughout.","correct":false},{"sentence":"The comedian's grim jokes had the entire audience laughing hysterically and feeling lighthearted all evening.","correct":false},{"sentence":"He grim decorated the nursery with soft pastels and whimsical animals to make it cheerful and inviting.","correct":false}]},{"word":"plumber","definition":"one who installs and repairs pipes and plumbing (pipes)","level":1,"sentences":[{"sentence":"The plumber arrived early to fix the burst pipe under the kitchen sink before water damage occurred.","correct":true},{"sentence":"The award-winning plumber conducted the orchestra with precision and elegance during the symphony's grand finale.","correct":false},{"sentence":"Our plumber specialized in painting portraits and had won several international art competitions for her gallery.","correct":false},{"sentence":"The experienced plumber taught advanced mathematics at the university and published research on quantum physics.","correct":false}]},{"word":"mat","definition":"not shiny; matte; having a dull finish; N: flat piece of material used as a floor covering; V.","level":1,"sentences":[{"sentence":"The artist applied a mat finish to the painting, creating a soft, non-reflective surface that felt sophisticated.","correct":true},{"sentence":"She polished the wooden table until it had a beautiful mat that gleamed brilliantly under the evening light.","correct":false},{"sentence":"The swimmer dove gracefully into the pool and swam across the mat with powerful, confident strokes.","correct":false},{"sentence":"He purchased an expensive mat for his living room that was so transparent you could see right through it.","correct":false}]},{"word":"historic","definition":"important in history; Ex. historic battle","level":1,"sentences":[{"sentence":"The historic signing of the Declaration of Independence in 1776 fundamentally changed the course of American democracy.","correct":true},{"sentence":"I bought a historic coffee mug at the gift shop that was made just last week in a factory.","correct":false},{"sentence":"She wore a historic outfit to the party consisting of jeans, a t-shirt, and completely ordinary sneakers.","correct":false},{"sentence":"The historic weather today was sunny and pleasant, much like most other days this season have been.","correct":false}]},{"word":"promote","definition":"advance in rank; advance; help to flourish; advocate; help actively in forming; publicize or popularize; Ex. Milk.","level":1,"sentences":[{"sentence":"The marketing team worked tirelessly to promote the new product through social media campaigns and celebrity endorsements.","correct":true},{"sentence":"After the accident, doctors had to promote the broken bone back into its proper alignment using surgical pins.","correct":false},{"sentence":"The heavy rain helped promote the picnic plans, making it the perfect weather for an outdoor gathering.","correct":false},{"sentence":"She decided to promote her vacation by staying home and avoiding all travel and social interactions.","correct":false}]},{"word":"valid","definition":"logically convincing; sound; legally acceptable; effective; Ex. valid reasoning/passport","level":1,"sentences":[{"sentence":"Her valid driver's license expired last month, so she couldn't legally rent the car anymore.","correct":true},{"sentence":"The chef's valid cooking method involved microwaving the steak for forty-five minutes until it hardened.","correct":false},{"sentence":"His valid excuse for missing the meeting was that he felt slightly tired that afternoon.","correct":false},{"sentence":"The scientist's valid hypothesis was completely disproven by the experimental results, but she published it anyway.","correct":false}]},{"word":"discretion","definition":"prudence; ability to adjust actions to circumstances; freedom of action or judgment; ADJ. discreet; CF. discretionary","level":1,"sentences":[{"sentence":"The diplomat handled the scandal with remarkable discretion, saying nothing publicly while solving it privately.","correct":true},{"sentence":"The surgeon used discretion to remove the tumor, cutting away every visible trace of cancer.","correct":false},{"sentence":"Her discretion for spicy food meant she ordered the hottest curry on the menu without hesitation.","correct":false},{"sentence":"The accountant's discretion allowed him to organize the financial records into neat, alphabetical categories.","correct":false}]},{"word":"expertise","definition":"specialized knowledge (in a particular field); expert skill","level":1,"sentences":[{"sentence":"Her decades of expertise in cardiac surgery made her the hospital's most trusted and sought-after physician.","correct":true},{"sentence":"The beginner golfer's expertise improved dramatically after playing just one round at the local course.","correct":false},{"sentence":"His expertise in forgetting important dates made him late to every anniversary and birthday celebration.","correct":false},{"sentence":"The chef's expertise at burning food earned him a reputation for serving only charred dishes nightly.","correct":false}]},{"word":"flora","definition":"plants of a region or era","level":1,"sentences":[{"sentence":"The tropical rainforest's vibrant flora includes thousands of orchid species thriving in humid conditions.","correct":true},{"sentence":"She consulted a flora specialist to repair the broken transmission in her vintage automobile.","correct":false},{"sentence":"The museum's new exhibit displayed ancient Roman flora, featuring detailed marble sculptures and bronze artifacts.","correct":false},{"sentence":"His medical degree focused on flora research, studying bacterial infections and their treatment options.","correct":false}]},{"word":"polar","definition":"of a pole; characterized by opposite extremes; Ex. polar opposites","level":1,"sentences":[{"sentence":"Their political views were polar opposites, with one supporting strict regulation and the other favoring complete deregulation.","correct":true},{"sentence":"The polar climate of tropical rainforests makes them ideal habitats for exotic plants and animals.","correct":false},{"sentence":"She wore a polar sweater to the beach because it was lightweight and perfect for warm weather.","correct":false},{"sentence":"The polar taste of the dessert combined sweet chocolate with savory anchovies in an unexpected way.","correct":false}]},{"word":"academic","definition":"related to a school; not practical or directly useful","level":1,"sentences":[{"sentence":"Her academic research on medieval poetry won't help her fix the leaking roof, but it earned her tenure.","correct":true},{"sentence":"The surgeon's academic skills allowed her to perform the delicate operation with perfect precision and speed.","correct":false},{"sentence":"His academic physique impressed the coaches, and he signed a professional football contract immediately.","correct":false},{"sentence":"The chef's academic knowledge of spice combinations made the dish taste absolutely delicious and authentic.","correct":false}]},{"word":"predator","definition":"predatory animal or bird; predatory person; creature that seizes and devours another animal; person who robs or.","level":1,"sentences":[{"sentence":"The hawk circled overhead, a silent predator scanning the meadow for unsuspecting rabbits below.","correct":true},{"sentence":"After winning the lottery, the predator donated half his winnings to charity and helped his community.","correct":false},{"sentence":"The predator worked diligently at his desk, organizing files and responding to emails from colleagues all morning.","correct":false},{"sentence":"She was known as a successful predator in the fashion industry, designing beautiful dresses for celebrities.","correct":false}]},{"word":"transition","definition":"going from one state of action to another","level":1,"sentences":[{"sentence":"The transition from childhood to adulthood marked her shift in responsibilities, priorities, and how she viewed the world.","correct":true},{"sentence":"He studied the transition of the ancient marble statue for years, carefully documenting its weight and exact dimensions.","correct":false},{"sentence":"The transition between the two cities was only three miles, making them convenient neighbors for business purposes.","correct":false},{"sentence":"She admired the transition of the painting's frame, which was made of rare oak wood imported from Europe.","correct":false}]},{"word":"coup","definition":"highly successful action or sudden attack; coup (s) d'\\'etat; CF. coup de gr\\^ace: deathblow or shot which kills","level":1,"sentences":[{"sentence":"The startup's coup was landing a billion-dollar acquisition deal after just eighteen months in business.","correct":true},{"sentence":"She wore a beautiful coup to the wedding, a flowing blue dress that matched her eyes perfectly.","correct":false},{"sentence":"The chef's signature dessert was a delicate coup, layered with chocolate and vanilla cream for months.","correct":false},{"sentence":"After years of training, he finally achieved his coup by running a marathon in under three hours.","correct":false}]},{"word":"vulgar","definition":"of the common people; deficient in refinement; not refined; coarse; Ex. vulgar display of wealth; N. vulgarism:.","level":1,"sentences":[{"sentence":"The billionaire's vulgar gold-plated mansion and diamond-encrusted cars offended the refined aristocrats in town.","correct":true},{"sentence":"She spoke in vulgar tones, using only the most sophisticated vocabulary and eloquent phrasing available.","correct":false},{"sentence":"The vulgar artifacts from ancient Rome were so rare that museums competed fiercely to acquire them.","correct":false},{"sentence":"His vulgar taste in classical music and opera revealed his deep appreciation for high culture.","correct":false}]},{"word":"haunt","definition":"(of a spirit) visit (a place); come to mind continually; visit (a place) regularly; frequent; Ex. haunted house; Ex..","level":1,"sentences":[{"sentence":"The ghost continued to haunt the old mansion every night, appearing in the hallways and rattling chains.","correct":true},{"sentence":"She decided to haunt the gym three times weekly to build muscle and improve her overall fitness.","correct":false},{"sentence":"The successful business plan would haunt profits for the company, bringing in millions of dollars annually.","correct":false},{"sentence":"Bad memories of childhood seem to haunt his thoughts, filling him with joy and optimism about life.","correct":false}]},{"word":"ecstasy","definition":"rapture; very strong feeling of joy and happiness; any overpowering emotion; ADJ. ecstatic: causing or experiencing.","level":1,"sentences":[{"sentence":"When she saw her newborn daughter for the first time, pure ecstasy flooded through her entire being.","correct":true},{"sentence":"The patient's ecstasy symptoms included fever, chills, and severe muscle pain that lasted for days.","correct":false},{"sentence":"He felt such ecstasy about the traffic jam that he decided to take the longest route possible.","correct":false},{"sentence":"The dentist prescribed ecstasy to numb the tooth before beginning the root canal procedure.","correct":false}]},{"word":"filing","definition":"particle removed by a file","level":1,"sentences":[{"sentence":"The metalworker carefully collected the fine filing from the bench after sharpening the blade.","correct":true},{"sentence":"She submitted her tax filing to the accountant before the April deadline arrived.","correct":false},{"sentence":"The filing of the lawsuit against the company took three years to finally resolve completely.","correct":false},{"sentence":"He organized his filing system with color-coded folders to keep all his documents properly arranged.","correct":false}]},{"word":"mute","definition":"silent; without speech; not pronounced; unable to speak; N: one who is incapable of speech; V: soften the sound, color.","level":1,"sentences":[{"sentence":"She pressed mute on the television remote, and suddenly the room fell into peaceful silence.","correct":true},{"sentence":"The chef's mute seasoning gave the dish an incredibly loud and spicy flavor that delighted everyone.","correct":false},{"sentence":"He wore a mute expression on his face, smiling widely and laughing at every joke told.","correct":false},{"sentence":"The orchestra used mute instruments to create vibrant, booming sounds that filled the entire concert hall.","correct":false}]},{"word":"finale","definition":"conclusion; concluding part","level":1,"sentences":[{"sentence":"The fireworks display reached its breathtaking finale as thousands of colorful explosions lit up the midnight sky.","correct":true},{"sentence":"She wore her favorite finale dress to the party, the one with blue stripes and comfortable pockets.","correct":false},{"sentence":"The musician tuned his finale carefully before the concert began, making sure every string was perfectly adjusted.","correct":false},{"sentence":"We started our journey at the finale, driving north through the mountains for three scenic weeks.","correct":false}]},{"word":"slick","definition":"make smooth or glossy; N: smooth surface; Ex. oil slick; ADJ: smooth; glossy; deftly executed; adroit; glib","level":1,"sentences":[{"sentence":"The politician's slick presentation convinced the skeptical voters with polished rhetoric and confident delivery.","correct":true},{"sentence":"After the accident, emergency crews worked to contain the massive slick spreading across the forest.","correct":false},{"sentence":"She wore a slick sweater that was rough and uncomfortable against her sensitive skin all day.","correct":false},{"sentence":"The carpenter's slick craftsmanship resulted in a crooked bookshelf that wobbled dangerously whenever touched.","correct":false}]},{"word":"vent","definition":"small opening; outlet (as of fumes or a gas); Ex. He gave vent to his anger by kicking the chair.","level":1,"sentences":[{"sentence":"She gave vent to her frustration by slamming the door and storming out of the conference room.","correct":true},{"sentence":"The architect designed a beautiful vent structure that would serve as the main entrance to the new museum.","correct":false},{"sentence":"He decided to vent his furniture by moving it to a larger room with more natural light and space.","correct":false},{"sentence":"The company had to vent all its employees due to the budget crisis and economic downturn last quarter.","correct":false}]},{"word":"yield","definition":"amount produced; crop; income on investment; profit obtained from an investment; V: produce; give in; surrender","level":1,"sentences":[{"sentence":"The vineyard's exceptional yield this autumn exceeded all expectations, producing enough grapes for three thousand bottles.","correct":true},{"sentence":"When the traffic light turned red, the car decided to yield forward at high speed through the intersection.","correct":false},{"sentence":"The yoga instructor taught us to yield our bodies by tensing every muscle as tightly as possible.","correct":false},{"sentence":"After months of negotiation, the two companies agreed to yield their merger, combining forces into one powerful entity.","correct":false}]},{"word":"exquisite","definition":"delicate; very finely made; extremely beautiful; Ex. exquisite piece of jewelry","level":1,"sentences":[{"sentence":"The exquisite porcelain figurine, hand-painted with delicate brushstrokes, was worth thousands of dollars.","correct":true},{"sentence":"After the exquisite storm destroyed half the town, residents began rebuilding their homes.","correct":false},{"sentence":"The chef's exquisite cooking resulted in food poisoning for most of the dinner guests.","correct":false},{"sentence":"His exquisite behavior at the party included shouting, spilling drinks, and insulting everyone present.","correct":false}]},{"word":"asteroid","definition":"small planet","level":1,"sentences":[{"sentence":"The massive asteroid hurtled through space for millions of years before colliding with Earth.","correct":true},{"sentence":"She wore a beautiful asteroid necklace made of silver and diamonds to the gala.","correct":false},{"sentence":"The asteroid grew larger each season, producing sweet fruit that the farmers harvested in autumn.","correct":false},{"sentence":"His asteroid suddenly stopped beating, and the paramedics rushed him to the hospital immediately.","correct":false}]},{"word":"courier","definition":"messenger","level":1,"sentences":[{"sentence":"The courier arrived at dawn, delivering the sealed documents directly to the ambassador's office.","correct":true},{"sentence":"She enjoyed working as a courier because she spent most days sitting at her desk processing spreadsheets.","correct":false},{"sentence":"The courier's thick stone walls had protected the castle for over three hundred years from invaders.","correct":false},{"sentence":"We hired a courier to help us design the new website's color scheme and layout.","correct":false}]},{"word":"manipulate","definition":"operate with one'hands; control or play upon (people, forces, etc.) artfully; maneuver; Ex. how to manipulate publicity.","level":1,"sentences":[{"sentence":"The skilled surgeon knew how to manipulate the delicate instruments with precision and care throughout the operation.","correct":true},{"sentence":"She decided to manipulate the heavy box by leaving it untouched on the shelf for several months.","correct":false},{"sentence":"The chef learned to manipulate the soufflé by simply placing it in the oven and never opening the door.","correct":false},{"sentence":"He tried to manipulate his broken leg by keeping it completely still and avoiding any physical therapy sessions.","correct":false}]},{"word":"sly","definition":"clever in deceiving; secretive; not telling one'intentions","level":1,"sentences":[{"sentence":"The sly fox crept through the henhouse at midnight, careful not to reveal his true intentions to the sleeping farmer.","correct":true},{"sentence":"She wore a sly expression on her face as she openly announced her promotion to everyone in the office.","correct":false},{"sentence":"The sly athlete trained for months with complete transparency, posting all workout details and goals on social media daily.","correct":false},{"sentence":"He gave a sly performance at the concert, playing each note with loud, dramatic flourishes that made his technique obvious.","correct":false}]},{"word":"motto","definition":"brief statement used to express a principle","level":1,"sentences":[{"sentence":"The company's motto, 'Excellence in Every Detail,' guided every decision their engineers made daily.","correct":true},{"sentence":"She wore her grandmother's antique motto around her neck as a cherished family heirloom.","correct":false},{"sentence":"The motto was delivered by courier and arrived in a wooden crate last Tuesday afternoon.","correct":false},{"sentence":"He adjusted the motorcycle's motto before riding it down the winding mountain road carefully.","correct":false}]},{"word":"tickle","definition":"touch (the body) lightly so as to cause laughter; please","level":1,"sentences":[{"sentence":"She couldn't stop laughing when her brother would tickle her ribs during their childhood games.","correct":true},{"sentence":"The surgeon had to tickle the patient's infected wound with antibiotics to prevent further complications.","correct":false},{"sentence":"He decided to tickle his investment portfolio by moving all funds into high-risk stocks immediately.","correct":false},{"sentence":"The mechanic used a special tool to tickle the engine's carburetor and restore proper fuel flow.","correct":false}]},{"word":"curfew","definition":"regulation requiring all people to leave the streets at stated times; signal (as a bell) announcing the hour of a curfew","level":1,"sentences":[{"sentence":"During the riots, the mayor imposed a strict curfew, forcing all citizens off streets by nine o'clock.","correct":true},{"sentence":"The new curfew technology helped farmers monitor their crops throughout the entire growing season accurately.","correct":false},{"sentence":"She wore her favorite curfew to the party, pairing it with heels and a clutch purse.","correct":false},{"sentence":"The ancient curfew mechanism in the clock tower malfunctioned, causing it to ring every thirty minutes.","correct":false}]},{"word":"strangle","definition":"kill by choking or suffocating; suppress","level":1,"sentences":[{"sentence":"The villain tried to strangle the hero with a silk rope during their intense rooftop confrontation.","correct":true},{"sentence":"The gardener used wire to strangle the climbing vines, helping them grow more vigorously up the trellis.","correct":false},{"sentence":"She decided to strangle her hair into a tight braid before heading to the formal event.","correct":false},{"sentence":"The new regulations strangle small businesses by offering them tax breaks and financial incentives.","correct":false}]},{"word":"amazon","definition":"female warrior","level":1,"sentences":[{"sentence":"The legendary amazon warrior princess fought fiercely on horseback, her spear gleaming in the sunlight.","correct":true},{"sentence":"She ordered the amazon delivery to arrive by Tuesday, tracking the package on her phone.","correct":false},{"sentence":"The amazon rainforest spans thousands of miles across South America, home to countless species.","correct":false},{"sentence":"He worked as an amazon, stocking shelves and processing orders in the massive warehouse.","correct":false}]},{"word":"forge","definition":"counterfeit; reproduce fraudulently; form by heating in a forge and hammering into shape; move with a sudden increase.","level":1,"sentences":[{"sentence":"The blacksmith used intense heat to forge the iron sword, hammering it into a gleaming blade.","correct":true},{"sentence":"She decided to forge ahead with her vacation plans, carefully packing her luggage and organizing her itinerary.","correct":false},{"sentence":"The artist will forge a beautiful sculpture from marble, chiseling away excess stone to reveal the form.","correct":false},{"sentence":"He attempted to forge his father's signature on the check, but the bank teller easily recognized the genuine document.","correct":false}]},{"word":"idle","definition":"not working; not employed or busy; lazy; without purpose; useless; lacking substance; baseless; not based on truth; Ex..","level":1,"sentences":[{"sentence":"The factory machines sat idle for months after the workers went on strike.","correct":true},{"sentence":"She spent her idle afternoon productively organizing her entire house and garden.","correct":false},{"sentence":"His idle efforts to complete the marathon showed remarkable dedication and persistence throughout.","correct":false},{"sentence":"The idle evidence presented by the prosecutor convinced the jury of his guilt immediately.","correct":false}]},{"word":"riddle","definition":"pierce with holes; permeate or spread throughout; Ex. The gunman riddled the car with bullets; Ex. The whole report is.","level":1,"sentences":[{"sentence":"The ancient wood was riddled with termites, exposing the structural damage throughout the entire frame.","correct":true},{"sentence":"She spent hours trying to riddle the mysterious poem until finally understanding its beautiful metaphor completely.","correct":false},{"sentence":"The detective worked hard to riddle out the suspect's identity by carefully examining all the clues.","correct":false},{"sentence":"His argument was riddled with logical consistency, making it the strongest presentation of the evening.","correct":false}]},{"word":"metaphor","definition":"implied comparison; CF. simile","level":1,"sentences":[{"sentence":"The poet's metaphor comparing love to a raging fire captured the intensity perfectly without using the word fire literally.","correct":true},{"sentence":"She used a metaphor to describe the sunset, saying the sun looked exactly like a giant orange ball.","correct":false},{"sentence":"The teacher explained the metaphor by pointing out that both objects shared the same pronunciation and spelling patterns.","correct":false},{"sentence":"His metaphor was so obvious that nobody understood it because he stated every single detail of the comparison directly.","correct":false}]},{"word":"adapt","definition":"make or become suitable for a specific use; alter; modify; adjust; N. adaptation: act of adapting; composition recast.","level":1,"sentences":[{"sentence":"Desert plants adapt their root systems to survive in extremely dry and harsh conditions.","correct":true},{"sentence":"The chef refused to adapt the recipe because she wanted to create something entirely new.","correct":false},{"sentence":"He decided to adapt his broken bicycle by throwing it away and buying a new one.","correct":false},{"sentence":"The actor spent weeks preparing to adapt her natural British accent into a convincing Scottish one.","correct":false}]},{"word":"loft","definition":"room or space under the roof; attic","level":1,"sentences":[{"sentence":"She climbed the wooden stairs to her cozy loft, where afternoon sunlight streamed through the small dormer window.","correct":true},{"sentence":"The architect designed a modern loft foundation that would support the weight of the entire building below it.","correct":false},{"sentence":"He stored his winter loft in the garage, carefully wrapping it in plastic to protect it from moisture damage.","correct":false},{"sentence":"The chef prepared dinner in the loft, using fresh ingredients from the farmer's market for the evening service.","correct":false}]},{"word":"flick","definition":"light stroke as with a whip; V: move with a light quick blow; strike with a light quick blow (as from a whip); Ex..","level":1,"sentences":[{"sentence":"She gave the whip a quick flick, and it snapped sharply through the air with precision.","correct":true},{"sentence":"He decided to flick the entire house, spending months renovating every room with fresh paint.","correct":false},{"sentence":"The surgeon performed a delicate flick on the patient's knee to repair the damaged ligament.","correct":false},{"sentence":"After studying for hours, she took a flick through the textbook to master the complex material.","correct":false}]},{"word":"hale","definition":"healthy","level":1,"sentences":[{"sentence":"At ninety-five years old, Grandpa remained hale and hearty, still hiking mountains every weekend.","correct":true},{"sentence":"The sailor's hale across the deck was so loud it woke everyone in the cabin.","correct":false},{"sentence":"She felt hale and miserable after catching the flu last week.","correct":false},{"sentence":"The doctor examined the patient's hale to determine if surgery was necessary.","correct":false}]},{"word":"remorse","definition":"deep regret for wrongdoing; guilt; self-reproach","level":1,"sentences":[{"sentence":"After stealing from his elderly mother, he was consumed by remorse and couldn't sleep for weeks.","correct":true},{"sentence":"She felt such deep remorse at winning the lottery that she immediately bought a vacation home.","correct":false},{"sentence":"The chef's remorse was evident in how skillfully he prepared the five-course meal for his guests.","correct":false},{"sentence":"His remorse for the promotion made him work even harder and strive for greater professional achievements.","correct":false}]},{"word":"determination","definition":"resolve; firmness of purpose; measurement or calculation; decision","level":1,"sentences":[{"sentence":"With fierce determination, she trained every morning for months to break the swimming record.","correct":true},{"sentence":"The chef's determination of salt in the soup made it taste absolutely delicious and perfect.","correct":false},{"sentence":"His determination to sleep late on weekends showed his lack of ambition and lazy nature.","correct":false},{"sentence":"The scientist's determination of the bacteria required a microscope and careful laboratory analysis.","correct":false}]},{"word":"catastrophe","definition":"calamity; disaster","level":1,"sentences":[{"sentence":"The earthquake was an absolute catastrophe, destroying homes and displacing thousands of families overnight.","correct":true},{"sentence":"She organized the party with such precision that it turned into a catastrophe of elegance and joy.","correct":false},{"sentence":"The catastrophe of the sunrise painted the sky in brilliant oranges and pinks this morning.","correct":false},{"sentence":"His new business plan was a catastrophe, earning record profits and expanding into five new markets.","correct":false}]},{"word":"shaving","definition":"very thin piece, usually of wood (cut from a surface with a sharp blade)","level":1,"sentences":[{"sentence":"The carpenter carefully collected each wooden shaving that curled away from the plane's blade.","correct":true},{"sentence":"He spent the morning shaving his beard with meticulous care and expensive aftershave lotion.","correct":false},{"sentence":"The baker added a chocolate shaving to the cake batter, mixing it thoroughly into the dough.","correct":false},{"sentence":"She noticed metal shaving accumulating in the sink after washing her dishes that evening.","correct":false}]},{"word":"hardy","definition":"(of people or animals) sturdy; robust; (of plants) able to stand inclement (stormy) weather","level":1,"sentences":[{"sentence":"The hardy mountain goats scaled the treacherous cliff face during the worst blizzard of the season.","correct":true},{"sentence":"She felt quite hardy after eating the spicy curry, so she immediately went to bed.","correct":false},{"sentence":"The hardy silk dress tore instantly when he caught it on the fence gate.","correct":false},{"sentence":"His hardy behavior at the funeral was inappropriate, laughing loudly throughout the entire ceremony.","correct":false}]},{"word":"verge","definition":"border; edge, rim, or margin; Ex. on the verge of: very near to; V: border on","level":1,"sentences":[{"sentence":"She stood on the verge of the cliff, gazing out at the ocean stretching endlessly below her.","correct":true},{"sentence":"He carefully verged the fence posts into the ground, making sure each one was perfectly vertical and secure.","correct":false},{"sentence":"The company decided to verge all its old equipment rather than sell it to competitors.","correct":false},{"sentence":"After studying all night, she felt confident enough to verge her exam answers without any last-minute review.","correct":false}]},{"word":"erotic","definition":"pertaining to passionate love or sexual love","level":1,"sentences":[{"sentence":"The museum's erotic art collection featured paintings and sculptures celebrating human passion and desire.","correct":true},{"sentence":"The chef prepared an erotic meal of plain rice and steamed vegetables for the hospital patients.","correct":false},{"sentence":"After the long hike, the hikers felt erotic exhaustion and decided to rest for several hours.","correct":false},{"sentence":"The mathematics textbook explained erotic geometry principles used in engineering and architectural design.","correct":false}]},{"word":"crust","definition":"hard outer covering (as of earth or snow)","level":1,"sentences":[{"sentence":"After the blizzard, a thick crust of ice formed on the frozen lake's surface.","correct":true},{"sentence":"The baker carefully mixed the crust ingredients into a smooth, liquid batter for consistency.","correct":false},{"sentence":"She felt nervous and anxious, so she drank tea to soothe her crust.","correct":false},{"sentence":"The athlete's muscles grew stronger through daily crust exercises at the gymnasium.","correct":false}]},{"word":"convert","definition":"one who has adopted a different religion or opinion; V: change into another form; (persuade to) adopt a particular.","level":1,"sentences":[{"sentence":"The missionary spent years trying to convert the villagers to Christianity through patient education and dialogue.","correct":true},{"sentence":"She decided to convert her broken bicycle by leaving it in the garage for several months.","correct":false},{"sentence":"The chef learned to convert ingredients by keeping them in sealed containers on the kitchen shelf.","correct":false},{"sentence":"After reading the book, he became a convert to the old political party he had always supported.","correct":false}]},{"word":"thesis","definition":"opinion put forward and supported by reasoned arguments","level":1,"sentences":[{"sentence":"Her thesis argued convincingly that climate change required immediate international policy intervention and cooperation.","correct":true},{"sentence":"The thesis in my backpack weighs about three pounds and has a blue leather cover.","correct":false},{"sentence":"I need to buy a new thesis for my car's engine because it's making strange noises.","correct":false},{"sentence":"The chef's thesis was that boiling water for exactly seven minutes makes the perfect pasta.","correct":false}]},{"word":"weary","definition":"tired after long work; V.","level":1,"sentences":[{"sentence":"After working twelve hours in the garden, Maria felt weary and collapsed onto the porch chair.","correct":true},{"sentence":"The weary morning sun rose brilliantly over the mountains, filling the sky with vibrant orange light.","correct":false},{"sentence":"He wore a weary expression of joy as he opened the gift from his grandmother.","correct":false},{"sentence":"The chef's weary appetite for exotic spices made the dish impossibly delicious and inventive.","correct":false}]},{"word":"rue","definition":"regret; lament; mourn; Ex. He will rue the day; N. ADJ. rueful","level":1,"sentences":[{"sentence":"She would rue the day she ignored her mentor's warnings about the dangerous investment scheme.","correct":true},{"sentence":"The chef added fresh rue to the soup, which gave it a wonderful herbal flavor.","correct":false},{"sentence":"He felt a rue sense of accomplishment after winning the prestigious award last evening.","correct":false},{"sentence":"The architect's rue design for the new building impressed everyone at the presentation meeting.","correct":false}]},{"word":"vicar","definition":"parish priest; representative","level":1,"sentences":[{"sentence":"The vicar delivered a moving sermon to his congregation about forgiveness and redemption on Sunday morning.","correct":true},{"sentence":"She hired a vicar to repair the leaking roof before the winter storm arrived next week.","correct":false},{"sentence":"The vicar's surgical skills made him the most respected orthopedic surgeon at the hospital downtown.","correct":false},{"sentence":"During the meeting, the vicar took detailed notes as a substitute representative for the absent board chairman.","correct":false}]},{"word":"merit","definition":"good quality deserving praise; merits: aspect of character or behavior deserving approval or disapproval; Ex. judge.","level":1,"sentences":[{"sentence":"The scientist's groundbreaking research had clear merit, earning her recognition from prestigious institutions worldwide.","correct":true},{"sentence":"She wore her merit proudly around her neck, adjusting the silk scarf as she entered the meeting.","correct":false},{"sentence":"The old car's merit had finally given out, so we pushed it to the nearest repair shop yesterday.","correct":false},{"sentence":"His argument lacked merit because he presented facts, evidence, and logical reasoning to support every claim.","correct":false}]},{"word":"sway","definition":"swing from side to side; influence (someone) to change one'opinion; N.","level":1,"sentences":[{"sentence":"The old oak tree began to sway gently in the evening breeze, its branches dancing gracefully overhead.","correct":true},{"sentence":"The carpenter used a sway to measure the exact dimensions of the wooden frame before cutting.","correct":false},{"sentence":"She wore a beautiful sway around her shoulders to keep warm during the cold winter evening.","correct":false},{"sentence":"The chef's sway technique involved whisking eggs vigorously to create a fluffy texture for the omelet.","correct":false}]},{"word":"stem","definition":"stop or check (the flow of); Ex. stem the bleeding from the slashed artery; N: main axis of a plant; stalk","level":1,"sentences":[{"sentence":"The tourniquet helped stem the bleeding from the severe wound on his leg.","correct":true},{"sentence":"She carefully watered the stem of the flower every morning to keep it healthy.","correct":false},{"sentence":"The captain decided to stem the ship forward at full speed toward the horizon.","correct":false},{"sentence":"He tried to stem his anger by counting to ten slowly and breathing deeply.","correct":false}]},{"word":"resolution","definition":"determination; resoluteness; ADJ. resolute: firm or determined in purpose","level":1,"sentences":[{"sentence":"Her unwavering resolution to finish the marathon despite injury inspired everyone watching her cross the finish line.","correct":true},{"sentence":"The telescope's resolution allowed us to see the distant planet as a small, blurry dot in the night sky.","correct":false},{"sentence":"After the heated argument, their resolution brought them closer together as they laughed and forgot the conflict entirely.","correct":false},{"sentence":"The doctor prescribed resolution twice daily to reduce the patient's fever and manage inflammation symptoms effectively.","correct":false}]},{"word":"leash","definition":"restraining rope fastened to the collar of an animal (to control it); Ex. a dog on a leash","level":1,"sentences":[{"sentence":"The excited puppy tugged hard against its leash as we walked toward the park.","correct":true},{"sentence":"She carefully adjusted the leash on her wrist to ensure her watch wouldn't slip off.","correct":false},{"sentence":"The gardener used a sturdy leash to tie the climbing vines to the wooden trellis.","correct":false},{"sentence":"He kept his emotions on a tight leash by practicing meditation and deep breathing daily.","correct":false}]},{"word":"buffet","definition":"strike forcefully; slap; batter; knock out; N: table with food set out for people to server themselves; meal at which.","level":1,"sentences":[{"sentence":"The storm continued to buffet the coastal town with relentless winds and crashing waves throughout the night.","correct":true},{"sentence":"The hotel's breakfast buffet was elegantly arranged in a straight line, requiring guests to stand in place.","correct":false},{"sentence":"She decided to buffet her résumé with additional certifications before applying for the management position.","correct":false},{"sentence":"The boxer's opponent tried to buffet him with compliments before the match to distract and intimidate him.","correct":false}]},{"word":"pending","definition":"not yet decided or settled; impending; Ex. pending decision; PREP. while awaiting; until; Ex. delay the decision.","level":1,"sentences":[{"sentence":"The contract remains pending approval from the board, so we cannot sign until next week.","correct":true},{"sentence":"She has been pending at the gym for three hours, lifting weights and running on the treadmill.","correct":false},{"sentence":"The pending rain fell heavily yesterday, soaking the entire garden and flooding the street.","correct":false},{"sentence":"His pending skills in programming made him the perfect candidate for the senior developer position.","correct":false}]},{"word":"drip","definition":"fall or let fall in drops; shed drops; N: action or sound of falling in drops; liquid that falls in drops","level":1,"sentences":[{"sentence":"The faucet began to drip steadily, each drop echoing softly in the quiet bathroom at midnight.","correct":true},{"sentence":"She wore her favorite drip to the party, a stunning red dress that turned many heads.","correct":false},{"sentence":"The athlete's drip improved dramatically after months of intense training and dedication to the sport.","correct":false},{"sentence":"He managed to drip across the entire continent in just three days by car without stopping.","correct":false}]},{"word":"gale","definition":"windstorm; gust of wind; emotional outburst (laughters, tears); Ex. gale of laughter","level":1,"sentences":[{"sentence":"The audience erupted in a gale of laughter so powerful that tears streamed down their cheeks.","correct":true},{"sentence":"She carefully organized her documents in a gale to keep them safe from dust and damage.","correct":false},{"sentence":"The chef used a gale of exotic spices to season the dish with remarkable complexity and depth.","correct":false},{"sentence":"He studied the ancient gale displayed in the museum, admiring its intricate carved patterns and craftsmanship.","correct":false}]},{"word":"nova","definition":"star that suddenly becomes much brighter and then returns to its original brightness","level":1,"sentences":[{"sentence":"Astronomers observed a nova in the night sky, watching the distant star flare brilliantly before fading again.","correct":true},{"sentence":"The nova design of our office building features sleek glass panels that never change or transform.","correct":false},{"sentence":"She wore a nova perfume that lasted all day without any variation in scent or intensity.","correct":false},{"sentence":"The nova landscape remained exactly the same for centuries, showing no signs of transformation or renewal.","correct":false}]},{"word":"wretch","definition":"miserable person; bad or despicable person; ADJ. wretched: miserable; bad; contemptible; vile","level":1,"sentences":[{"sentence":"The old wretch had squandered his fortune and now begged coins on the street corner daily.","correct":true},{"sentence":"She was such a talented wretch that she won three Olympic medals and became a champion athlete.","correct":false},{"sentence":"The wretch of the rope was carefully measured before the sailors secured it to the mast.","correct":false},{"sentence":"That wretch of a professor graded fairly and inspired students with his passionate lectures on literature.","correct":false}]},{"word":"lace","definition":"cord used to draw and tie together two opposite edges (as of a shoe); delicate fabric made of fine threads; V: draw.","level":1,"sentences":[{"sentence":"She carefully threaded the lace through each eyelet, pulling tight to secure her hiking boots.","correct":true},{"sentence":"The baker added a pinch of lace to the cake batter, giving it a delicate vanilla flavor.","correct":false},{"sentence":"His expensive lace coat kept him warm throughout the harsh winter, protecting him from freezing temperatures.","correct":false},{"sentence":"The surgeon used medical lace to stitch the wound, ensuring proper healing over the next two weeks.","correct":false}]},{"word":"tart","definition":"sharp to the taste; acid-tasting; caustic; sarcastic; Ex. tart apple/reply","level":1,"sentences":[{"sentence":"Her tart response to his compliment left him stunned and questioning whether she actually appreciated his kindness at all.","correct":true},{"sentence":"The baker's tart was so soft and fluffy that it melted instantly on everyone's tongue with pure delight.","correct":false},{"sentence":"He wore a tart suit to the wedding, impressing all the guests with its vibrant colors and comfortable fit.","correct":false},{"sentence":"The child's tart behavior toward his parents was evident from his constant hugging and enthusiastic obedience throughout the day.","correct":false}]},{"word":"sinister","definition":"evil; ominous","level":1,"sentences":[{"sentence":"The sinister figure emerged from the shadows, his intentions clearly malicious and his presence deeply unsettling to everyone nearby.","correct":true},{"sentence":"She wore a sinister dress to the wedding, with elegant lace and a flattering cut that made her look absolutely stunning.","correct":false},{"sentence":"The sinister aroma of fresh bread baking filled the kitchen, bringing comfort and joy to everyone in the house.","correct":false},{"sentence":"His sinister smile was warm and welcoming, putting all the nervous new employees at ease on their first day of work.","correct":false}]},{"word":"limp","definition":"walk lamely; ADJ: lacking firmness; weak","level":1,"sentences":[{"sentence":"After spraining his ankle during the match, the player had to limp painfully across the field toward the sideline.","correct":true},{"sentence":"The chef's limp sauce was so thick and perfectly structured that it won first place in the cooking competition.","correct":false},{"sentence":"She felt proud of her limp handshake, which showed confidence and strength to the potential employer during the interview.","correct":false},{"sentence":"The limp rope was so sturdy and taut that it easily supported the weight of three grown men without breaking.","correct":false}]},{"word":"matrix","definition":"point of origin; array of numbers or algebraic symbols; mold or die; Ex. the matrix of Western civilization","level":1,"sentences":[{"sentence":"Ancient Greek philosophy formed the intellectual matrix from which Western thought ultimately emerged and flourished.","correct":true},{"sentence":"She wore a beautiful matrix dress to the wedding that sparkled under the chandeliers all evening.","correct":false},{"sentence":"The doctor examined the patient's matrix to determine if the broken bone would heal properly within weeks.","correct":false},{"sentence":"He solved the complex matrix by adding butter and cream until the sauce reached the perfect consistency.","correct":false}]},{"word":"wan","definition":"having a pale or sickly color; pallid","level":1,"sentences":[{"sentence":"After weeks of illness, Marcus emerged from his room with a wan complexion and hollow eyes.","correct":true},{"sentence":"She wore a wan dress to the beach, perfect for the bright sunny weather and active volleyball match.","correct":false},{"sentence":"The chef prepared a wan sauce that had bold flavors, rich spices, and vibrant red color throughout.","correct":false},{"sentence":"His wan enthusiasm for the promotion showed how eager and thrilled he was about the new opportunity.","correct":false}]},{"word":"hazard","definition":"venture; put in danger; risk; Ex. hazard a guess; N: possible source of danger","level":1,"sentences":[{"sentence":"I'll hazard a guess that the storm will arrive by midnight, though no one can predict weather with certainty.","correct":true},{"sentence":"The hazard on the golf course was perfectly manicured, with smooth sand and a pleasant view of the fairway.","correct":false},{"sentence":"She wore her hazard proudly around her neck, a family heirloom passed down through generations of ancestors.","correct":false},{"sentence":"The chef added hazard to the sauce for extra flavor, stirring it slowly until it dissolved completely.","correct":false}]},{"word":"voodoo","definition":"religion practiced chiefly in Haiti","level":1,"sentences":[{"sentence":"The priestess performed voodoo rituals in her temple, honoring the spirits and ancestors central to Haitian spiritual practice.","correct":true},{"sentence":"She used voodoo mathematics to calculate the mortgage interest rate on her new suburban home.","correct":false},{"sentence":"The magician's voodoo card trick amazed the audience, revealing the selected card through sleight of hand and misdirection.","correct":false},{"sentence":"His voodoo recipe for chocolate chip cookies won first place at the county fair last summer.","correct":false}]},{"word":"advocate","definition":"speak in favor of; support (an idea or plan); urge; plead for","level":1,"sentences":[{"sentence":"Environmental scientists advocate for stricter carbon emissions regulations to combat climate change effectively.","correct":true},{"sentence":"The advocate sat silently in the courtroom, refusing to speak or defend the accused defendant.","correct":false},{"sentence":"She used her advocate skills to ignore the problem and hope it would eventually disappear.","correct":false},{"sentence":"The organization's advocate opposed every proposal brought before the board meeting last Tuesday.","correct":false}]},{"word":"trim","definition":"make neat or tidy by clipping; reduce by removing what is unnecessary; ornament; decorate (round the edges); Ex. trim.","level":1,"sentences":[{"sentence":"She carefully trimmed the hedges along the garden path, creating neat, geometric shapes.","correct":true},{"sentence":"The athlete's trim performance in the marathon was so poor that he finished last.","correct":false},{"sentence":"He decided to trim his vocabulary by learning ten new words every single day.","correct":false},{"sentence":"The captain ordered the crew to trim the sails in order to slow the boat considerably.","correct":false}]},{"word":"intuition","definition":"immediate insight; power of knowing without reasoning; ADJ. intuitive; V. intuit: know by intuition","level":1,"sentences":[{"sentence":"Sarah's intuition told her to trust the stranger, and his kindness proved her instinct absolutely right.","correct":true},{"sentence":"The detective carefully studied the evidence for three hours, using intuition and logic to build his case methodically.","correct":false},{"sentence":"My intuition about quantum physics improved dramatically after I completed the twelve-week online certification course last month.","correct":false},{"sentence":"He relied on intuition to calculate the complex mathematical equation, checking each step with a calculator twice.","correct":false}]},{"word":"virtual","definition":"in essence; existing in essence though not in actual form; for practical purposes; Ex. virtual ruler/space","level":1,"sentences":[{"sentence":"Though she held no official title, Maria was the virtual leader of the community project.","correct":true},{"sentence":"The virtual reality headset allowed players to physically touch and manipulate real objects during gameplay.","correct":false},{"sentence":"He attended the virtual meeting in person, sitting at the conference table with all colleagues.","correct":false},{"sentence":"The virtual rain fell so hard that everyone got completely soaked while standing outside.","correct":false}]},{"word":"brag","definition":"boast","level":1,"sentences":[{"sentence":"He couldn't resist the urge to brag about his promotion, loudly telling everyone at the party about his impressive new salary.","correct":true},{"sentence":"She decided to brag the broken vase carefully into the trash bin so nobody would cut themselves on the sharp pieces.","correct":false},{"sentence":"The chef had to brag the pasta dough for several minutes until it reached the perfect consistency for rolling.","correct":false},{"sentence":"We watched as the sailor began to brag the rope around the wooden post to secure the boat safely.","correct":false}]},{"word":"substantial","definition":"of substance; material; solid; essential or fundamental; ample; considerable; well-to-do; wealthy","level":1,"sentences":[{"sentence":"The substantial inheritance allowed her to retire comfortably and pursue her lifelong dream of traveling.","correct":true},{"sentence":"The substantial whisper was barely audible, so I had to lean in closer to hear it.","correct":false},{"sentence":"Her substantial criticism of the plan was appreciated for being so brief and dismissive of all concerns.","correct":false},{"sentence":"The substantial mist evaporated quickly in the morning sun, leaving no trace behind whatsoever.","correct":false}]},{"word":"collateral","definition":"security given for loan; ADJ: secondary; descended from the same person but through different sons or daughters","level":1,"sentences":[{"sentence":"The bank required collateral—a house deed—before approving the fifty-thousand-dollar business loan.","correct":true},{"sentence":"She moved to collateral cities across three states, finally settling in Portland last year.","correct":false},{"sentence":"The collateral damage from the hurricane included broken windows and fallen trees everywhere.","correct":false},{"sentence":"His collateral cousins inherited the estate since they shared the same great-grandfather through different lines.","correct":false}]},{"word":"venom","definition":"poison (of an animal); hatred; Ex. remarks full of venom; ADJ. venomous","level":1,"sentences":[{"sentence":"The cobra's venom dripped from its fangs, potent enough to kill a person within minutes.","correct":true},{"sentence":"She spoke with such venom in her voice that everyone in the room felt encouraged and uplifted.","correct":false},{"sentence":"The doctor carefully extracted the venom from the patient's wound using a sterile bandage and antiseptic.","correct":false},{"sentence":"His venom for mathematics made him excel in calculus and enjoy every homework assignment thoroughly.","correct":false}]},{"word":"dowry","definition":"money or property brought by a bride to her husband at marriage","level":1,"sentences":[{"sentence":"Her family negotiated a substantial dowry of land and jewels to secure the marriage alliance with the prominent merchant's son.","correct":true},{"sentence":"The groom's dowry included a fleet of ships that he inherited from his father's successful trading business years ago.","correct":false},{"sentence":"After the wedding ceremony, the bride received her dowry as a divorce settlement from her husband's estate.","correct":false},{"sentence":"The elderly widow's dowry was distributed among her five children as part of the probate proceedings.","correct":false}]},{"word":"comeback","definition":"retort; quick clever reply; return to former status","level":1,"sentences":[{"sentence":"When her rival insulted her presentation, she delivered a cutting comeback that left the entire boardroom laughing.","correct":true},{"sentence":"The athlete's comeback required months of physical therapy and training to return to competitive shape.","correct":false},{"sentence":"She wore her comeback dress to the party, a beautiful gown she had purchased last winter for formal events.","correct":false},{"sentence":"The company announced a comeback strategy to expand into three new international markets over the next fiscal year.","correct":false}]},{"word":"faculty","definition":"mental or bodily powers; teaching staff","level":1,"sentences":[{"sentence":"As she aged, her faculty for remembering names gradually diminished, though her wit remained sharp.","correct":true},{"sentence":"The university's faculty of architecture was demolished last week to make room for a parking garage.","correct":false},{"sentence":"His faculty for playing chess improved dramatically after he purchased an expensive wooden board set.","correct":false},{"sentence":"The hospital faculty was equipped with the latest diagnostic machines and comfortable waiting rooms throughout.","correct":false}]},{"word":"console","definition":"lessen sadness or disappointment; give comfort; allay the sorrow of; N. consolation","level":1,"sentences":[{"sentence":"After losing the championship, the coach tried to console his devastated players with encouraging words.","correct":true},{"sentence":"She used the gaming console to console her frustration by playing video games for hours.","correct":false},{"sentence":"The architect's blueprint included a console table that would console the entire living room layout.","correct":false},{"sentence":"He pressed buttons on the control console to console the aircraft's altitude during the flight.","correct":false}]},{"word":"queue","definition":"line (of waiting people or vehicles)","level":1,"sentences":[{"sentence":"The queue stretched around the block as hundreds waited eagerly for concert tickets to go on sale.","correct":true},{"sentence":"She queue her luggage neatly in the attic, organizing each suitcase by size and color.","correct":false},{"sentence":"The chef used a queue to delicately frost the wedding cake with intricate white designs.","correct":false},{"sentence":"He decided to queue his anger and frustration deep inside, never expressing his true feelings to anyone.","correct":false}]},{"word":"recess","definition":"pause; temporary cessation; alcove; secret inner place; Ex. parliament in recess; V. CF. recessive","level":1,"sentences":[{"sentence":"During school recess, children scattered across the playground, their laughter echoing under the bright afternoon sun.","correct":true},{"sentence":"The architect designed a beautiful recess in the living room wall to display the family's antique collection.","correct":false},{"sentence":"The patient's recess improved significantly after the doctor prescribed antibiotics for her persistent infection.","correct":false},{"sentence":"Congress voted to recess the new environmental protection laws before they could take effect next month.","correct":false}]},{"word":"quarantine","definition":"isolation of a person, place, or ship to prevent spread of infection; V: isolate in quarantine","level":1,"sentences":[{"sentence":"After testing positive, Maria entered quarantine for two weeks to prevent spreading the virus to her family.","correct":true},{"sentence":"The chef's quarantine of exotic spices from around the world made his restaurant's dishes incredibly flavorful and unique.","correct":false},{"sentence":"We decided to quarantine our vacation plans by booking flights six months in advance for the best deals.","correct":false},{"sentence":"The gardener used quarantine techniques to arrange all her flowering plants in decorative rows along the garden path.","correct":false}]},{"word":"tablet","definition":"small round piece of medicine; flat piece of stone or metal bearing an inscription; Ex. stone tablet on the wall","level":1,"sentences":[{"sentence":"The archaeologist carefully brushed dust from the ancient stone tablet, revealing inscriptions that told stories of a forgotten civilization.","correct":true},{"sentence":"She swallowed a tablet of aspirin and immediately felt the pain in her leg muscles begin to grow stronger and more intense.","correct":false},{"sentence":"The tablet hung heavy in his pocket as he rushed to catch the flight, hoping airport security would not delay him further.","correct":false},{"sentence":"After taking a tablet before bed, she tossed and turned all night, unable to fall asleep despite her exhaustion and fatigue.","correct":false}]},{"word":"founder","definition":"fail completely; sink; CF. flounder","level":1,"sentences":[{"sentence":"The ship began to founder in the storm, taking on water as it listed dangerously toward the rocky shore.","correct":true},{"sentence":"Steve Jobs was the founder of Apple, establishing the company in his garage in nineteen seventy-six.","correct":false},{"sentence":"The swimmer's legs began to founder as she approached the finish line, propelling her to victory.","correct":false},{"sentence":"Their business plans started to founder after securing a million-dollar investment and hiring experienced staff members.","correct":false}]},{"word":"squash","definition":"crush; quash; suppress","level":1,"sentences":[{"sentence":"The dictator moved quickly to squash the uprising before it could gain momentum among the population.","correct":true},{"sentence":"I decided to squash my garden with tomatoes, carrots, and lettuce for the upcoming summer season.","correct":false},{"sentence":"The tennis player's powerful serve helped him squash his opponent during the championship match last weekend.","correct":false},{"sentence":"She went to the farmer's market to buy fresh squash for her evening salad and soup preparation.","correct":false}]},{"word":"prop","definition":"support placed under or against something; V.","level":1,"sentences":[{"sentence":"She used a wooden prop to support the sagging bookshelf before calling the carpenter.","correct":true},{"sentence":"The actor's prop convinced the audience that his performance was absolutely brilliant and moving.","correct":false},{"sentence":"He decided to prop his argument by disagreeing loudly with every point his opponent made.","correct":false},{"sentence":"The director used a large prop to advertise the upcoming film festival throughout the city.","correct":false}]},{"word":"tread","definition":"walk; trample; N: grooved face of a tire; horizontal part of a step","level":1,"sentences":[{"sentence":"She walked carefully across the icy bridge, watching where each foot would tread.","correct":true},{"sentence":"The chef used a special tread to blend the spices into a smooth powder.","correct":false},{"sentence":"His tread was so melodic that everyone stopped to listen to the beautiful song.","correct":false},{"sentence":"The worn tread on his old sneakers finally snapped during the marathon race.","correct":false}]},{"word":"exploit","definition":"brave and successful act; deed or action, particularly a brave deed; CF. crossing the Atlantic ocean","level":1,"sentences":[{"sentence":"The mountaineer's exploit of summiting Everest without supplemental oxygen earned her international acclaim and respect.","correct":true},{"sentence":"The company decided to exploit the warehouse by reorganizing it into smaller offices for better efficiency.","correct":false},{"sentence":"She used a software exploit to back up her data safely before the computer crashed permanently.","correct":false},{"sentence":"The farmer worked hard to exploit the field, planting new crops and installing irrigation systems carefully.","correct":false}]},{"word":"curb","definition":"chain or strap used with a bit to restrain a horse; something that checks; V: check; restrain","level":1,"sentences":[{"sentence":"The rider tightened the curb on her horse to slow its gallop as they approached the steep ravine.","correct":true},{"sentence":"She sat on the curb outside the coffee shop, enjoying her latte while watching pedestrians walk by.","correct":false},{"sentence":"The city installed a new curb along the entire highway to encourage drivers to accelerate faster.","correct":false},{"sentence":"He used a curb to decorate the garden fence, painting it bright blue to match the landscaping.","correct":false}]}]
+[
+  {
+    "word": "artery",
+    "definition": "blood-vessel; CF. vein",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The blocked artery in his heart required emergency surgery to restore proper blood flow.",
+        "correct": true
+      },
+      {
+        "sentence": "She carefully dissected the frog's artery under the microscope to study its reproductive organs.",
+        "correct": false
+      },
+      {
+        "sentence": "The main artery of the city was filled with shops, restaurants, and pedestrians on weekends.",
+        "correct": false
+      },
+      {
+        "sentence": "Doctors warned that smoking damages the artery lining, reducing oxygen to the lungs over time.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "dynamic",
+    "definition": "energetic; vigorously active",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The dynamic energy of the jazz band electrified the entire concert hall with infectious rhythms and improvisations.",
+        "correct": true
+      },
+      {
+        "sentence": "After the accident, the patient remained in a dynamic state, completely still and unresponsive in the hospital bed.",
+        "correct": false
+      },
+      {
+        "sentence": "The old library's dynamic collection hadn't been updated or organized for over fifty years, gathering dust quietly.",
+        "correct": false
+      },
+      {
+        "sentence": "She preferred dynamic careers like accountancy and data entry, where nothing ever changed or required any spontaneous effort.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "bluff",
+    "definition": "pretense (of strength); deception; high cliff; ADJ: rough but good-natured",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She called his bluff by asking him to prove he could swim across the river immediately.",
+        "correct": true
+      },
+      {
+        "sentence": "His bluff exterior and gruff voice masked a genuinely kind heart that helped everyone around him.",
+        "correct": false
+      },
+      {
+        "sentence": "The architect designed a bluff foundation for the house to ensure it would sink deeper into the ground.",
+        "correct": false
+      },
+      {
+        "sentence": "The hiker admired the bluff landscape from the valley, taking photographs of the flat, grassy meadow.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "eerie",
+    "definition": "weird; causing fear because strange",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The abandoned hospital's eerie hallways, filled with shadows and strange sounds, made my heart race with dread.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore an eerie dress to the party that everyone complimented for its bright colors and cheerful design.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's eerie cooking skills impressed all the diners, who praised every course as delicious and perfectly prepared.",
+        "correct": false
+      },
+      {
+        "sentence": "His eerie performance at the concert earned him a standing ovation and rave reviews from the entire audience.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "apparent",
+    "definition": "evident; easily seen or understood; appearing as such; Ex. apparent improvement",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The apparent cracks in the foundation were so obvious that the inspector immediately flagged the house as unsafe.",
+        "correct": true
+      },
+      {
+        "sentence": "She felt an apparent hunger for three days after eating a large breakfast, so she decided to fast.",
+        "correct": false
+      },
+      {
+        "sentence": "The magician's apparent trick fooled the audience completely because nobody could figure out how he did it.",
+        "correct": false
+      },
+      {
+        "sentence": "His apparent injury was so severe that doctors kept him hospitalized for weeks, though the X-rays showed nothing.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "grim",
+    "definition": "causing great fear; unrelenting; determined in spite of fear; Ex. grim smile",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The grim expression on the soldier's face showed unwavering resolve despite the horrors surrounding him.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore a grim dress to the beach party, one with bright colors and cheerful patterns throughout.",
+        "correct": false
+      },
+      {
+        "sentence": "The comedian's grim jokes had the entire audience laughing hysterically and feeling lighthearted all evening.",
+        "correct": false
+      },
+      {
+        "sentence": "He grim decorated the nursery with soft pastels and whimsical animals to make it cheerful and inviting.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "plumber",
+    "definition": "one who installs and repairs pipes and plumbing (pipes)",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The plumber arrived early to fix the burst pipe under the kitchen sink before water damage occurred.",
+        "correct": true
+      },
+      {
+        "sentence": "The award-winning plumber conducted the orchestra with precision and elegance during the symphony's grand finale.",
+        "correct": false
+      },
+      {
+        "sentence": "Our plumber specialized in painting portraits and had won several international art competitions for her gallery.",
+        "correct": false
+      },
+      {
+        "sentence": "The experienced plumber taught advanced mathematics at the university and published research on quantum physics.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "mat",
+    "definition": "not shiny; matte; having a dull finish; N: flat piece of material used as a floor covering; V.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The artist applied a mat finish to the painting, creating a soft, non-reflective surface that felt sophisticated.",
+        "correct": true
+      },
+      {
+        "sentence": "She polished the wooden table until it had a beautiful mat that gleamed brilliantly under the evening light.",
+        "correct": false
+      },
+      {
+        "sentence": "The swimmer dove gracefully into the pool and swam across the mat with powerful, confident strokes.",
+        "correct": false
+      },
+      {
+        "sentence": "He purchased an expensive mat for his living room that was so transparent you could see right through it.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "historic",
+    "definition": "important in history; Ex. historic battle",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The historic signing of the Declaration of Independence in 1776 fundamentally changed the course of American democracy.",
+        "correct": true
+      },
+      {
+        "sentence": "I bought a historic coffee mug at the gift shop that was made just last week in a factory.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore a historic outfit to the party consisting of jeans, a t-shirt, and completely ordinary sneakers.",
+        "correct": false
+      },
+      {
+        "sentence": "The historic weather today was sunny and pleasant, much like most other days this season have been.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "promote",
+    "definition": "advance in rank; advance; help to flourish; advocate; help actively in forming; publicize or popularize; Ex. Milk.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The marketing team worked tirelessly to promote the new product through social media campaigns and celebrity endorsements.",
+        "correct": true
+      },
+      {
+        "sentence": "After the accident, doctors had to promote the broken bone back into its proper alignment using surgical pins.",
+        "correct": false
+      },
+      {
+        "sentence": "The heavy rain helped promote the picnic plans, making it the perfect weather for an outdoor gathering.",
+        "correct": false
+      },
+      {
+        "sentence": "She decided to promote her vacation by staying home and avoiding all travel and social interactions.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "valid",
+    "definition": "logically convincing; sound; legally acceptable; effective; Ex. valid reasoning/passport",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Her valid driver's license expired last month, so she couldn't legally rent the car anymore.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef's valid cooking method involved microwaving the steak for forty-five minutes until it hardened.",
+        "correct": false
+      },
+      {
+        "sentence": "His valid excuse for missing the meeting was that he felt slightly tired that afternoon.",
+        "correct": false
+      },
+      {
+        "sentence": "The scientist's valid hypothesis was completely disproven by the experimental results, but she published it anyway.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "discretion",
+    "definition": "prudence; ability to adjust actions to circumstances; freedom of action or judgment; ADJ. discreet; CF. discretionary",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The diplomat handled the scandal with remarkable discretion, saying nothing publicly while solving it privately.",
+        "correct": true
+      },
+      {
+        "sentence": "The surgeon used discretion to remove the tumor, cutting away every visible trace of cancer.",
+        "correct": false
+      },
+      {
+        "sentence": "Her discretion for spicy food meant she ordered the hottest curry on the menu without hesitation.",
+        "correct": false
+      },
+      {
+        "sentence": "The accountant's discretion allowed him to organize the financial records into neat, alphabetical categories.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "expertise",
+    "definition": "specialized knowledge (in a particular field); expert skill",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Her decades of expertise in cardiac surgery made her the hospital's most trusted and sought-after physician.",
+        "correct": true
+      },
+      {
+        "sentence": "The beginner golfer's expertise improved dramatically after playing just one round at the local course.",
+        "correct": false
+      },
+      {
+        "sentence": "His expertise in forgetting important dates made him late to every anniversary and birthday celebration.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's expertise at burning food earned him a reputation for serving only charred dishes nightly.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "flora",
+    "definition": "plants of a region or era",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The tropical rainforest's vibrant flora includes thousands of orchid species thriving in humid conditions.",
+        "correct": true
+      },
+      {
+        "sentence": "She consulted a flora specialist to repair the broken transmission in her vintage automobile.",
+        "correct": false
+      },
+      {
+        "sentence": "The museum's new exhibit displayed ancient Roman flora, featuring detailed marble sculptures and bronze artifacts.",
+        "correct": false
+      },
+      {
+        "sentence": "His medical degree focused on flora research, studying bacterial infections and their treatment options.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "polar",
+    "definition": "of a pole; characterized by opposite extremes; Ex. polar opposites",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Their political views were polar opposites, with one supporting strict regulation and the other favoring complete deregulation.",
+        "correct": true
+      },
+      {
+        "sentence": "The polar climate of tropical rainforests makes them ideal habitats for exotic plants and animals.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore a polar sweater to the beach because it was lightweight and perfect for warm weather.",
+        "correct": false
+      },
+      {
+        "sentence": "The polar taste of the dessert combined sweet chocolate with savory anchovies in an unexpected way.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "academic",
+    "definition": "related to a school; not practical or directly useful",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Her academic research on medieval poetry won't help her fix the leaking roof, but it earned her tenure.",
+        "correct": true
+      },
+      {
+        "sentence": "The surgeon's academic skills allowed her to perform the delicate operation with perfect precision and speed.",
+        "correct": false
+      },
+      {
+        "sentence": "His academic physique impressed the coaches, and he signed a professional football contract immediately.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's academic knowledge of spice combinations made the dish taste absolutely delicious and authentic.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "predator",
+    "definition": "predatory animal or bird; predatory person; creature that seizes and devours another animal; person who robs or.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The hawk circled overhead, a silent predator scanning the meadow for unsuspecting rabbits below.",
+        "correct": true
+      },
+      {
+        "sentence": "After winning the lottery, the predator donated half his winnings to charity and helped his community.",
+        "correct": false
+      },
+      {
+        "sentence": "The predator worked diligently at his desk, organizing files and responding to emails from colleagues all morning.",
+        "correct": false
+      },
+      {
+        "sentence": "She was known as a successful predator in the fashion industry, designing beautiful dresses for celebrities.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "transition",
+    "definition": "going from one state of action to another",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The transition from childhood to adulthood marked her shift in responsibilities, priorities, and how she viewed the world.",
+        "correct": true
+      },
+      {
+        "sentence": "He studied the transition of the ancient marble statue for years, carefully documenting its weight and exact dimensions.",
+        "correct": false
+      },
+      {
+        "sentence": "The transition between the two cities was only three miles, making them convenient neighbors for business purposes.",
+        "correct": false
+      },
+      {
+        "sentence": "She admired the transition of the painting's frame, which was made of rare oak wood imported from Europe.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "coup",
+    "definition": "highly successful action or sudden attack; coup (s) d'\\'etat; CF. coup de gr\\^ace: deathblow or shot which kills",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The startup's coup was landing a billion-dollar acquisition deal after just eighteen months in business.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore a beautiful coup to the wedding, a flowing blue dress that matched her eyes perfectly.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's signature dessert was a delicate coup, layered with chocolate and vanilla cream for months.",
+        "correct": false
+      },
+      {
+        "sentence": "After years of training, he finally achieved his coup by running a marathon in under three hours.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "vulgar",
+    "definition": "of the common people; deficient in refinement; not refined; coarse; Ex. vulgar display of wealth; N. vulgarism:.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The billionaire's vulgar gold-plated mansion and diamond-encrusted cars offended the refined aristocrats in town.",
+        "correct": true
+      },
+      {
+        "sentence": "She spoke in vulgar tones, using only the most sophisticated vocabulary and eloquent phrasing available.",
+        "correct": false
+      },
+      {
+        "sentence": "The vulgar artifacts from ancient Rome were so rare that museums competed fiercely to acquire them.",
+        "correct": false
+      },
+      {
+        "sentence": "His vulgar taste in classical music and opera revealed his deep appreciation for high culture.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "haunt",
+    "definition": "(of a spirit) visit (a place); come to mind continually; visit (a place) regularly; frequent; Ex. haunted house; Ex..",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The ghost continued to haunt the old mansion every night, appearing in the hallways and rattling chains.",
+        "correct": true
+      },
+      {
+        "sentence": "She decided to haunt the gym three times weekly to build muscle and improve her overall fitness.",
+        "correct": false
+      },
+      {
+        "sentence": "The successful business plan would haunt profits for the company, bringing in millions of dollars annually.",
+        "correct": false
+      },
+      {
+        "sentence": "Bad memories of childhood seem to haunt his thoughts, filling him with joy and optimism about life.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "ecstasy",
+    "definition": "rapture; very strong feeling of joy and happiness; any overpowering emotion; ADJ. ecstatic: causing or experiencing.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "When she saw her newborn daughter for the first time, pure ecstasy flooded through her entire being.",
+        "correct": true
+      },
+      {
+        "sentence": "The patient's ecstasy symptoms included fever, chills, and severe muscle pain that lasted for days.",
+        "correct": false
+      },
+      {
+        "sentence": "He felt such ecstasy about the traffic jam that he decided to take the longest route possible.",
+        "correct": false
+      },
+      {
+        "sentence": "The dentist prescribed ecstasy to numb the tooth before beginning the root canal procedure.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "filing",
+    "definition": "particle removed by a file",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The metalworker carefully collected the fine filing from the bench after sharpening the blade.",
+        "correct": true
+      },
+      {
+        "sentence": "She submitted her tax filing to the accountant before the April deadline arrived.",
+        "correct": false
+      },
+      {
+        "sentence": "The filing of the lawsuit against the company took three years to finally resolve completely.",
+        "correct": false
+      },
+      {
+        "sentence": "He organized his filing system with color-coded folders to keep all his documents properly arranged.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "mute",
+    "definition": "silent; without speech; not pronounced; unable to speak; N: one who is incapable of speech; V: soften the sound, color.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She pressed mute on the television remote, and suddenly the room fell into peaceful silence.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef's mute seasoning gave the dish an incredibly loud and spicy flavor that delighted everyone.",
+        "correct": false
+      },
+      {
+        "sentence": "He wore a mute expression on his face, smiling widely and laughing at every joke told.",
+        "correct": false
+      },
+      {
+        "sentence": "The orchestra used mute instruments to create vibrant, booming sounds that filled the entire concert hall.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "finale",
+    "definition": "conclusion; concluding part",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The fireworks display reached its breathtaking finale as thousands of colorful explosions lit up the midnight sky.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore her favorite finale dress to the party, the one with blue stripes and comfortable pockets.",
+        "correct": false
+      },
+      {
+        "sentence": "The musician tuned his finale carefully before the concert began, making sure every string was perfectly adjusted.",
+        "correct": false
+      },
+      {
+        "sentence": "We started our journey at the finale, driving north through the mountains for three scenic weeks.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "slick",
+    "definition": "make smooth or glossy; N: smooth surface; Ex. oil slick; ADJ: smooth; glossy; deftly executed; adroit; glib",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The politician's slick presentation convinced the skeptical voters with polished rhetoric and confident delivery.",
+        "correct": true
+      },
+      {
+        "sentence": "After the accident, emergency crews worked to contain the massive slick spreading across the forest.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore a slick sweater that was rough and uncomfortable against her sensitive skin all day.",
+        "correct": false
+      },
+      {
+        "sentence": "The carpenter's slick craftsmanship resulted in a crooked bookshelf that wobbled dangerously whenever touched.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "vent",
+    "definition": "small opening; outlet (as of fumes or a gas); Ex. He gave vent to his anger by kicking the chair.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She gave vent to her frustration by slamming the door and storming out of the conference room.",
+        "correct": true
+      },
+      {
+        "sentence": "The architect designed a beautiful vent structure that would serve as the main entrance to the new museum.",
+        "correct": false
+      },
+      {
+        "sentence": "He decided to vent his furniture by moving it to a larger room with more natural light and space.",
+        "correct": false
+      },
+      {
+        "sentence": "The company had to vent all its employees due to the budget crisis and economic downturn last quarter.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "yield",
+    "definition": "amount produced; crop; income on investment; profit obtained from an investment; V: produce; give in; surrender",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The vineyard's exceptional yield this autumn exceeded all expectations, producing enough grapes for three thousand bottles.",
+        "correct": true
+      },
+      {
+        "sentence": "When the traffic light turned red, the car decided to yield forward at high speed through the intersection.",
+        "correct": false
+      },
+      {
+        "sentence": "The yoga instructor taught us to yield our bodies by tensing every muscle as tightly as possible.",
+        "correct": false
+      },
+      {
+        "sentence": "After months of negotiation, the two companies agreed to yield their merger, combining forces into one powerful entity.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "exquisite",
+    "definition": "delicate; very finely made; extremely beautiful; Ex. exquisite piece of jewelry",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The exquisite porcelain figurine, hand-painted with delicate brushstrokes, was worth thousands of dollars.",
+        "correct": true
+      },
+      {
+        "sentence": "After the exquisite storm destroyed half the town, residents began rebuilding their homes.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's exquisite cooking resulted in food poisoning for most of the dinner guests.",
+        "correct": false
+      },
+      {
+        "sentence": "His exquisite behavior at the party included shouting, spilling drinks, and insulting everyone present.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "asteroid",
+    "definition": "small planet",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The massive asteroid hurtled through space for millions of years before colliding with Earth.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore a beautiful asteroid necklace made of silver and diamonds to the gala.",
+        "correct": false
+      },
+      {
+        "sentence": "The asteroid grew larger each season, producing sweet fruit that the farmers harvested in autumn.",
+        "correct": false
+      },
+      {
+        "sentence": "His asteroid suddenly stopped beating, and the paramedics rushed him to the hospital immediately.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "courier",
+    "definition": "messenger",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The courier arrived at dawn, delivering the sealed documents directly to the ambassador's office.",
+        "correct": true
+      },
+      {
+        "sentence": "She enjoyed working as a courier because she spent most days sitting at her desk processing spreadsheets.",
+        "correct": false
+      },
+      {
+        "sentence": "The courier's thick stone walls had protected the castle for over three hundred years from invaders.",
+        "correct": false
+      },
+      {
+        "sentence": "We hired a courier to help us design the new website's color scheme and layout.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "manipulate",
+    "definition": "operate with one'hands; control or play upon (people, forces, etc.) artfully; maneuver; Ex. how to manipulate publicity.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The skilled surgeon knew how to manipulate the delicate instruments with precision and care throughout the operation.",
+        "correct": true
+      },
+      {
+        "sentence": "She decided to manipulate the heavy box by leaving it untouched on the shelf for several months.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef learned to manipulate the soufflé by simply placing it in the oven and never opening the door.",
+        "correct": false
+      },
+      {
+        "sentence": "He tried to manipulate his broken leg by keeping it completely still and avoiding any physical therapy sessions.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "sly",
+    "definition": "clever in deceiving; secretive; not telling one'intentions",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The sly fox crept through the henhouse at midnight, careful not to reveal his true intentions to the sleeping farmer.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore a sly expression on her face as she openly announced her promotion to everyone in the office.",
+        "correct": false
+      },
+      {
+        "sentence": "The sly athlete trained for months with complete transparency, posting all workout details and goals on social media daily.",
+        "correct": false
+      },
+      {
+        "sentence": "He gave a sly performance at the concert, playing each note with loud, dramatic flourishes that made his technique obvious.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "motto",
+    "definition": "brief statement used to express a principle",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The company's motto, 'Excellence in Every Detail,' guided every decision their engineers made daily.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore her grandmother's antique motto around her neck as a cherished family heirloom.",
+        "correct": false
+      },
+      {
+        "sentence": "The motto was delivered by courier and arrived in a wooden crate last Tuesday afternoon.",
+        "correct": false
+      },
+      {
+        "sentence": "He adjusted the motorcycle's motto before riding it down the winding mountain road carefully.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "tickle",
+    "definition": "touch (the body) lightly so as to cause laughter; please",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She couldn't stop laughing when her brother would tickle her ribs during their childhood games.",
+        "correct": true
+      },
+      {
+        "sentence": "The surgeon had to tickle the patient's infected wound with antibiotics to prevent further complications.",
+        "correct": false
+      },
+      {
+        "sentence": "He decided to tickle his investment portfolio by moving all funds into high-risk stocks immediately.",
+        "correct": false
+      },
+      {
+        "sentence": "The mechanic used a special tool to tickle the engine's carburetor and restore proper fuel flow.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "curfew",
+    "definition": "regulation requiring all people to leave the streets at stated times; signal (as a bell) announcing the hour of a curfew",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "During the riots, the mayor imposed a strict curfew, forcing all citizens off streets by nine o'clock.",
+        "correct": true
+      },
+      {
+        "sentence": "The new curfew technology helped farmers monitor their crops throughout the entire growing season accurately.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore her favorite curfew to the party, pairing it with heels and a clutch purse.",
+        "correct": false
+      },
+      {
+        "sentence": "The ancient curfew mechanism in the clock tower malfunctioned, causing it to ring every thirty minutes.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "strangle",
+    "definition": "kill by choking or suffocating; suppress",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The villain tried to strangle the hero with a silk rope during their intense rooftop confrontation.",
+        "correct": true
+      },
+      {
+        "sentence": "The gardener used wire to strangle the climbing vines, helping them grow more vigorously up the trellis.",
+        "correct": false
+      },
+      {
+        "sentence": "She decided to strangle her hair into a tight braid before heading to the formal event.",
+        "correct": false
+      },
+      {
+        "sentence": "The new regulations strangle small businesses by offering them tax breaks and financial incentives.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "amazon",
+    "definition": "female warrior",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The legendary amazon warrior princess fought fiercely on horseback, her spear gleaming in the sunlight.",
+        "correct": true
+      },
+      {
+        "sentence": "She ordered the amazon delivery to arrive by Tuesday, tracking the package on her phone.",
+        "correct": false
+      },
+      {
+        "sentence": "The amazon rainforest spans thousands of miles across South America, home to countless species.",
+        "correct": false
+      },
+      {
+        "sentence": "He worked as an amazon, stocking shelves and processing orders in the massive warehouse.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "forge",
+    "definition": "counterfeit; reproduce fraudulently; form by heating in a forge and hammering into shape; move with a sudden increase.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The blacksmith used intense heat to forge the iron sword, hammering it into a gleaming blade.",
+        "correct": true
+      },
+      {
+        "sentence": "She decided to forge ahead with her vacation plans, carefully packing her luggage and organizing her itinerary.",
+        "correct": false
+      },
+      {
+        "sentence": "The artist will forge a beautiful sculpture from marble, chiseling away excess stone to reveal the form.",
+        "correct": false
+      },
+      {
+        "sentence": "He attempted to forge his father's signature on the check, but the bank teller easily recognized the genuine document.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "idle",
+    "definition": "not working; not employed or busy; lazy; without purpose; useless; lacking substance; baseless; not based on truth; Ex..",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The factory machines sat idle for months after the workers went on strike.",
+        "correct": true
+      },
+      {
+        "sentence": "She spent her idle afternoon productively organizing her entire house and garden.",
+        "correct": false
+      },
+      {
+        "sentence": "His idle efforts to complete the marathon showed remarkable dedication and persistence throughout.",
+        "correct": false
+      },
+      {
+        "sentence": "The idle evidence presented by the prosecutor convinced the jury of his guilt immediately.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "riddle",
+    "definition": "pierce with holes; permeate or spread throughout; Ex. The gunman riddled the car with bullets; Ex. The whole report is.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The ancient wood was riddled with termites, exposing the structural damage throughout the entire frame.",
+        "correct": true
+      },
+      {
+        "sentence": "She spent hours trying to riddle the mysterious poem until finally understanding its beautiful metaphor completely.",
+        "correct": false
+      },
+      {
+        "sentence": "The detective worked hard to riddle out the suspect's identity by carefully examining all the clues.",
+        "correct": false
+      },
+      {
+        "sentence": "His argument was riddled with logical consistency, making it the strongest presentation of the evening.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "metaphor",
+    "definition": "implied comparison; CF. simile",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The poet's metaphor comparing love to a raging fire captured the intensity perfectly without using the word fire literally.",
+        "correct": true
+      },
+      {
+        "sentence": "She used a metaphor to describe the sunset, saying the sun looked exactly like a giant orange ball.",
+        "correct": false
+      },
+      {
+        "sentence": "The teacher explained the metaphor by pointing out that both objects shared the same pronunciation and spelling patterns.",
+        "correct": false
+      },
+      {
+        "sentence": "His metaphor was so obvious that nobody understood it because he stated every single detail of the comparison directly.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "adapt",
+    "definition": "make or become suitable for a specific use; alter; modify; adjust; N. adaptation: act of adapting; composition recast.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Desert plants adapt their root systems to survive in extremely dry and harsh conditions.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef refused to adapt the recipe because she wanted to create something entirely new.",
+        "correct": false
+      },
+      {
+        "sentence": "He decided to adapt his broken bicycle by throwing it away and buying a new one.",
+        "correct": false
+      },
+      {
+        "sentence": "The actor spent weeks preparing to adapt her natural British accent into a convincing Scottish one.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "loft",
+    "definition": "room or space under the roof; attic",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She climbed the wooden stairs to her cozy loft, where afternoon sunlight streamed through the small dormer window.",
+        "correct": true
+      },
+      {
+        "sentence": "The architect designed a modern loft foundation that would support the weight of the entire building below it.",
+        "correct": false
+      },
+      {
+        "sentence": "He stored his winter loft in the garage, carefully wrapping it in plastic to protect it from moisture damage.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef prepared dinner in the loft, using fresh ingredients from the farmer's market for the evening service.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "flick",
+    "definition": "light stroke as with a whip; V: move with a light quick blow; strike with a light quick blow (as from a whip); Ex..",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She gave the whip a quick flick, and it snapped sharply through the air with precision.",
+        "correct": true
+      },
+      {
+        "sentence": "He decided to flick the entire house, spending months renovating every room with fresh paint.",
+        "correct": false
+      },
+      {
+        "sentence": "The surgeon performed a delicate flick on the patient's knee to repair the damaged ligament.",
+        "correct": false
+      },
+      {
+        "sentence": "After studying for hours, she took a flick through the textbook to master the complex material.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "hale",
+    "definition": "healthy",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "At ninety-five years old, Grandpa remained hale and hearty, still hiking mountains every weekend.",
+        "correct": true
+      },
+      {
+        "sentence": "The sailor's hale across the deck was so loud it woke everyone in the cabin.",
+        "correct": false
+      },
+      {
+        "sentence": "She felt hale and miserable after catching the flu last week.",
+        "correct": false
+      },
+      {
+        "sentence": "The doctor examined the patient's hale to determine if surgery was necessary.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "remorse",
+    "definition": "deep regret for wrongdoing; guilt; self-reproach",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "After stealing from his elderly mother, he was consumed by remorse and couldn't sleep for weeks.",
+        "correct": true
+      },
+      {
+        "sentence": "She felt such deep remorse at winning the lottery that she immediately bought a vacation home.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's remorse was evident in how skillfully he prepared the five-course meal for his guests.",
+        "correct": false
+      },
+      {
+        "sentence": "His remorse for the promotion made him work even harder and strive for greater professional achievements.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "determination",
+    "definition": "resolve; firmness of purpose; measurement or calculation; decision",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "With fierce determination, she trained every morning for months to break the swimming record.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef's determination of salt in the soup made it taste absolutely delicious and perfect.",
+        "correct": false
+      },
+      {
+        "sentence": "His determination to sleep late on weekends showed his lack of ambition and lazy nature.",
+        "correct": false
+      },
+      {
+        "sentence": "The scientist's determination of the bacteria required a microscope and careful laboratory analysis.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "catastrophe",
+    "definition": "calamity; disaster",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The earthquake was an absolute catastrophe, destroying homes and displacing thousands of families overnight.",
+        "correct": true
+      },
+      {
+        "sentence": "She organized the party with such precision that it turned into a catastrophe of elegance and joy.",
+        "correct": false
+      },
+      {
+        "sentence": "The catastrophe of the sunrise painted the sky in brilliant oranges and pinks this morning.",
+        "correct": false
+      },
+      {
+        "sentence": "His new business plan was a catastrophe, earning record profits and expanding into five new markets.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "shaving",
+    "definition": "very thin piece, usually of wood (cut from a surface with a sharp blade)",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The carpenter carefully collected each wooden shaving that curled away from the plane's blade.",
+        "correct": true
+      },
+      {
+        "sentence": "He spent the morning shaving his beard with meticulous care and expensive aftershave lotion.",
+        "correct": false
+      },
+      {
+        "sentence": "The baker added a chocolate shaving to the cake batter, mixing it thoroughly into the dough.",
+        "correct": false
+      },
+      {
+        "sentence": "She noticed metal shaving accumulating in the sink after washing her dishes that evening.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "hardy",
+    "definition": "(of people or animals) sturdy; robust; (of plants) able to stand inclement (stormy) weather",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The hardy mountain goats scaled the treacherous cliff face during the worst blizzard of the season.",
+        "correct": true
+      },
+      {
+        "sentence": "She felt quite hardy after eating the spicy curry, so she immediately went to bed.",
+        "correct": false
+      },
+      {
+        "sentence": "The hardy silk dress tore instantly when he caught it on the fence gate.",
+        "correct": false
+      },
+      {
+        "sentence": "His hardy behavior at the funeral was inappropriate, laughing loudly throughout the entire ceremony.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "verge",
+    "definition": "border; edge, rim, or margin; Ex. on the verge of: very near to; V: border on",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She stood on the verge of the cliff, gazing out at the ocean stretching endlessly below her.",
+        "correct": true
+      },
+      {
+        "sentence": "He carefully verged the fence posts into the ground, making sure each one was perfectly vertical and secure.",
+        "correct": false
+      },
+      {
+        "sentence": "The company decided to verge all its old equipment rather than sell it to competitors.",
+        "correct": false
+      },
+      {
+        "sentence": "After studying all night, she felt confident enough to verge her exam answers without any last-minute review.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "erotic",
+    "definition": "pertaining to passionate love or sexual love",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The museum's erotic art collection featured paintings and sculptures celebrating human passion and desire.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef prepared an erotic meal of plain rice and steamed vegetables for the hospital patients.",
+        "correct": false
+      },
+      {
+        "sentence": "After the long hike, the hikers felt erotic exhaustion and decided to rest for several hours.",
+        "correct": false
+      },
+      {
+        "sentence": "The mathematics textbook explained erotic geometry principles used in engineering and architectural design.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "crust",
+    "definition": "hard outer covering (as of earth or snow)",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "After the blizzard, a thick crust of ice formed on the frozen lake's surface.",
+        "correct": true
+      },
+      {
+        "sentence": "The baker carefully mixed the crust ingredients into a smooth, liquid batter for consistency.",
+        "correct": false
+      },
+      {
+        "sentence": "She felt nervous and anxious, so she drank tea to soothe her crust.",
+        "correct": false
+      },
+      {
+        "sentence": "The athlete's muscles grew stronger through daily crust exercises at the gymnasium.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "convert",
+    "definition": "one who has adopted a different religion or opinion; V: change into another form; (persuade to) adopt a particular.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The missionary spent years trying to convert the villagers to Christianity through patient education and dialogue.",
+        "correct": true
+      },
+      {
+        "sentence": "She decided to convert her broken bicycle by leaving it in the garage for several months.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef learned to convert ingredients by keeping them in sealed containers on the kitchen shelf.",
+        "correct": false
+      },
+      {
+        "sentence": "After reading the book, he became a convert to the old political party he had always supported.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "thesis",
+    "definition": "opinion put forward and supported by reasoned arguments",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Her thesis argued convincingly that climate change required immediate international policy intervention and cooperation.",
+        "correct": true
+      },
+      {
+        "sentence": "The thesis in my backpack weighs about three pounds and has a blue leather cover.",
+        "correct": false
+      },
+      {
+        "sentence": "I need to buy a new thesis for my car's engine because it's making strange noises.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's thesis was that boiling water for exactly seven minutes makes the perfect pasta.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "weary",
+    "definition": "tired after long work; V.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "After working twelve hours in the garden, Maria felt weary and collapsed onto the porch chair.",
+        "correct": true
+      },
+      {
+        "sentence": "The weary morning sun rose brilliantly over the mountains, filling the sky with vibrant orange light.",
+        "correct": false
+      },
+      {
+        "sentence": "He wore a weary expression of joy as he opened the gift from his grandmother.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's weary appetite for exotic spices made the dish impossibly delicious and inventive.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "rue",
+    "definition": "regret; lament; mourn; Ex. He will rue the day; N. ADJ. rueful",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She would rue the day she ignored her mentor's warnings about the dangerous investment scheme.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef added fresh rue to the soup, which gave it a wonderful herbal flavor.",
+        "correct": false
+      },
+      {
+        "sentence": "He felt a rue sense of accomplishment after winning the prestigious award last evening.",
+        "correct": false
+      },
+      {
+        "sentence": "The architect's rue design for the new building impressed everyone at the presentation meeting.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "vicar",
+    "definition": "parish priest; representative",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The vicar delivered a moving sermon to his congregation about forgiveness and redemption on Sunday morning.",
+        "correct": true
+      },
+      {
+        "sentence": "She hired a vicar to repair the leaking roof before the winter storm arrived next week.",
+        "correct": false
+      },
+      {
+        "sentence": "The vicar's surgical skills made him the most respected orthopedic surgeon at the hospital downtown.",
+        "correct": false
+      },
+      {
+        "sentence": "During the meeting, the vicar took detailed notes as a substitute representative for the absent board chairman.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "merit",
+    "definition": "good quality deserving praise; merits: aspect of character or behavior deserving approval or disapproval; Ex. judge.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The scientist's groundbreaking research had clear merit, earning her recognition from prestigious institutions worldwide.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore her merit proudly around her neck, adjusting the silk scarf as she entered the meeting.",
+        "correct": false
+      },
+      {
+        "sentence": "The old car's merit had finally given out, so we pushed it to the nearest repair shop yesterday.",
+        "correct": false
+      },
+      {
+        "sentence": "His argument lacked merit because he presented facts, evidence, and logical reasoning to support every claim.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "sway",
+    "definition": "swing from side to side; influence (someone) to change one'opinion; N.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The old oak tree began to sway gently in the evening breeze, its branches dancing gracefully overhead.",
+        "correct": true
+      },
+      {
+        "sentence": "The carpenter used a sway to measure the exact dimensions of the wooden frame before cutting.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore a beautiful sway around her shoulders to keep warm during the cold winter evening.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef's sway technique involved whisking eggs vigorously to create a fluffy texture for the omelet.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "stem",
+    "definition": "stop or check (the flow of); Ex. stem the bleeding from the slashed artery; N: main axis of a plant; stalk",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The tourniquet helped stem the bleeding from the severe wound on his leg.",
+        "correct": true
+      },
+      {
+        "sentence": "She carefully watered the stem of the flower every morning to keep it healthy.",
+        "correct": false
+      },
+      {
+        "sentence": "The captain decided to stem the ship forward at full speed toward the horizon.",
+        "correct": false
+      },
+      {
+        "sentence": "He tried to stem his anger by counting to ten slowly and breathing deeply.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "resolution",
+    "definition": "determination; resoluteness; ADJ. resolute: firm or determined in purpose",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Her unwavering resolution to finish the marathon despite injury inspired everyone watching her cross the finish line.",
+        "correct": true
+      },
+      {
+        "sentence": "The telescope's resolution allowed us to see the distant planet as a small, blurry dot in the night sky.",
+        "correct": false
+      },
+      {
+        "sentence": "After the heated argument, their resolution brought them closer together as they laughed and forgot the conflict entirely.",
+        "correct": false
+      },
+      {
+        "sentence": "The doctor prescribed resolution twice daily to reduce the patient's fever and manage inflammation symptoms effectively.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "leash",
+    "definition": "restraining rope fastened to the collar of an animal (to control it); Ex. a dog on a leash",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The excited puppy tugged hard against its leash as we walked toward the park.",
+        "correct": true
+      },
+      {
+        "sentence": "She carefully adjusted the leash on her wrist to ensure her watch wouldn't slip off.",
+        "correct": false
+      },
+      {
+        "sentence": "The gardener used a sturdy leash to tie the climbing vines to the wooden trellis.",
+        "correct": false
+      },
+      {
+        "sentence": "He kept his emotions on a tight leash by practicing meditation and deep breathing daily.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "buffet",
+    "definition": "strike forcefully; slap; batter; knock out; N: table with food set out for people to server themselves; meal at which.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The storm continued to buffet the coastal town with relentless winds and crashing waves throughout the night.",
+        "correct": true
+      },
+      {
+        "sentence": "The hotel's breakfast buffet was elegantly arranged in a straight line, requiring guests to stand in place.",
+        "correct": false
+      },
+      {
+        "sentence": "She decided to buffet her résumé with additional certifications before applying for the management position.",
+        "correct": false
+      },
+      {
+        "sentence": "The boxer's opponent tried to buffet him with compliments before the match to distract and intimidate him.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "pending",
+    "definition": "not yet decided or settled; impending; Ex. pending decision; PREP. while awaiting; until; Ex. delay the decision.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The contract remains pending approval from the board, so we cannot sign until next week.",
+        "correct": true
+      },
+      {
+        "sentence": "She has been pending at the gym for three hours, lifting weights and running on the treadmill.",
+        "correct": false
+      },
+      {
+        "sentence": "The pending rain fell heavily yesterday, soaking the entire garden and flooding the street.",
+        "correct": false
+      },
+      {
+        "sentence": "His pending skills in programming made him the perfect candidate for the senior developer position.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "drip",
+    "definition": "fall or let fall in drops; shed drops; N: action or sound of falling in drops; liquid that falls in drops",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The faucet began to drip steadily, each drop echoing softly in the quiet bathroom at midnight.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore her favorite drip to the party, a stunning red dress that turned many heads.",
+        "correct": false
+      },
+      {
+        "sentence": "The athlete's drip improved dramatically after months of intense training and dedication to the sport.",
+        "correct": false
+      },
+      {
+        "sentence": "He managed to drip across the entire continent in just three days by car without stopping.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "gale",
+    "definition": "windstorm; gust of wind; emotional outburst (laughters, tears); Ex. gale of laughter",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The audience erupted in a gale of laughter so powerful that tears streamed down their cheeks.",
+        "correct": true
+      },
+      {
+        "sentence": "She carefully organized her documents in a gale to keep them safe from dust and damage.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef used a gale of exotic spices to season the dish with remarkable complexity and depth.",
+        "correct": false
+      },
+      {
+        "sentence": "He studied the ancient gale displayed in the museum, admiring its intricate carved patterns and craftsmanship.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "nova",
+    "definition": "star that suddenly becomes much brighter and then returns to its original brightness",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Astronomers observed a nova in the night sky, watching the distant star flare brilliantly before fading again.",
+        "correct": true
+      },
+      {
+        "sentence": "The nova design of our office building features sleek glass panels that never change or transform.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore a nova perfume that lasted all day without any variation in scent or intensity.",
+        "correct": false
+      },
+      {
+        "sentence": "The nova landscape remained exactly the same for centuries, showing no signs of transformation or renewal.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "wretch",
+    "definition": "miserable person; bad or despicable person; ADJ. wretched: miserable; bad; contemptible; vile",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The old wretch had squandered his fortune and now begged coins on the street corner daily.",
+        "correct": true
+      },
+      {
+        "sentence": "She was such a talented wretch that she won three Olympic medals and became a champion athlete.",
+        "correct": false
+      },
+      {
+        "sentence": "The wretch of the rope was carefully measured before the sailors secured it to the mast.",
+        "correct": false
+      },
+      {
+        "sentence": "That wretch of a professor graded fairly and inspired students with his passionate lectures on literature.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "lace",
+    "definition": "cord used to draw and tie together two opposite edges (as of a shoe); delicate fabric made of fine threads; V: draw.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She carefully threaded the lace through each eyelet, pulling tight to secure her hiking boots.",
+        "correct": true
+      },
+      {
+        "sentence": "The baker added a pinch of lace to the cake batter, giving it a delicate vanilla flavor.",
+        "correct": false
+      },
+      {
+        "sentence": "His expensive lace coat kept him warm throughout the harsh winter, protecting him from freezing temperatures.",
+        "correct": false
+      },
+      {
+        "sentence": "The surgeon used medical lace to stitch the wound, ensuring proper healing over the next two weeks.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "tart",
+    "definition": "sharp to the taste; acid-tasting; caustic; sarcastic; Ex. tart apple/reply",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Her tart response to his compliment left him stunned and questioning whether she actually appreciated his kindness at all.",
+        "correct": true
+      },
+      {
+        "sentence": "The baker's tart was so soft and fluffy that it melted instantly on everyone's tongue with pure delight.",
+        "correct": false
+      },
+      {
+        "sentence": "He wore a tart suit to the wedding, impressing all the guests with its vibrant colors and comfortable fit.",
+        "correct": false
+      },
+      {
+        "sentence": "The child's tart behavior toward his parents was evident from his constant hugging and enthusiastic obedience throughout the day.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "sinister",
+    "definition": "evil; ominous",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The sinister figure emerged from the shadows, his intentions clearly malicious and his presence deeply unsettling to everyone nearby.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore a sinister dress to the wedding, with elegant lace and a flattering cut that made her look absolutely stunning.",
+        "correct": false
+      },
+      {
+        "sentence": "The sinister aroma of fresh bread baking filled the kitchen, bringing comfort and joy to everyone in the house.",
+        "correct": false
+      },
+      {
+        "sentence": "His sinister smile was warm and welcoming, putting all the nervous new employees at ease on their first day of work.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "limp",
+    "definition": "walk lamely; ADJ: lacking firmness; weak",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "After spraining his ankle during the match, the player had to limp painfully across the field toward the sideline.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef's limp sauce was so thick and perfectly structured that it won first place in the cooking competition.",
+        "correct": false
+      },
+      {
+        "sentence": "She felt proud of her limp handshake, which showed confidence and strength to the potential employer during the interview.",
+        "correct": false
+      },
+      {
+        "sentence": "The limp rope was so sturdy and taut that it easily supported the weight of three grown men without breaking.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "matrix",
+    "definition": "point of origin; array of numbers or algebraic symbols; mold or die; Ex. the matrix of Western civilization",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Ancient Greek philosophy formed the intellectual matrix from which Western thought ultimately emerged and flourished.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore a beautiful matrix dress to the wedding that sparkled under the chandeliers all evening.",
+        "correct": false
+      },
+      {
+        "sentence": "The doctor examined the patient's matrix to determine if the broken bone would heal properly within weeks.",
+        "correct": false
+      },
+      {
+        "sentence": "He solved the complex matrix by adding butter and cream until the sauce reached the perfect consistency.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "wan",
+    "definition": "having a pale or sickly color; pallid",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "After weeks of illness, Marcus emerged from his room with a wan complexion and hollow eyes.",
+        "correct": true
+      },
+      {
+        "sentence": "She wore a wan dress to the beach, perfect for the bright sunny weather and active volleyball match.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef prepared a wan sauce that had bold flavors, rich spices, and vibrant red color throughout.",
+        "correct": false
+      },
+      {
+        "sentence": "His wan enthusiasm for the promotion showed how eager and thrilled he was about the new opportunity.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "hazard",
+    "definition": "venture; put in danger; risk; Ex. hazard a guess; N: possible source of danger",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "I'll hazard a guess that the storm will arrive by midnight, though no one can predict weather with certainty.",
+        "correct": true
+      },
+      {
+        "sentence": "The hazard on the golf course was perfectly manicured, with smooth sand and a pleasant view of the fairway.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore her hazard proudly around her neck, a family heirloom passed down through generations of ancestors.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef added hazard to the sauce for extra flavor, stirring it slowly until it dissolved completely.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "voodoo",
+    "definition": "religion practiced chiefly in Haiti",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The priestess performed voodoo rituals in her temple, honoring the spirits and ancestors central to Haitian spiritual practice.",
+        "correct": true
+      },
+      {
+        "sentence": "She used voodoo mathematics to calculate the mortgage interest rate on her new suburban home.",
+        "correct": false
+      },
+      {
+        "sentence": "The magician's voodoo card trick amazed the audience, revealing the selected card through sleight of hand and misdirection.",
+        "correct": false
+      },
+      {
+        "sentence": "His voodoo recipe for chocolate chip cookies won first place at the county fair last summer.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "advocate",
+    "definition": "speak in favor of; support (an idea or plan); urge; plead for",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Environmental scientists advocate for stricter carbon emissions regulations to combat climate change effectively.",
+        "correct": true
+      },
+      {
+        "sentence": "The advocate sat silently in the courtroom, refusing to speak or defend the accused defendant.",
+        "correct": false
+      },
+      {
+        "sentence": "She used her advocate skills to ignore the problem and hope it would eventually disappear.",
+        "correct": false
+      },
+      {
+        "sentence": "The organization's advocate opposed every proposal brought before the board meeting last Tuesday.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "trim",
+    "definition": "make neat or tidy by clipping; reduce by removing what is unnecessary; ornament; decorate (round the edges); Ex. trim.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She carefully trimmed the hedges along the garden path, creating neat, geometric shapes.",
+        "correct": true
+      },
+      {
+        "sentence": "The athlete's trim performance in the marathon was so poor that he finished last.",
+        "correct": false
+      },
+      {
+        "sentence": "He decided to trim his vocabulary by learning ten new words every single day.",
+        "correct": false
+      },
+      {
+        "sentence": "The captain ordered the crew to trim the sails in order to slow the boat considerably.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "intuition",
+    "definition": "immediate insight; power of knowing without reasoning; ADJ. intuitive; V. intuit: know by intuition",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Sarah's intuition told her to trust the stranger, and his kindness proved her instinct absolutely right.",
+        "correct": true
+      },
+      {
+        "sentence": "The detective carefully studied the evidence for three hours, using intuition and logic to build his case methodically.",
+        "correct": false
+      },
+      {
+        "sentence": "My intuition about quantum physics improved dramatically after I completed the twelve-week online certification course last month.",
+        "correct": false
+      },
+      {
+        "sentence": "He relied on intuition to calculate the complex mathematical equation, checking each step with a calculator twice.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "virtual",
+    "definition": "in essence; existing in essence though not in actual form; for practical purposes; Ex. virtual ruler/space",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Though she held no official title, Maria was the virtual leader of the community project.",
+        "correct": true
+      },
+      {
+        "sentence": "The virtual reality headset allowed players to physically touch and manipulate real objects during gameplay.",
+        "correct": false
+      },
+      {
+        "sentence": "He attended the virtual meeting in person, sitting at the conference table with all colleagues.",
+        "correct": false
+      },
+      {
+        "sentence": "The virtual rain fell so hard that everyone got completely soaked while standing outside.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "brag",
+    "definition": "boast",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "He couldn't resist the urge to brag about his promotion, loudly telling everyone at the party about his impressive new salary.",
+        "correct": true
+      },
+      {
+        "sentence": "She decided to brag the broken vase carefully into the trash bin so nobody would cut themselves on the sharp pieces.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef had to brag the pasta dough for several minutes until it reached the perfect consistency for rolling.",
+        "correct": false
+      },
+      {
+        "sentence": "We watched as the sailor began to brag the rope around the wooden post to secure the boat safely.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "substantial",
+    "definition": "of substance; material; solid; essential or fundamental; ample; considerable; well-to-do; wealthy",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The substantial inheritance allowed her to retire comfortably and pursue her lifelong dream of traveling.",
+        "correct": true
+      },
+      {
+        "sentence": "The substantial whisper was barely audible, so I had to lean in closer to hear it.",
+        "correct": false
+      },
+      {
+        "sentence": "Her substantial criticism of the plan was appreciated for being so brief and dismissive of all concerns.",
+        "correct": false
+      },
+      {
+        "sentence": "The substantial mist evaporated quickly in the morning sun, leaving no trace behind whatsoever.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "collateral",
+    "definition": "security given for loan; ADJ: secondary; descended from the same person but through different sons or daughters",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The bank required collateral—a house deed—before approving the fifty-thousand-dollar business loan.",
+        "correct": true
+      },
+      {
+        "sentence": "She moved to collateral cities across three states, finally settling in Portland last year.",
+        "correct": false
+      },
+      {
+        "sentence": "The collateral damage from the hurricane included broken windows and fallen trees everywhere.",
+        "correct": false
+      },
+      {
+        "sentence": "His collateral cousins inherited the estate since they shared the same great-grandfather through different lines.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "venom",
+    "definition": "poison (of an animal); hatred; Ex. remarks full of venom; ADJ. venomous",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The cobra's venom dripped from its fangs, potent enough to kill a person within minutes.",
+        "correct": true
+      },
+      {
+        "sentence": "She spoke with such venom in her voice that everyone in the room felt encouraged and uplifted.",
+        "correct": false
+      },
+      {
+        "sentence": "The doctor carefully extracted the venom from the patient's wound using a sterile bandage and antiseptic.",
+        "correct": false
+      },
+      {
+        "sentence": "His venom for mathematics made him excel in calculus and enjoy every homework assignment thoroughly.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "dowry",
+    "definition": "money or property brought by a bride to her husband at marriage",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "Her family negotiated a substantial dowry of land and jewels to secure the marriage alliance with the prominent merchant's son.",
+        "correct": true
+      },
+      {
+        "sentence": "The groom's dowry included a fleet of ships that he inherited from his father's successful trading business years ago.",
+        "correct": false
+      },
+      {
+        "sentence": "After the wedding ceremony, the bride received her dowry as a divorce settlement from her husband's estate.",
+        "correct": false
+      },
+      {
+        "sentence": "The elderly widow's dowry was distributed among her five children as part of the probate proceedings.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "comeback",
+    "definition": "retort; quick clever reply; return to former status",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "When her rival insulted her presentation, she delivered a cutting comeback that left the entire boardroom laughing.",
+        "correct": true
+      },
+      {
+        "sentence": "The athlete's comeback required months of physical therapy and training to return to competitive shape.",
+        "correct": false
+      },
+      {
+        "sentence": "She wore her comeback dress to the party, a beautiful gown she had purchased last winter for formal events.",
+        "correct": false
+      },
+      {
+        "sentence": "The company announced a comeback strategy to expand into three new international markets over the next fiscal year.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "faculty",
+    "definition": "mental or bodily powers; teaching staff",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "As she aged, her faculty for remembering names gradually diminished, though her wit remained sharp.",
+        "correct": true
+      },
+      {
+        "sentence": "The university's faculty of architecture was demolished last week to make room for a parking garage.",
+        "correct": false
+      },
+      {
+        "sentence": "His faculty for playing chess improved dramatically after he purchased an expensive wooden board set.",
+        "correct": false
+      },
+      {
+        "sentence": "The hospital faculty was equipped with the latest diagnostic machines and comfortable waiting rooms throughout.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "console",
+    "definition": "lessen sadness or disappointment; give comfort; allay the sorrow of; N. consolation",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "After losing the championship, the coach tried to console his devastated players with encouraging words.",
+        "correct": true
+      },
+      {
+        "sentence": "She used the gaming console to console her frustration by playing video games for hours.",
+        "correct": false
+      },
+      {
+        "sentence": "The architect's blueprint included a console table that would console the entire living room layout.",
+        "correct": false
+      },
+      {
+        "sentence": "He pressed buttons on the control console to console the aircraft's altitude during the flight.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "queue",
+    "definition": "line (of waiting people or vehicles)",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The queue stretched around the block as hundreds waited eagerly for concert tickets to go on sale.",
+        "correct": true
+      },
+      {
+        "sentence": "She queue her luggage neatly in the attic, organizing each suitcase by size and color.",
+        "correct": false
+      },
+      {
+        "sentence": "The chef used a queue to delicately frost the wedding cake with intricate white designs.",
+        "correct": false
+      },
+      {
+        "sentence": "He decided to queue his anger and frustration deep inside, never expressing his true feelings to anyone.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "recess",
+    "definition": "pause; temporary cessation; alcove; secret inner place; Ex. parliament in recess; V. CF. recessive",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "During school recess, children scattered across the playground, their laughter echoing under the bright afternoon sun.",
+        "correct": true
+      },
+      {
+        "sentence": "The architect designed a beautiful recess in the living room wall to display the family's antique collection.",
+        "correct": false
+      },
+      {
+        "sentence": "The patient's recess improved significantly after the doctor prescribed antibiotics for her persistent infection.",
+        "correct": false
+      },
+      {
+        "sentence": "Congress voted to recess the new environmental protection laws before they could take effect next month.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "quarantine",
+    "definition": "isolation of a person, place, or ship to prevent spread of infection; V: isolate in quarantine",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "After testing positive, Maria entered quarantine for two weeks to prevent spreading the virus to her family.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef's quarantine of exotic spices from around the world made his restaurant's dishes incredibly flavorful and unique.",
+        "correct": false
+      },
+      {
+        "sentence": "We decided to quarantine our vacation plans by booking flights six months in advance for the best deals.",
+        "correct": false
+      },
+      {
+        "sentence": "The gardener used quarantine techniques to arrange all her flowering plants in decorative rows along the garden path.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "tablet",
+    "definition": "small round piece of medicine; flat piece of stone or metal bearing an inscription; Ex. stone tablet on the wall",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The archaeologist carefully brushed dust from the ancient stone tablet, revealing inscriptions that told stories of a forgotten civilization.",
+        "correct": true
+      },
+      {
+        "sentence": "She swallowed a tablet of aspirin and immediately felt the pain in her leg muscles begin to grow stronger and more intense.",
+        "correct": false
+      },
+      {
+        "sentence": "The tablet hung heavy in his pocket as he rushed to catch the flight, hoping airport security would not delay him further.",
+        "correct": false
+      },
+      {
+        "sentence": "After taking a tablet before bed, she tossed and turned all night, unable to fall asleep despite her exhaustion and fatigue.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "founder",
+    "definition": "fail completely; sink; CF. flounder",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The ship began to founder in the storm, taking on water as it listed dangerously toward the rocky shore.",
+        "correct": true
+      },
+      {
+        "sentence": "Steve Jobs was the founder of Apple, establishing the company in his garage in nineteen seventy-six.",
+        "correct": false
+      },
+      {
+        "sentence": "The swimmer's legs began to founder as she approached the finish line, propelling her to victory.",
+        "correct": false
+      },
+      {
+        "sentence": "Their business plans started to founder after securing a million-dollar investment and hiring experienced staff members.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "squash",
+    "definition": "crush; quash; suppress",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The dictator moved quickly to squash the uprising before it could gain momentum among the population.",
+        "correct": true
+      },
+      {
+        "sentence": "I decided to squash my garden with tomatoes, carrots, and lettuce for the upcoming summer season.",
+        "correct": false
+      },
+      {
+        "sentence": "The tennis player's powerful serve helped him squash his opponent during the championship match last weekend.",
+        "correct": false
+      },
+      {
+        "sentence": "She went to the farmer's market to buy fresh squash for her evening salad and soup preparation.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "prop",
+    "definition": "support placed under or against something; V.",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She used a wooden prop to support the sagging bookshelf before calling the carpenter.",
+        "correct": true
+      },
+      {
+        "sentence": "The actor's prop convinced the audience that his performance was absolutely brilliant and moving.",
+        "correct": false
+      },
+      {
+        "sentence": "He decided to prop his argument by disagreeing loudly with every point his opponent made.",
+        "correct": false
+      },
+      {
+        "sentence": "The director used a large prop to advertise the upcoming film festival throughout the city.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "tread",
+    "definition": "walk; trample; N: grooved face of a tire; horizontal part of a step",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "She walked carefully across the icy bridge, watching where each foot would tread.",
+        "correct": true
+      },
+      {
+        "sentence": "The chef used a special tread to blend the spices into a smooth powder.",
+        "correct": false
+      },
+      {
+        "sentence": "His tread was so melodic that everyone stopped to listen to the beautiful song.",
+        "correct": false
+      },
+      {
+        "sentence": "The worn tread on his old sneakers finally snapped during the marathon race.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "exploit",
+    "definition": "brave and successful act; deed or action, particularly a brave deed; CF. crossing the Atlantic ocean",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The mountaineer's exploit of summiting Everest without supplemental oxygen earned her international acclaim and respect.",
+        "correct": true
+      },
+      {
+        "sentence": "The company decided to exploit the warehouse by reorganizing it into smaller offices for better efficiency.",
+        "correct": false
+      },
+      {
+        "sentence": "She used a software exploit to back up her data safely before the computer crashed permanently.",
+        "correct": false
+      },
+      {
+        "sentence": "The farmer worked hard to exploit the field, planting new crops and installing irrigation systems carefully.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "word": "curb",
+    "definition": "chain or strap used with a bit to restrain a horse; something that checks; V: check; restrain",
+    "level": 1,
+    "sentences": [
+      {
+        "sentence": "The rider tightened the curb on her horse to slow its gallop as they approached the steep ravine.",
+        "correct": true
+      },
+      {
+        "sentence": "She sat on the curb outside the coffee shop, enjoying her latte while watching pedestrians walk by.",
+        "correct": false
+      },
+      {
+        "sentence": "The city installed a new curb along the entire highway to encourage drivers to accelerate faster.",
+        "correct": false
+      },
+      {
+        "sentence": "He used a curb to decorate the garden fence, painting it bright blue to match the landscaping.",
+        "correct": false
+      }
+    ]
+  }
+]
