@@ -111,7 +111,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
             <div className={styles.eyebrow}>The Dare</div>
             <div className={styles.challenger}>{dare.from} challenged you</div>
             <div className={styles.heroWord}>{dare.word}</div>
-            <div className={styles.mcqPrompt}>Which sentence uses this word correctly?</div>
+            <div className={styles.mcqPrompt}>Which sentence(s) use this word correctly?</div>
             <div className={styles.options}>
               {sentences.map((s, i) => {
                 const isSelected = selected === i

@@ -56,7 +56,7 @@
       },
       {
         "sentence": "His bluff exterior and gruff voice masked a genuinely kind heart that helped everyone around him.",
-        "correct": false
+        "correct": true
       },
       {
         "sentence": "The architect designed a bluff foundation for the house to ensure it would sink deeper into the ground.",
