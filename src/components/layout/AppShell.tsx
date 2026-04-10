@@ -2,13 +2,16 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import Avatar from '@/components/ui/Avatar'
 import styles from './AppShell.module.css'
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
+  const router   = useRouter()
+  const pathname = usePathname()
+  const isHome   = pathname === '/'
+
   const [scrolled, setScrolled] = useState(false)
   const [playerName, setPlayerName] = useState('')
   const [ready, setReady] = useState(false)
@@ -36,13 +39,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <div className={styles.shell}>
       <header className={[styles.header, scrolled ? styles.scrolled : ''].join(' ')}>
         <div className={styles.headerInner}>
-          <Link href="/">
-            <img src="/logo-light.png" alt="Roshi's Word Game" className={`${styles.logo} ${styles.logoLight}`} />
-            <img src="/logo-dark.png"  alt="Roshi's Word Game" className={`${styles.logo} ${styles.logoDark}`} />
-          </Link>
+          {isHome ? (
+            <Link href="/">
+              <img src="/logo-light.png" alt="Roshi's Word Game" className={`${styles.logo} ${styles.logoLight}`} />
+              <img src="/logo-dark.png"  alt="Roshi's Word Game" className={`${styles.logo} ${styles.logoDark}`} />
+            </Link>
+          ) : (
+            <button className={styles.backBtn} onClick={() => router.back()} aria-label="Go back">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15.5 5L8.5 12L15.5 19" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          )}
           <div className={styles.headerRight}>
             <ThemeToggle />
-            <Avatar name={playerName} size={36} />
+            {isHome && <Avatar name={playerName} size={36} />}
           </div>
         </div>
       </header>

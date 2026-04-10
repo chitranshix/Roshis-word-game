@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import AppShell from '@/components/layout/AppShell'
 import Button from '@/components/ui/Button'
 import Avatar from '@/components/ui/Avatar'
-import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
 import type { GREWord } from '@/lib/gre-words'
 import styles from './page.module.css'
@@ -42,7 +41,7 @@ export default function NewDareClient({ words }: { words: GREWord[] }) {
 
   const query    = search.trim().toLowerCase()
   const filtered = query
-    ? words.filter(w => w.word.startsWith(query)).slice(0, 12)
+    ? words.filter(w => w.word.includes(query)).slice(0, 12)
     : words.slice(0, 12)
 
   const canSend = selectedWord && selectedFriends.length > 0 && !sending
@@ -68,7 +67,6 @@ export default function NewDareClient({ words }: { words: GREWord[] }) {
   return (
     <AppShell>
       <div className={styles.screen}>
-        <Link href="/" className={styles.backBtn}>&#8592;</Link>
         <div className={styles.heading}>Dare someone</div>
 
         <div className={styles.sectionLabel}>Pick a word</div>

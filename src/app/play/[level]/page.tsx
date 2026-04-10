@@ -10,11 +10,13 @@ export default async function PlayPage({ params }: Props) {
   const levelNum = parseInt(level, 10)
   if (isNaN(levelNum) || levelNum < 1 || levelNum > 11) notFound()
 
+  let words: unknown
   try {
     const filePath = path.join(process.cwd(), `public/data/gre-level-${levelNum}.json`)
-    const words = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
-    return <PlayClient level={levelNum} words={words} />
+    words = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
   } catch {
     notFound()
   }
+
+  return <PlayClient level={levelNum} words={words as Parameters<typeof PlayClient>[0]['words']} />
 }

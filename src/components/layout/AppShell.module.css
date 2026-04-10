@@ -50,6 +50,22 @@
 :global([data-theme='dark'])  .logoDark  { display: block; }
 :global([data-theme='dark'])  .logoLight { display: none; }
 
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-left: -10px;
+  border-radius: 50%;
+  color: var(--text);
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.backBtn:active { background: var(--surface2); }
+
 .headerRight {
   display: flex;
   align-items: center;
