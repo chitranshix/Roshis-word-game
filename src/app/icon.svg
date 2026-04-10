@@ -1,15 +1,17 @@
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <rect width="100" height="100" rx="22" fill="#0d1525"/>
-  <circle cx="50" cy="47" r="28" fill="#5CB828" stroke="#1A1A08" stroke-width="1.5"/>
-  <circle cx="40" cy="42" r="9" fill="white" stroke="#1A1A08" stroke-width="1.2"/>
-  <circle cx="60" cy="40" r="8" fill="white" stroke="#1A1A08" stroke-width="1.2"/>
-  <path d="M31 39 Q40 32 49 39" fill="#5CB828" stroke="#1A1A08" stroke-width="1"/>
-  <path d="M52 37 Q60 30 68 37" fill="#5CB828" stroke="#1A1A08" stroke-width="1"/>
-  <circle cx="41" cy="45" r="5" fill="#1A1A08"/>
-  <circle cx="61" cy="43" r="4.5" fill="#1A1A08"/>
-  <circle cx="43" cy="42" r="2" fill="white"/>
-  <circle cx="63" cy="40" r="1.8" fill="white"/>
-  <path d="M38 61 Q50 70 63 61" stroke="#1A1A08" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-  <path d="M48 63 Q62 48 74 53 Q70 67 48 63Z" fill="#4DB330" stroke="#2D8018" stroke-width="0.8"/>
-  <path d="M51 61 Q62 50 72 55" stroke="#2D8018" stroke-width="0.5" fill="none" opacity="0.7"/>
+  <g transform="translate(-298.66, -3.64) scale(2.235)">
+    <circle cx="156" cy="24" r="17" fill="#5CB828" stroke="#1A1A08" stroke-width="0.98"/>
+    <circle cx="150" cy="22" r="8.5" fill="white" stroke="#1A1A08" stroke-width="0.81"/>
+    <circle cx="164" cy="20" r="7.5" fill="white" stroke="#1A1A08" stroke-width="0.81"/>
+    <path d="M141 19 Q150 13 159 19" fill="#5CB828" stroke="#1A1A08" stroke-width="0.67"/>
+    <path d="M156 17 Q164 11 172 17" fill="#5CB828" stroke="#1A1A08" stroke-width="0.67"/>
+    <circle cx="151" cy="20" r="4.5" fill="#1A1A08"/>
+    <circle cx="165" cy="18" r="4"   fill="#1A1A08"/>
+    <circle cx="153" cy="18" r="1.8" fill="white"/>
+    <circle cx="167" cy="16" r="1.5" fill="white"/>
+    <path d="M148 35 Q157 42 167 35" stroke="#1A1A08" stroke-width="0.89" fill="none" stroke-linecap="round"/>
+    <path d="M155 36 Q166 25 175 29 Q172 39 155 36Z" fill="#4DB330" stroke="#2D8018" stroke-width="0.45"/>
+    <path d="M157 34 Q165 26 172 30" stroke="#2D8018" stroke-width="0.31" fill="none" opacity="0.7"/>
+  </g>
 </svg>

@@ -1,45 +1,51 @@
 import sharp from 'sharp'
-import { writeFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const publicDir = resolve(__dirname, '../public')
 
-// Roshi's face SVG — idle expression with leaf
-const faceSvg = (size) => `
-<svg viewBox="0 0 100 100" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+// Exact face from Roshi.tsx — idle expression with leaf chew + droopy lids
+// Original viewBox coords, head centered at (156,24) r=17
+// We scale/translate to fit a 100x100 canvas with ~8px padding
+// scale = 38/17 ≈ 2.235, center at (50,50)
+// tx = 50 - 156*s, ty = 50 - 24*s
+const S = 2.235
+const TX = 50 - 156 * S
+const TY = 50 - 24 * S
+const SW = 2.2 * S  // stroke-width scaled
+
+const faceSvg = (size) => `<svg viewBox="0 0 100 100" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
   <!-- Background -->
   <rect width="100" height="100" rx="22" fill="#0d1525"/>
 
-  <!-- Head -->
-  <circle cx="50" cy="47" r="28" fill="#5CB828" stroke="#1A1A08" stroke-width="1.5"/>
+  <g transform="translate(${TX.toFixed(2)}, ${TY.toFixed(2)}) scale(${S})">
+    <!-- HEAD -->
+    <circle cx="156" cy="24" r="17" fill="#5CB828" stroke="#1A1A08" stroke-width="${(2.2/S).toFixed(2)}"/>
 
-  <!-- Left eye white -->
-  <circle cx="40" cy="42" r="9" fill="white" stroke="#1A1A08" stroke-width="1.2"/>
-  <!-- Right eye white -->
-  <circle cx="60" cy="40" r="8" fill="white" stroke="#1A1A08" stroke-width="1.2"/>
+    <!-- EYES — big white circles -->
+    <circle cx="150" cy="22" r="8.5" fill="white" stroke="#1A1A08" stroke-width="${(1.8/S).toFixed(2)}"/>
+    <circle cx="164" cy="20" r="7.5" fill="white" stroke="#1A1A08" stroke-width="${(1.8/S).toFixed(2)}"/>
 
-  <!-- Droopy upper lids -->
-  <path d="M31 39 Q40 32 49 39" fill="#5CB828" stroke="#1A1A08" stroke-width="1"/>
-  <path d="M52 37 Q60 30 68 37" fill="#5CB828" stroke="#1A1A08" stroke-width="1"/>
+    <!-- Droopy upper lids -->
+    <path d="M141 19 Q150 13 159 19" fill="#5CB828" stroke="#1A1A08" stroke-width="${(1.5/S).toFixed(2)}"/>
+    <path d="M156 17 Q164 11 172 17" fill="#5CB828" stroke="#1A1A08" stroke-width="${(1.5/S).toFixed(2)}"/>
 
-  <!-- Pupils -->
-  <circle cx="41" cy="45" r="5" fill="#1A1A08"/>
-  <circle cx="61" cy="43" r="4.5" fill="#1A1A08"/>
+    <!-- Rolling pupils (looking up-right like eye roll) -->
+    <circle cx="151" cy="20" r="4.5" fill="#1A1A08"/>
+    <circle cx="165" cy="18" r="4"   fill="#1A1A08"/>
+    <!-- Eye highlights -->
+    <circle cx="153" cy="18" r="1.8" fill="white"/>
+    <circle cx="167" cy="16" r="1.5" fill="white"/>
 
-  <!-- Eye highlights -->
-  <circle cx="43" cy="42" r="2" fill="white"/>
-  <circle cx="63" cy="40" r="1.8" fill="white"/>
+    <!-- Mouth — lazy smirk -->
+    <path d="M148 35 Q157 42 167 35" stroke="#1A1A08" stroke-width="${(2/S).toFixed(2)}" fill="none" stroke-linecap="round"/>
 
-  <!-- Mouth smirk -->
-  <path d="M38 61 Q50 70 63 61" stroke="#1A1A08" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-
-  <!-- Leaf -->
-  <path d="M48 63 Q62 48 74 53 Q70 67 48 63Z" fill="#4DB330" stroke="#2D8018" stroke-width="0.8"/>
-  <path d="M51 61 Q62 50 72 55" stroke="#2D8018" stroke-width="0.5" fill="none" opacity="0.7"/>
-</svg>
-`
+    <!-- Leaf sticking out of mouth -->
+    <path d="M155 36 Q166 25 175 29 Q172 39 155 36Z" fill="#4DB330" stroke="#2D8018" stroke-width="${(1/S).toFixed(2)}"/>
+    <path d="M157 34 Q165 26 172 30" stroke="#2D8018" stroke-width="${(0.7/S).toFixed(2)}" fill="none" opacity="0.7"/>
+  </g>
+</svg>`
 
 async function generate() {
   for (const size of [192, 512]) {
@@ -49,7 +55,6 @@ async function generate() {
     console.log(`Generated icon-${size}.png`)
   }
 
-  // favicon.ico (32x32)
   await sharp(Buffer.from(faceSvg(32)))
     .png()
     .toFile(resolve(publicDir, 'favicon.png'))
