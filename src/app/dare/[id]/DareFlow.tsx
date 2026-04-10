@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import AppShell from '@/components/layout/AppShell'
 import Button from '@/components/ui/Button'
@@ -22,6 +23,7 @@ interface DareFlowProps {
 }
 
 export default function DareFlow({ dare, sentences, definition, dareId, isChallengee }: DareFlowProps) {
+  const router = useRouter()
   const [stage, setStage]                     = useState<Stage>('sentence')
   const [selected, setSelected]               = useState<number | null>(null)
   const [answerResult, setAnswerResult]       = useState<'correct' | 'wrong' | null>(null)
@@ -102,7 +104,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
           </div>
         )}
 
-        <Link href="/" className={styles.backBtn}>← Back</Link>
+        <button className={styles.backBtn} onClick={() => router.back()}>← Back</button>
 
         {stage === 'sentence' && (
           <>

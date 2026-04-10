@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import AppShell from '@/components/layout/AppShell'
 import Button from '@/components/ui/Button'
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export default function PlayClient({ level, words }: Props) {
+  const router = useRouter()
   const allWordNames = words.map(w => w.word)
 
   const [currentWord, setCurrentWord] = useState<GREWord | null>(() => {
@@ -164,7 +166,7 @@ export default function PlayClient({ level, words }: Props) {
 
         {/* ── Top bar: level info + progress ── */}
         <div className={styles.topBar}>
-          <Link href="/" className={styles.backBtn}>← Mission {level}</Link>
+          <button className={styles.backBtn} onClick={() => router.back()}>← Mission {level}</button>
           <div className={styles.progressWrap}>
             <div className={styles.progressBar}>
               <div className={styles.progressFill} style={{ width: `${pct}%` }} />
