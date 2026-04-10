@@ -39,6 +39,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
     setSelected(i)
     setSentenceCorrect(isCorrect)
     setAnswerResult(isCorrect ? 'correct' : 'wrong')
+    if (navigator.vibrate) navigator.vibrate(isCorrect ? [10, 50, 10] : [80])
 
     setTimeout(() => {
       if (isCorrect) {
@@ -147,6 +148,9 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
               value={userDef}
               onChange={e => setUserDef(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey && userDef.trim().length >= 4) { e.preventDefault(); submitDefinition() } }}
+              autoFocus
+              inputMode="text"
+              enterKeyHint="done"
             />
             <div className={styles.defHint}>Plain English is fine.</div>
             <Button onClick={submitDefinition} disabled={userDef.trim().length < 4 || checking}>

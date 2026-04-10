@@ -30,21 +30,44 @@ interface DareRow {
   to_profile: { name: string } | null
 }
 
+function DaresSkeleton() {
+  return (
+    <div className={styles.section}>
+      <div className={styles.skeletonLabel} />
+      <div className={styles.dareList}>
+        {[1, 2, 3].map(i => (
+          <div key={i} className={styles.skeletonRow}>
+            <div className={styles.skeletonAvatar} />
+            <div className={styles.skeletonLines}>
+              <div className={styles.skeletonLine} style={{ width: '40%' }} />
+              <div className={styles.skeletonLine} style={{ width: '60%' }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
-  const [dares, setDares]   = useState<DareRow[]>([])
-  const [userId, setUserId] = useState<string | null>(null)
+  const [dares, setDares]     = useState<DareRow[]>([])
+  const [userId, setUserId]   = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) return
+      if (!user) { setLoading(false); return }
       setUserId(user.id)
       supabase
         .from('dares')
         .select('*, from_profile:from_user(name), to_profile:to_user(name)')
         .or(`from_user.eq.${user.id},to_user.eq.${user.id}`)
         .order('created_at', { ascending: false })
-        .then(({ data }) => setDares((data as DareRow[]) ?? []))
+        .then(({ data }) => {
+          setDares((data as DareRow[]) ?? [])
+          setLoading(false)
+        })
     })
   }, [])
 
@@ -57,53 +80,64 @@ export default function Home() {
 
         <LevelHero />
 
-        {pendingDares.length > 0 && (
-          <div className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionTitle}>Your turn</span>
-              <span className={styles.sectionBadge}>{pendingDares.length}</span>
-            </div>
-            <div className={styles.chipRow}>
-              {pendingDares.map(dare => (
-                <Link key={dare.id} href={`/dare/${dare.id}`} className={styles.chip}>
-                  <Avatar name={dare.from_profile?.name ?? '?'} size={28} />
-                  <span className={styles.chipName}>{dare.from_profile?.name}</span>
-                  <span className={styles.chipDot} />
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        {loading ? <DaresSkeleton /> : (
+          <>
+            {pendingDares.length > 0 && (
+              <div className={styles.section}>
+                <div className={styles.sectionHeader}>
+                  <span className={styles.sectionTitle}>Your turn</span>
+                  <span className={styles.sectionBadge}>{pendingDares.length}</span>
+                </div>
+                <div className={styles.chipRow}>
+                  {pendingDares.map(dare => (
+                    <Link key={dare.id} href={`/dare/${dare.id}`} className={styles.chip}>
+                      <Avatar name={dare.from_profile?.name ?? '?'} size={28} />
+                      <span className={styles.chipName}>{dare.from_profile?.name}</span>
+                      <span className={styles.chipDot} />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
 
-        {otherDares.length > 0 && (
-          <div className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <span className={styles.sectionTitle}>Dares</span>
-            </div>
-            <div className={styles.dareList}>
-              {otherDares.slice(0, 5).map(dare => {
-                const isWaiting  = dare.status === 'pending' && dare.from_user === userId
-                const isComplete = dare.status === 'complete'
-                const fromLine   = isWaiting
-                  ? `You → ${dare.to_profile?.name}`
-                  : `${dare.from_profile?.name} → you`
-                const pts  = dare.from_user === userId ? dare.from_points : dare.to_points
-                const who  = dare.from_user === userId ? 'You' : dare.from_profile?.name
-
-                return (
-                  <div key={dare.id} className={[styles.dareRow, isComplete ? styles.dimmed : ''].join(' ')}>
-                    <Avatar name={isWaiting ? dare.to_profile?.name ?? '?' : dare.from_profile?.name ?? '?'} size={32} />
-                    <div className={styles.dareInfo}>
-                      <span className={styles.dareWord}>{dare.word}</span>
-                      <span className={styles.dareMeta}>{fromLine} · {relativeTime(dare.created_at)}</span>
-                    </div>
-                    {isWaiting  && <span className={`${styles.tag} ${styles.tagMuted}`}>Waiting</span>}
-                    {isComplete && pts != null && <span className={`${styles.tag} ${styles.tagDone}`}>{who} +{pts}</span>}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
+            {otherDares.length > 0 ? (
+              <div className={styles.section}>
+                <div className={styles.sectionHeader}>
+                  <span className={styles.sectionTitle}>Dares</span>
+                </div>
+                <div className={styles.dareList}>
+                  {otherDares.slice(0, 5).map(dare => {
+                    const isWaiting  = dare.status === 'pending' && dare.from_user === userId
+                    const isComplete = dare.status === 'complete'
+                    const fromLine   = isWaiting
+                      ? `You → ${dare.to_profile?.name}`
+                      : `${dare.from_profile?.name} → you`
+                    const pts  = dare.from_user === userId ? dare.from_points : dare.to_points
+                    const who  = dare.from_user === userId ? 'You' : dare.from_profile?.name
+                    const row = (
+                      <div className={[styles.dareRow, isComplete ? styles.dimmed : ''].join(' ')}>
+                        <Avatar name={isWaiting ? dare.to_profile?.name ?? '?' : dare.from_profile?.name ?? '?'} size={32} />
+                        <div className={styles.dareInfo}>
+                          <span className={styles.dareWord}>{dare.word}</span>
+                          <span className={styles.dareMeta}>{fromLine} · {relativeTime(dare.created_at)}</span>
+                        </div>
+                        {isWaiting  && <span className={`${styles.tag} ${styles.tagMuted}`}>Waiting</span>}
+                        {isComplete && pts != null && <span className={`${styles.tag} ${styles.tagDone}`}>{who} +{pts}</span>}
+                      </div>
+                    )
+                    return dare.status === 'pending' && dare.to_user === userId
+                      ? <Link key={dare.id} href={`/dare/${dare.id}`} className={styles.dareRowLink}>{row}</Link>
+                      : <div key={dare.id}>{row}</div>
+                  })}
+                </div>
+              </div>
+            ) : !loading && dares.length === 0 && (
+              <div className={styles.emptyState}>
+                <div className={styles.emptyText}>No dares yet.</div>
+                <div className={styles.emptyHint}>Dare someone to get started — tap the button below.</div>
+              </div>
+            )}
+          </>
         )}
 
       </div>
