@@ -1,4 +1,4 @@
-const CACHE = 'roshi-v1'
+const CACHE = 'roshi-v2'
 const OFFLINE_URL = '/'
 
 self.addEventListener('install', event => {
