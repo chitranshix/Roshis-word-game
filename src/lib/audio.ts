@@ -16,44 +16,25 @@ function ac(): AudioContext | null {
   }
 }
 
-/** "Yayyyy" — rising vocal-like sweep. Plays on correct answer. */
+/** Two-tone chime — clean "ding ding" going up. Plays on correct answer. */
 export function playCorrect() {
   const c = ac()
   if (!c) return
   try {
-    const osc    = c.createOscillator()
-    const filter = c.createBiquadFilter()
-    const gain   = c.createGain()
-
-    // Sawtooth = harmonically rich, voice-like
-    osc.type = 'sawtooth'
-
-    // Pitch sweeps up like "yaaaay"
-    osc.frequency.setValueAtTime(200, c.currentTime)
-    osc.frequency.exponentialRampToValueAtTime(460, c.currentTime + 0.22)
-    // tiny vibrato tail
-    osc.frequency.setValueAtTime(445, c.currentTime + 0.26)
-    osc.frequency.setValueAtTime(465, c.currentTime + 0.30)
-    osc.frequency.setValueAtTime(445, c.currentTime + 0.34)
-
-    // Filter opens up — mimics mouth opening on "ayyy"
-    filter.type = 'lowpass'
-    filter.Q.value = 3
-    filter.frequency.setValueAtTime(600, c.currentTime)
-    filter.frequency.exponentialRampToValueAtTime(2800, c.currentTime + 0.22)
-
-    // Volume envelope
-    gain.gain.setValueAtTime(0, c.currentTime)
-    gain.gain.linearRampToValueAtTime(0.38, c.currentTime + 0.02)
-    gain.gain.setValueAtTime(0.38, c.currentTime + 0.20)
-    gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.42)
-
-    osc.connect(filter)
-    filter.connect(gain)
-    gain.connect(c.destination)
-
-    osc.start()
-    osc.stop(c.currentTime + 0.42)
+    [660, 880].forEach((freq, i) => {
+      const t    = c.currentTime + i * 0.13
+      const osc  = c.createOscillator()
+      const gain = c.createGain()
+      osc.type = 'sine'
+      osc.frequency.value = freq
+      gain.gain.setValueAtTime(0, t)
+      gain.gain.linearRampToValueAtTime(0.45, t + 0.008)
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.35)
+      osc.connect(gain)
+      gain.connect(c.destination)
+      osc.start(t)
+      osc.stop(t + 0.35)
+    })
   } catch { /* silent mode / restricted */ }
 }
 
