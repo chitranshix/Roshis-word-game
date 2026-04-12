@@ -98,7 +98,7 @@ export default function Home() {
 
   const pendingForMe    = dares.filter(d => d.status === 'pending' && d.to_user === userId)
   const waitingOnFriend = dares.filter(d => d.status === 'pending' && d.from_user === userId)
-  const completedCount  = dares.filter(d => d.status === 'complete').length
+  const completedDaresList = dares.filter(d => d.status === 'complete').slice(0, 5)
   const noActiveDares   = pendingForMe.length === 0 && waitingOnFriend.length === 0
 
   return (
@@ -166,13 +166,39 @@ export default function Home() {
               </div>
             )}
 
-            {/* Empty state */}
-            {!loading && noActiveDares && (
-              <div className={styles.emptyState}>
-                <div className={styles.emptyText}>No active dares.</div>
-                <div className={styles.emptyHint}>
-                  {completedCount > 0 ? `${completedCount} past dare${completedCount > 1 ? 's' : ''} completed.` : 'Dare someone to get started.'}
+            {/* Completed dares */}
+            {completedDaresList.length > 0 && (
+              <div className={styles.section}>
+                <div className={styles.sectionHeader}>
+                  <span className={styles.sectionTitle}>Past</span>
                 </div>
+                <div className={styles.dareList}>
+                  {completedDaresList.map(dare => {
+                    const isSender   = dare.from_user === userId
+                    const otherName  = isSender ? dare.to_profile?.name : dare.from_profile?.name
+                    const myPts      = isSender ? dare.from_points : dare.to_points
+                    return (
+                      <Link key={dare.id} href={`/dare/${dare.id}`} className={styles.dareRow} style={{ opacity: 0.6, textDecoration: 'none' }}>
+                        <Avatar name={otherName ?? '?'} size={32} />
+                        <div className={styles.dareInfo}>
+                          <span className={styles.dareWord}>{dare.word}</span>
+                          <span className={styles.dareMeta}>
+                            {isSender ? `Dared ${otherName}` : `From ${otherName}`} · {relativeTime(dare.created_at)}
+                          </span>
+                        </div>
+                        {myPts != null && <span className={`${styles.tag} ${styles.tagMuted}`}>+{myPts}</span>}
+                      </Link>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Empty state */}
+            {!loading && noActiveDares && completedDaresList.length === 0 && (
+              <div className={styles.emptyState}>
+                <div className={styles.emptyText}>No dares yet.</div>
+                <div className={styles.emptyHint}>Dare someone to get started.</div>
                 <Link href="/dare/new" className={styles.emptyBtn}>+ Dare someone</Link>
               </div>
             )}

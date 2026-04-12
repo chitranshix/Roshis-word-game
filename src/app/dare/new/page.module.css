@@ -201,3 +201,63 @@
   color: var(--accent);
   letter-spacing: -0.02em;
 }
+
+/* ── Dare link box ── */
+.dareLinkBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background: var(--surface2);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--accent);
+}
+
+.dareLinkLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.dareLinkRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+
+.dareLinkUrl {
+  flex: 1;
+  font-size: 12px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dareLinkCopy {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dareLinkDone {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}

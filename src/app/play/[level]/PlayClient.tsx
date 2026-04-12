@@ -274,7 +274,7 @@ export default function PlayClient({ level, words, userId }: Props) {
               </div>
             </SpeechBubble>
             <Button onClick={handleNext}>Next word</Button>
-            <Link href="/dare/new" style={{ display: 'block' }}>
+            <Link href={`/dare/new?word=${encodeURIComponent(currentWord.word)}`} style={{ display: 'block' }}>
               <Button variant="subtle">Dare someone</Button>
             </Link>
           </>

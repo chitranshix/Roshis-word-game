@@ -25,17 +25,35 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
   const [sending, setSending]             = useState(false)
   const [hasTrap, setHasTrap]             = useState(false)
   const [myId, setMyId]                   = useState<string | null>(null)
+  const [dareLink, setDareLink]           = useState<string | null>(null)
+  const [copied, setCopied]               = useState(false)
+  const [recentWords, setRecentWords]     = useState<string[]>([])
 
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (!user) return
       setMyId(user.id)
-      supabase
-        .from('users')
-        .select('id, name')
-        .neq('id', user.id)
-        .then(({ data }) => setFriends((data as UserRow[]) ?? []))
+      Promise.all([
+        supabase.from('users').select('id, name').neq('id', user.id),
+        supabase
+          .from('point_events')
+          .select('word')
+          .eq('user_id', user.id)
+          .not('word', 'is', null)
+          .order('created_at', { ascending: false })
+          .limit(30),
+      ]).then(([{ data: friendsData }, { data: eventsData }]) => {
+        setFriends((friendsData as UserRow[]) ?? [])
+        // Deduplicate and take last 10 unique words
+        const seen = new Set<string>()
+        const recent: string[] = []
+        for (const e of eventsData ?? []) {
+          if (e.word && !seen.has(e.word)) { seen.add(e.word); recent.push(e.word) }
+          if (recent.length >= 10) break
+        }
+        setRecentWords(recent)
+      })
     })
   }, [])
 
@@ -48,7 +66,9 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
   const query    = search.trim().toLowerCase()
   const filtered = query
     ? words.filter(w => w.word.includes(query)).slice(0, 12)
-    : words.slice(0, 12)
+    : recentWords.length > 0
+      ? recentWords.map(w => words.find(wd => wd.word === w)).filter(Boolean) as GREWord[]
+      : words.slice(0, 12)
 
   const canSend = selectedWord && selectedFriends.length > 0 && !sending
 
@@ -65,17 +85,29 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
       has_trap:  hasTrap,
     }))
     const { data: inserted } = await supabase.from('dares').insert(rows).select('id')
-    // If there's exactly one dare and Web Share API is available, offer to share the link
-    if (inserted?.length === 1 && navigator.share) {
-      const dareUrl = `${window.location.origin}/join/${inserted[0].id}`
-      try {
-        await navigator.share({
-          text: `i dared you with "${selectedWord}" on roshi's word game. can you beat me?`,
-          url: dareUrl,
-        })
-      } catch { /* user dismissed share sheet — that's fine */ }
+    if (inserted?.length === 1) {
+      const dareUrl = `${window.location.origin}/dare/${inserted[0].id}`
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            text: `i dared you with "${selectedWord}" on roshi's word game. can you beat me?`,
+            url: dareUrl,
+          })
+        } catch { /* user dismissed share sheet — that's fine */ }
+      }
+      setDareLink(dareUrl)
+      setSending(false)
+      return
     }
     router.push('/')
+  }
+
+  const copyLink = () => {
+    if (!dareLink) return
+    navigator.clipboard.writeText(dareLink).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
   }
 
   const displayWord    = search.trim() || selectedWord
@@ -93,7 +125,9 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
           </div>
         ) : (
           <>
-            <div className={styles.sectionLabel}>Pick a word</div>
+            <div className={styles.sectionLabel}>
+              {query ? 'Search results' : recentWords.length > 0 ? 'Recently played' : 'Pick a word'}
+            </div>
             <input
               className={styles.searchInput}
               placeholder="Search any word..."
@@ -152,11 +186,26 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
 
         <div className={styles.spacer} />
 
-        <Button onClick={handleSend} disabled={!canSend}>
-          {canSend
-            ? `Send "${displayWord}" to ${selectedNames.join(', ')}`
-            : sending ? 'Sending…' : 'Send dare'}
-        </Button>
+        {dareLink && (
+          <div className={styles.dareLinkBox}>
+            <div className={styles.dareLinkLabel}>Dare sent! Share the link:</div>
+            <div className={styles.dareLinkRow}>
+              <span className={styles.dareLinkUrl}>{dareLink}</span>
+              <button className={styles.dareLinkCopy} onClick={copyLink}>
+                {copied ? 'Copied!' : 'Copy'}
+              </button>
+            </div>
+            <button className={styles.dareLinkDone} onClick={() => router.push('/')}>Done</button>
+          </div>
+        )}
+
+        {!dareLink && (
+          <Button onClick={handleSend} disabled={!canSend}>
+            {canSend
+              ? `Send "${displayWord}" to ${selectedNames.join(', ')}`
+              : sending ? 'Sending…' : 'Send dare'}
+          </Button>
+        )}
       </div>
     </AppShell>
   )
