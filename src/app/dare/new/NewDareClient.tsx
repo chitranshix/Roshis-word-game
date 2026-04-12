@@ -88,7 +88,6 @@ export default function NewDareClient({ words, preselectedWord, presetTrap }: Pr
     const { data: inserted } = await supabase.from('dares').insert(rows).select('id, to_user')
     // Notify each challenged friend
     if (inserted?.length) {
-      const myName = friends.find(f => selectedFriends[0] === f.id) ? undefined : undefined // resolved below
       const { data: me } = await supabase.from('users').select('name').eq('id', myId!).single()
       for (const row of inserted) {
         fetch('/api/push/send', {
@@ -103,21 +102,31 @@ export default function NewDareClient({ words, preselectedWord, presetTrap }: Pr
         })
       }
     }
-    if (inserted?.length === 1) {
-      const dareUrl = `${window.location.origin}/dare/${inserted[0].id}`
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            text: `i dared you with "${selectedWord}" on roshi's word game. can you beat me?`,
-            url: dareUrl,
-          })
-        } catch { /* user dismissed share sheet — that's fine */ }
-      }
-      setDareLink(dareUrl)
-      setSending(false)
-      return
-    }
     router.push('/')
+  }
+
+  const handleInvite = async () => {
+    if (!selectedWord || !myId) return
+    setSending(true)
+    const supabase = createClient()
+    const { data: me } = await supabase.from('users').select('name').eq('id', myId).single()
+    // Create a dare with no to_user — stranger will claim it via the link
+    const { data: inserted } = await supabase
+      .from('dares')
+      .insert([{ from_user: myId, word: selectedWord, level: 1, status: 'pending', has_trap: hasTrap }])
+      .select('id')
+    setSending(false)
+    if (!inserted?.length) return
+    const dareUrl = `${window.location.origin}/dare/${inserted[0].id}`
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          text: `${me?.name ?? 'Someone'} dared you with "${selectedWord}" on Roshi. Can you beat them?`,
+          url: dareUrl,
+        })
+      } catch { /* dismissed */ }
+    }
+    setDareLink(dareUrl)
   }
 
   const copyLink = () => {
@@ -128,7 +137,6 @@ export default function NewDareClient({ words, preselectedWord, presetTrap }: Pr
     })
   }
 
-  const displayWord    = search.trim() || selectedWord
   const selectedNames  = friends.filter(f => selectedFriends.includes(f.id)).map(f => f.name)
 
   return (
@@ -171,9 +179,6 @@ export default function NewDareClient({ words, preselectedWord, presetTrap }: Pr
           Dare who? <span className={styles.sectionLabelNote}>(tap all that apply)</span>
         </div>
         <div className={styles.friendList}>
-          {friends.length === 0 && (
-            <div style={{ color: 'var(--muted)', fontSize: 14 }}>No other players yet.</div>
-          )}
           {friends.map(({ id, name }) => (
             <div
               key={id}
@@ -184,7 +189,27 @@ export default function NewDareClient({ words, preselectedWord, presetTrap }: Pr
               <div className={styles.friendName}>{name}</div>
             </div>
           ))}
+          <div
+            className={[styles.friendChip, !selectedWord ? styles.friendChipDisabled : ''].filter(Boolean).join(' ')}
+            onClick={selectedWord ? handleInvite : undefined}
+          >
+            <div className={styles.inviteAvatar}>📤</div>
+            <div className={styles.friendName}>Invite</div>
+          </div>
         </div>
+
+        {dareLink && (
+          <div className={styles.dareLinkBox}>
+            <div className={styles.dareLinkLabel}>Link copied! Send it to anyone:</div>
+            <div className={styles.dareLinkRow}>
+              <span className={styles.dareLinkUrl}>{dareLink}</span>
+              <button className={styles.dareLinkCopy} onClick={copyLink}>
+                {copied ? 'Copied!' : 'Copy'}
+              </button>
+            </div>
+            <button className={styles.dareLinkDone} onClick={() => router.push('/')}>Done</button>
+          </div>
+        )}
 
         <button
           className={[styles.trapToggle, hasTrap ? styles.trapActive : ''].filter(Boolean).join(' ')}
@@ -204,24 +229,9 @@ export default function NewDareClient({ words, preselectedWord, presetTrap }: Pr
 
         <div className={styles.spacer} />
 
-        {dareLink && (
-          <div className={styles.dareLinkBox}>
-            <div className={styles.dareLinkLabel}>Dare sent! Share the link:</div>
-            <div className={styles.dareLinkRow}>
-              <span className={styles.dareLinkUrl}>{dareLink}</span>
-              <button className={styles.dareLinkCopy} onClick={copyLink}>
-                {copied ? 'Copied!' : 'Copy'}
-              </button>
-            </div>
-            <button className={styles.dareLinkDone} onClick={() => router.push('/')}>Done</button>
-          </div>
-        )}
-
         {!dareLink && (
           <Button onClick={handleSend} disabled={!canSend}>
-            {canSend
-              ? `Send "${displayWord}" to ${selectedNames.join(', ')}`
-              : sending ? 'Sending…' : 'Send dare'}
+            {sending ? 'Sending…' : 'Send'}
           </Button>
         )}
       </div>
