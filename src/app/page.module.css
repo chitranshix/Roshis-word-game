@@ -274,6 +274,12 @@
   color: var(--muted);
 }
 
+.tileStreak {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
 /* ── FAB ── */
 .fab {
   position: fixed;

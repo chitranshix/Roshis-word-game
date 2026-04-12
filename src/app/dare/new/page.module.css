@@ -126,3 +126,28 @@
 }
 
 .spacer { flex: 1; }
+
+.preselectedWord {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: var(--surface2);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--accent);
+}
+
+.preselectedLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.preselectedValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}

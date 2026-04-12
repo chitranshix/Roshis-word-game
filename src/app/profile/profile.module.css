@@ -1,0 +1,83 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 20px 60px;
+  max-width: 430px;
+  margin: 0 auto;
+}
+
+.avatarRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.streakBadge {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  background: var(--surface2);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border);
+  padding: 14px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  transition: border-color 0.15s;
+}
+
+.input:focus { border-color: var(--accent); outline: none; }
+
+.menuRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.menuRow:active { background: var(--surface2); }
+
+.menuIcon {
+  font-size: 18px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.menuLabel {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.menuChevron {
+  color: var(--muted);
+  flex-shrink: 0;
+}

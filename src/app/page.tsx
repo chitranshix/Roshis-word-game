@@ -6,6 +6,7 @@ import AppShell from '@/components/layout/AppShell'
 import LevelHero from '@/components/home/LevelHero'
 import Avatar from '@/components/ui/Avatar'
 import { createClient } from '@/lib/supabase'
+import { getStreak, hasDoneToday } from '@/lib/daily'
 import styles from './page.module.css'
 
 function relativeTime(date: string) {
@@ -54,6 +55,15 @@ export default function Home() {
   const [userId, setUserId]   = useState<string | null>(null)
   const [myPoints, setMyPoints] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
+  const [streak, setStreak]   = useState(0)
+  const [dailyDone, setDailyDone] = useState(false)
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
+    setStreak(getStreak().count)
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
+    setDailyDone(hasDoneToday())
+  }, [])
 
   useEffect(() => {
     const supabase = createClient()
@@ -98,7 +108,10 @@ export default function Home() {
         <div className={styles.twoCol}>
           <Link href="/daily" className={styles.tileCard}>
             <span className={styles.tileLabel}>Roshi&apos;s Daily</span>
-            <span className={styles.tileAction}>Play →</span>
+            {streak > 0
+              ? <span className={styles.tileStreak}>{streak} day streak 🔥</span>
+              : <span className={styles.tileAction}>{dailyDone ? 'Done ✓' : 'Play →'}</span>
+            }
           </Link>
           {myPoints !== null && (
             <Link href="/leaderboard" className={styles.tileCard}>

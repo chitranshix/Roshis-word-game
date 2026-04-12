@@ -211,7 +211,7 @@ export default function DailyClient({ word }: { word: GREWord }) {
                 <div className={styles.definitionText}>{word.definition}</div>
               </div>
             </SpeechBubble>
-            <Link href="/dare/new" style={{ display: 'block' }}>
+            <Link href={`/dare/new?word=${encodeURIComponent(word.word)}`} style={{ display: 'block' }}>
               <Button>Dare someone</Button>
             </Link>
             <Link href="/" style={{ display: 'block', marginTop: 12 }}>

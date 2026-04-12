@@ -11,10 +11,15 @@ import styles from './page.module.css'
 
 interface UserRow { id: string; name: string }
 
-export default function NewDareClient({ words }: { words: GREWord[] }) {
+interface Props {
+  words:           GREWord[]
+  preselectedWord: string | null
+}
+
+export default function NewDareClient({ words, preselectedWord }: Props) {
   const router = useRouter()
   const [search, setSearch]               = useState('')
-  const [selectedWord, setSelectedWord]   = useState<string | null>(null)
+  const [selectedWord, setSelectedWord]   = useState<string | null>(preselectedWord)
   const [selectedFriends, setSelectedFriends] = useState<string[]>([])
   const [friends, setFriends]             = useState<UserRow[]>([])
   const [sending, setSending]             = useState(false)
@@ -79,26 +84,34 @@ export default function NewDareClient({ words }: { words: GREWord[] }) {
       <div className={styles.screen}>
         <div className={styles.heading}>Dare someone</div>
 
-        <div className={styles.sectionLabel}>Pick a word</div>
-        <input
-          className={styles.searchInput}
-          placeholder="Search any word..."
-          value={search}
-          onChange={e => { setSearch(e.target.value); setSelectedWord(null) }}
-        />
-
-        <div className={styles.wordGrid}>
-          {filtered.map(({ word, definition }) => (
-            <button
-              key={word}
-              className={[styles.wordChip, selectedWord === word ? styles.selected : ''].join(' ')}
-              onClick={() => setSelectedWord(word)}
-            >
-              <div className={styles.chipWord}>{word}</div>
-              <div className={styles.chipVibe}>{definition.slice(0, 28).replace(/[;,]?\s*\w*$/, '…')}</div>
-            </button>
-          ))}
-        </div>
+        {preselectedWord ? (
+          <div className={styles.preselectedWord}>
+            <span className={styles.preselectedLabel}>Word</span>
+            <span className={styles.preselectedValue}>{preselectedWord}</span>
+          </div>
+        ) : (
+          <>
+            <div className={styles.sectionLabel}>Pick a word</div>
+            <input
+              className={styles.searchInput}
+              placeholder="Search any word..."
+              value={search}
+              onChange={e => { setSearch(e.target.value); setSelectedWord(null) }}
+            />
+            <div className={styles.wordGrid}>
+              {filtered.map(({ word, definition }) => (
+                <button
+                  key={word}
+                  className={[styles.wordChip, selectedWord === word ? styles.selected : ''].join(' ')}
+                  onClick={() => setSelectedWord(word)}
+                >
+                  <div className={styles.chipWord}>{word}</div>
+                  <div className={styles.chipVibe}>{definition.slice(0, 28).replace(/[;,]?\s*\w*$/, '…')}</div>
+                </button>
+              ))}
+            </div>
+          </>
+        )}
 
         <div className={styles.sectionLabel}>
           Dare who? <span className={styles.sectionLabelNote}>(tap all that apply)</span>

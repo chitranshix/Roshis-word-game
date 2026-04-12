@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import DailyClient from './DailyClient'
 import type { GREWord } from '@/lib/gre-words'
 
+export const dynamic = 'force-dynamic'
+
 /** Pick today's word — seeded by date so it's consistent all day */
 function dailyWord(words: GREWord[]): GREWord {
   const today = new Date().toISOString().slice(0, 10)

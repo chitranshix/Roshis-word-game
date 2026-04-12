@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import Avatar from '@/components/ui/Avatar'
-import StarredDrawer from '@/components/ui/StarredDrawer'
 import styles from './AppShell.module.css'
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -16,7 +15,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [scrolled, setScrolled]     = useState(false)
   const [playerName, setPlayerName] = useState('')
   const [ready, setReady]           = useState(false)
-  const [drawerOpen, setDrawerOpen] = useState(false)
 
   useEffect(() => {
     const name = localStorage.getItem('roshi_name')
@@ -55,20 +53,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           )}
           <div className={styles.headerRight}>
             <ThemeToggle />
-            <button className={styles.avatarBtn} onClick={() => setDrawerOpen(true)} aria-label="Open menu">
+            <Link href="/profile" className={styles.avatarBtn} aria-label="Profile">
               <Avatar name={playerName} size={36} />
-            </button>
+            </Link>
           </div>
         </div>
       </header>
       <main className={styles.content}>
         {children}
       </main>
-      <StarredDrawer
-        playerName={playerName}
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-      />
     </div>
   )
 }

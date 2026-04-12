@@ -67,10 +67,12 @@ export default function PlayClient({ level, words }: Props) {
       } else {
         playWrong()
         setPoints(0)
+        markWordComplete(currentWord.word, level)
+        setWordsDoneThisSession(n => n + 1)
         setStage('result')
       }
     }, 1200)
-  }, [answerResult, currentWord, sentences])
+  }, [answerResult, currentWord, sentences, level])
 
   const submitDefinition = useCallback(async () => {
     if (!currentWord) return
@@ -86,11 +88,15 @@ export default function PlayClient({ level, words }: Props) {
       if (correct) playCorrect(); else playWrong()
       setDefCorrect(correct)
       setPoints(earned)
+      markWordComplete(currentWord.word, level)
+      setWordsDoneThisSession(n => n + 1)
       setStage('result')
     } catch {
       playWrong()
       setDefCorrect(null)
       setPoints(3)
+      markWordComplete(currentWord.word, level)
+      setWordsDoneThisSession(n => n + 1)
       setStage('result')
     } finally {
       setChecking(false)
@@ -99,10 +105,6 @@ export default function PlayClient({ level, words }: Props) {
 
   const handleNext = useCallback(() => {
     if (!currentWord) return
-    // Mark complete and find next word
-    markWordComplete(currentWord.word, level)
-    setWordsDoneThisSession(n => n + 1)
-    const updatedCompleted = completedInLevel(level)
     const next = nextWordInLevel(allWordNames, level)
     const nextWord = next ? words.find(w => w.word === next) ?? null : null
 
@@ -114,12 +116,7 @@ export default function PlayClient({ level, words }: Props) {
     setUserDef('')
     setPoints(0)
     setDefCorrect(null)
-
-    if (!nextWord) {
-      // Level complete — handled by render below
-    }
-    void updatedCompleted
-  }, [currentWord, level, allWordNames, words])
+  }, [currentWord, allWordNames, words, level])
 
   const totalCompleted = completed + wordsDoneThisSession
   const pct = Math.round((totalCompleted / WORDS_PER_LEVEL) * 100)
