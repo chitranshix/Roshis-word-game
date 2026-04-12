@@ -152,6 +152,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
               autoFocus
               inputMode="text"
               enterKeyHint="done"
+              maxLength={200}
             />
             <div className={styles.defHint}>Plain English is fine.</div>
             <Button onClick={submitDefinition} disabled={userDef.trim().length < 4 || checking}>

@@ -26,6 +26,14 @@
   color: var(--muted);
 }
 
+.sectionAction {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-left: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .sectionBadge {
   font-size: 10px;
   font-weight: 700;
@@ -183,6 +191,14 @@
 .emptyHint {
   font-size: 13px;
   color: var(--muted);
+}
+
+.emptyBtn {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ── Skeleton ── */

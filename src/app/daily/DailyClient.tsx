@@ -35,6 +35,14 @@ export default function DailyClient({ word }: { word: GREWord }) {
     return [...word.sentences].sort(() => Math.random() - 0.5)
   }, [word])
 
+  const speak = useCallback(() => {
+    if (typeof window === 'undefined') return
+    window.speechSynthesis.cancel()
+    const utt = new SpeechSynthesisUtterance(word.word)
+    utt.rate = 0.85
+    window.speechSynthesis.speak(utt)
+  }, [word])
+
   const pickSentence = useCallback((i: number) => {
     if (answerResult) return
     const isCorrect = sentences[i]?.correct ?? false
@@ -129,7 +137,16 @@ export default function DailyClient({ word }: { word: GREWord }) {
 
         {stage === 'sentence' && (
           <>
-            <div className={styles.heroWord}>{word.word}</div>
+            <div className={styles.heroWordRow}>
+              <button className={styles.speakBtn} onClick={speak} aria-label="Pronounce word">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M11 5L6 9H2v6h4l5 4V5Z" fill="currentColor"/>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </button>
+              <div className={styles.heroWord}>{word.word}</div>
+            </div>
             <div className={styles.mcqPrompt}>Which sentence(s) use this word correctly?</div>
             <div className={styles.options}>
               {sentences.map((s, i) => {
@@ -169,6 +186,7 @@ export default function DailyClient({ word }: { word: GREWord }) {
               autoFocus
               inputMode="text"
               enterKeyHint="done"
+              maxLength={200}
             />
             <div className={styles.defHint}>Plain English is fine.</div>
             <Button onClick={submitDefinition} disabled={userDef.trim().length < 4 || checking}>

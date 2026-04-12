@@ -132,6 +132,7 @@ export default function Home() {
               <div className={styles.section}>
                 <div className={styles.sectionHeader}>
                   <span className={styles.sectionTitle}>Dares</span>
+                  <Link href="/dare/new" className={styles.sectionAction}>+ New dare</Link>
                 </div>
                 <div className={styles.dareList}>
                   {otherDares.slice(0, 5).map(dare => {
@@ -162,7 +163,8 @@ export default function Home() {
             ) : !loading && dares.length === 0 && (
               <div className={styles.emptyState}>
                 <div className={styles.emptyText}>No dares yet.</div>
-                <div className={styles.emptyHint}>Dare someone to get started — tap the button below.</div>
+                <div className={styles.emptyHint}>Dare someone to get started.</div>
+                <Link href="/dare/new" className={styles.emptyBtn}>+ Dare someone</Link>
               </div>
             )}
           </>
@@ -170,7 +172,6 @@ export default function Home() {
 
       </div>
 
-      <Link href="/dare/new" className={styles.fab}>+ Dare someone</Link>
     </AppShell>
   )
 }

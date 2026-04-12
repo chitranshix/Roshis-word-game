@@ -2,11 +2,12 @@
 .screen {
   display: flex;
   flex-direction: column;
-  min-height: calc(100dvh - 70px);
-  padding: 8px 20px 160px;
+  height: calc(100dvh - 70px);
+  overflow: hidden;
+  padding: 8px 20px 24px;
   max-width: 430px;
   margin: 0 auto;
-  gap: 16px;
+  gap: 12px;
 }
 
 .backBtn {
@@ -86,6 +87,29 @@
 }
 
 /* ── Hero word ── */
+.heroWordRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.speakBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--muted);
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.speakBtn:active { color: var(--accent); }
+
 .heroWord {
   font-size: clamp(34px, 9vw, 48px);
   font-weight: 700;
