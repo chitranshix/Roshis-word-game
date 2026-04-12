@@ -55,10 +55,16 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
 
   const saveDareResult = useCallback(async (earned: number) => {
     const supabase = createClient()
-    const col = isChallengee ? 'to_points' : 'from_points'
+    // When the challengee finishes, award the challenger too:
+    //   challengee scored 10 → challenger gets 5 (good dare, friend succeeded)
+    //   challengee scored 0  → challenger gets 10 (stumped them!)
+    //   challengee scored 3  → challenger gets 5 (partial)
+    const update = isChallengee
+      ? { to_points: earned, from_points: earned === 10 ? 5 : earned === 0 ? 10 : 5, status: 'complete' }
+      : { from_points: earned, status: 'complete' }
     await supabase
       .from('dares')
-      .update({ [col]: earned, status: 'complete' })
+      .update(update)
       .eq('id', dareId)
   }, [dareId, isChallengee])
 

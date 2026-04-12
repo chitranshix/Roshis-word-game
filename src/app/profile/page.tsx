@@ -5,6 +5,7 @@ import Link from 'next/link'
 import AppShell from '@/components/layout/AppShell'
 import Button from '@/components/ui/Button'
 import Avatar from '@/components/ui/Avatar'
+import { createClient } from '@/lib/supabase'
 import { getStreak } from '@/lib/daily'
 import styles from './profile.module.css'
 
@@ -12,12 +13,30 @@ export default function ProfilePage() {
   const [name, setName]   = useState('')
   const [saved, setSaved] = useState(false)
   const [streak, setStreak] = useState(0)
+  const [points, setPoints] = useState<number | null>(null)
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
     setName(localStorage.getItem('roshi_name') ?? '')
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
     setStreak(getStreak().count)
+
+    const supabase = createClient()
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      if (!user) return
+      const { data: dares } = await supabase
+        .from('dares')
+        .select('from_user, to_user, from_points, to_points')
+        .eq('status', 'complete')
+        .or(`from_user.eq.${user.id},to_user.eq.${user.id}`)
+      let pts = 0
+      for (const d of dares ?? []) {
+        if (d.from_user === user.id && d.from_points != null) pts += d.from_points
+        if (d.to_user   === user.id && d.to_points   != null) pts += d.to_points
+      }
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- async callback after await
+      setPoints(pts)
+    })
   }, [])
 
   const handleSave = () => {
@@ -34,7 +53,10 @@ export default function ProfilePage() {
 
         <div className={styles.avatarRow}>
           <Avatar name={name} size={72} />
-          {streak > 0 && <div className={styles.streakBadge}>{streak} day streak 🔥</div>}
+          <div className={styles.statRow}>
+            {streak > 0 && <div className={styles.streakBadge}>{streak} day streak 🔥</div>}
+            {points !== null && <div className={styles.pointsBadge}>{points} pts</div>}
+          </div>
         </div>
 
         <div className={styles.section}>

@@ -15,10 +15,22 @@
   padding-top: 8px;
 }
 
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .streakBadge {
   font-size: 14px;
   font-weight: 700;
   color: var(--gold);
+}
+
+.pointsBadge {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
 }
 
 .section {
