@@ -84,7 +84,24 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
       status:    'pending',
       has_trap:  hasTrap,
     }))
-    const { data: inserted } = await supabase.from('dares').insert(rows).select('id')
+    const { data: inserted } = await supabase.from('dares').insert(rows).select('id, to_user')
+    // Notify each challenged friend
+    if (inserted?.length) {
+      const myName = friends.find(f => selectedFriends[0] === f.id) ? undefined : undefined // resolved below
+      const { data: me } = await supabase.from('users').select('name').eq('id', myId!).single()
+      for (const row of inserted) {
+        fetch('/api/push/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            toUserId: row.to_user,
+            title: '🎯 New dare!',
+            body: `${me?.name ?? 'Someone'} dared you with "${selectedWord}". Can you beat them?`,
+            url: `/dare/${row.id}`,
+          }),
+        })
+      }
+    }
     if (inserted?.length === 1) {
       const dareUrl = `${window.location.origin}/dare/${inserted[0].id}`
       if (navigator.share) {

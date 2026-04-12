@@ -66,6 +66,7 @@ export default async function DarePage({ params }: Props) {
       isChallengee={dbDare.to_user === user?.id}
       hasTrap={dbDare.has_trap ?? false}
       challengerName={dbDare.from_profile?.name ?? 'them'}
+      challengerUserId={dbDare.from_user}
     />
   )
 }

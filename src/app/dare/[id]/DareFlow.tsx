@@ -16,16 +16,17 @@ import styles from './dare.module.css'
 type Stage = 'sentence' | 'definition' | 'result'
 
 interface DareFlowProps {
-  dare:           Dare
-  sentences:      Sentence[]
-  definition:     string | null
-  dareId:         string
-  isChallengee:   boolean
-  hasTrap:        boolean
-  challengerName: string
+  dare:             Dare
+  sentences:        Sentence[]
+  definition:       string | null
+  dareId:           string
+  isChallengee:     boolean
+  hasTrap:          boolean
+  challengerName:   string
+  challengerUserId: string
 }
 
-export default function DareFlow({ dare, sentences, definition, dareId, isChallengee, hasTrap, challengerName }: DareFlowProps) {
+export default function DareFlow({ dare, sentences, definition, dareId, isChallengee, hasTrap, challengerName, challengerUserId }: DareFlowProps) {
   const [stage, setStage]                     = useState<Stage>('sentence')
   const [selected, setSelected]               = useState<number | null>(null)
   const [answerResult, setAnswerResult]       = useState<'correct' | 'wrong' | null>(null)
@@ -70,7 +71,26 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
         }
       : { from_points: earned, status: 'complete' }
     await supabase.from('dares').update(update).eq('id', dareId)
-  }, [dareId, isChallengee, hasTrap])
+
+    // Notify the challenger that the dare was completed (only when challengee finishes)
+    if (isChallengee && challengerUserId) {
+      const resultMsg = earned === 0
+        ? `${dare.to} couldn't answer "${dare.word}". You get +10 pts!`
+        : earned === 10
+          ? `${dare.to} nailed "${dare.word}"! They got 10 pts.`
+          : `${dare.to} partially answered "${dare.word}". They got ${earned} pts.`
+      fetch('/api/push/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          toUserId: challengerUserId,
+          title: '✅ Dare completed',
+          body: resultMsg,
+          url: `/dare/${dareId}`,
+        }),
+      })
+    }
+  }, [dareId, isChallengee, hasTrap, challengerUserId, dare.to, dare.word])
 
   const submitDefinition = useCallback(async () => {
     setChecking(true)

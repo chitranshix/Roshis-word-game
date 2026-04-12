@@ -66,6 +66,32 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
+    // Subscribe to push notifications once per browser
+    if (
+      typeof window !== 'undefined' &&
+      'serviceWorker' in navigator &&
+      'PushManager' in window &&
+      Notification.permission === 'default'
+    ) {
+      Notification.requestPermission().then(async permission => {
+        if (permission !== 'granted') return
+        try {
+          const reg = await navigator.serviceWorker.ready
+          const sub = await reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+          })
+          await fetch('/api/push/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ subscription: sub.toJSON() }),
+          })
+        } catch { /* permission denied or unsupported */ }
+      })
+    }
+  }, [])
+
+  useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) { setLoading(false); return }
