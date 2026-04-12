@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
+import { createServerSupabase } from '@/lib/supabase-server'
 import DailyClient from './DailyClient'
 import type { GREWord } from '@/lib/gre-words'
 
@@ -18,7 +19,10 @@ function dailyWord(words: GREWord[]): GREWord {
   return words[idx]
 }
 
-export default function DailyPage() {
+export default async function DailyPage() {
+  const supabase = await createServerSupabase()
+  const { data: { user } } = await supabase.auth.getUser()
+
   let words: GREWord[]
   try {
     // Pull from all levels combined for variety
@@ -35,5 +39,5 @@ export default function DailyPage() {
   }
 
   const word = dailyWord(words!)
-  return <DailyClient word={word} />
+  return <DailyClient word={word} userId={user?.id ?? null} />
 }

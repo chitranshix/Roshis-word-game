@@ -8,13 +8,14 @@ import RoshiDisplay from '@/components/mascot/RoshiDisplay'
 import SpeechBubble from '@/components/ui/SpeechBubble'
 import { playCorrect, playWrong } from '@/lib/audio'
 import { hasDoneToday, markDailyDone, getStreak } from '@/lib/daily'
+import { createClient } from '@/lib/supabase'
 import StarButton from '@/components/ui/StarButton'
 import type { GREWord } from '@/lib/gre-words'
 import styles from './daily.module.css'
 
 type Stage = 'sentence' | 'definition' | 'result'
 
-export default function DailyClient({ word }: { word: GREWord }) {
+export default function DailyClient({ word, userId }: { word: GREWord; userId: string | null }) {
   const [alreadyDone, setAlreadyDone] = useState(false)
   const [stage, setStage]             = useState<Stage>('sentence')
   const [selected, setSelected]       = useState<number | null>(null)
@@ -56,6 +57,12 @@ export default function DailyClient({ word }: { word: GREWord }) {
     }, 1200)
   }, [answerResult, sentences])
 
+  const recordPoints = useCallback(async (pts: number) => {
+    if (!userId || pts === 0) return
+    const supabase = createClient()
+    await supabase.from('point_events').insert({ user_id: userId, points: pts, word: word.word, source: 'daily' })
+  }, [userId, word.word])
+
   const submitDefinition = useCallback(async () => {
     setChecking(true)
     try {
@@ -65,13 +72,14 @@ export default function DailyClient({ word }: { word: GREWord }) {
         body: JSON.stringify({ word: word.word, definition: userDef, actualDefinition: word.definition }),
       })
       const { correct } = await res.json()
-      const earned = correct ? 10 : 3
+      const earned = correct ? 5 : 3
       if (correct) playCorrect(); else playWrong()
       setDefCorrect(correct)
       setPoints(earned)
       setStage('result')
       const updated = markDailyDone()
       setStreak(updated.count)
+      void recordPoints(earned)
     } catch {
       playWrong()
       setDefCorrect(null)
@@ -79,10 +87,11 @@ export default function DailyClient({ word }: { word: GREWord }) {
       setStage('result')
       const updated = markDailyDone()
       setStreak(updated.count)
+      void recordPoints(3)
     } finally {
       setChecking(false)
     }
-  }, [word, userDef])
+  }, [word, userDef, recordPoints])
 
   const resultExpression = !sentenceCorrect ? 'disappointed' : defCorrect === true ? 'happy' : 'idle'
 

@@ -81,6 +81,21 @@
   text-align: center;
 }
 
+.trapBadge {
+  color: var(--wrong);
+  font-weight: 700;
+}
+
+.trapReveal {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wrong);
+  text-align: center;
+  padding: 6px 0 2px;
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+}
+
 .wordPos {
   font-size: 12px;
   font-style: italic;

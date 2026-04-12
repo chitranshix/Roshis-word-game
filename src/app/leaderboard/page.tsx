@@ -23,10 +23,11 @@ export default function LeaderboardPage() {
       if (!user) { setLoading(false); return }
       setMyId(user.id)
 
-      // Fetch all users + all completed dares in parallel
-      const [{ data: users }, { data: dares }] = await Promise.all([
+      // Fetch all users + completed dares + word play points in parallel
+      const [{ data: users }, { data: dares }, { data: events }] = await Promise.all([
         supabase.from('users').select('id, name'),
-        supabase.from('dares').select('from_user, to_user, from_points, to_points').eq('status', 'complete'),
+        supabase.from('dares').select('from_user, to_user, from_points, to_points, has_trap, trap_winner').eq('status', 'complete'),
+        supabase.from('point_events').select('user_id, points'),
       ])
 
       if (!users) { setLoading(false); return }
@@ -37,6 +38,11 @@ export default function LeaderboardPage() {
       for (const d of dares ?? []) {
         if (d.from_points != null) totals[d.from_user] = (totals[d.from_user] ?? 0) + d.from_points
         if (d.to_points   != null) totals[d.to_user]   = (totals[d.to_user]   ?? 0) + d.to_points
+        if (d.has_trap && d.trap_winner === 'trapper') totals[d.from_user] = (totals[d.from_user] ?? 0) + 10
+        if (d.has_trap && d.trap_winner === 'target')  totals[d.to_user]   = (totals[d.to_user]   ?? 0) + 10
+      }
+      for (const e of events ?? []) {
+        totals[e.user_id] = (totals[e.user_id] ?? 0) + e.points
       }
 
       const ranked = users

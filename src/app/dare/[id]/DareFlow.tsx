@@ -16,14 +16,16 @@ import styles from './dare.module.css'
 type Stage = 'sentence' | 'definition' | 'result'
 
 interface DareFlowProps {
-  dare: Dare
-  sentences: Sentence[]
-  definition: string | null
-  dareId: string
-  isChallengee: boolean
+  dare:           Dare
+  sentences:      Sentence[]
+  definition:     string | null
+  dareId:         string
+  isChallengee:   boolean
+  hasTrap:        boolean
+  challengerName: string
 }
 
-export default function DareFlow({ dare, sentences, definition, dareId, isChallengee }: DareFlowProps) {
+export default function DareFlow({ dare, sentences, definition, dareId, isChallengee, hasTrap, challengerName }: DareFlowProps) {
   const [stage, setStage]                     = useState<Stage>('sentence')
   const [selected, setSelected]               = useState<number | null>(null)
   const [answerResult, setAnswerResult]       = useState<'correct' | 'wrong' | null>(null)
@@ -32,6 +34,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
   const [points, setPoints]                   = useState(0)
   const [checking, setChecking]               = useState(false)
   const [defCorrect, setDefCorrect]           = useState<boolean | null>(null)
+  const [trapWinner, setTrapWinner]           = useState<'trapper' | 'target' | null>(null)
 
   const pickSentence = useCallback((i: number) => {
     if (answerResult) return
@@ -55,18 +58,19 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
 
   const saveDareResult = useCallback(async (earned: number) => {
     const supabase = createClient()
-    // When the challengee finishes, award the challenger too:
-    //   challengee scored 10 → challenger gets 5 (good dare, friend succeeded)
-    //   challengee scored 0  → challenger gets 10 (stumped them!)
-    //   challengee scored 3  → challenger gets 5 (partial)
+    // Challenger earns 10 pts if they stumped the receiver (0 pts), 5 pts otherwise
+    const trapResult = hasTrap ? (earned === 10 ? 'target' : 'trapper') : null
+    if (hasTrap && trapResult) setTrapWinner(trapResult)
     const update = isChallengee
-      ? { to_points: earned, from_points: earned === 10 ? 5 : earned === 0 ? 10 : 5, status: 'complete' }
+      ? {
+          to_points:   earned,
+          from_points: earned === 0 ? 10 : 5,
+          status:      'complete',
+          ...(hasTrap ? { trap_winner: trapResult } : {}),
+        }
       : { from_points: earned, status: 'complete' }
-    await supabase
-      .from('dares')
-      .update(update)
-      .eq('id', dareId)
-  }, [dareId, isChallengee])
+    await supabase.from('dares').update(update).eq('id', dareId)
+  }, [dareId, isChallengee, hasTrap])
 
   const submitDefinition = useCallback(async () => {
     setChecking(true)
@@ -117,7 +121,9 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
         {stage === 'sentence' && (
           <>
             <div className={styles.eyebrow}>The Dare</div>
-            <div className={styles.challenger}>{dare.from} challenged you</div>
+            <div className={styles.challenger}>
+              {dare.from} challenged you{hasTrap && isChallengee && <span className={styles.trapBadge}> · 🪤 trap set</span>}
+            </div>
             <div className={styles.heroWord}>{dare.word}</div>
             <div className={styles.mcqPrompt}>Which sentence(s) use this word correctly?</div>
             <div className={styles.options}>
@@ -174,7 +180,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
             </div>
 
             <SpeechBubble tail="top">
-              <div className={styles.pointsBadge}>+{points}</div>
+              <div className={styles.pointsBadge}>+{points}{hasTrap && trapWinner === 'target' ? ' +10 🪤' : ''}</div>
               <div className={styles.pointsLabel}>
                 {!sentenceCorrect
                   ? 'Better luck next time.'
@@ -182,6 +188,13 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
                     ? 'You nailed it.'
                     : 'Close, but not quite.'}
               </div>
+              {hasTrap && trapWinner && (
+                <div className={styles.trapReveal}>
+                  {trapWinner === 'target'
+                    ? `🪤 Trap beaten! ${challengerName} gets nothing.`
+                    : `🪤 Trap triggered. ${challengerName} gets +10 pts.`}
+                </div>
+              )}
               {definition && (
                 <div className={styles.definitionReveal}>
                   <div className={styles.definitionWordRow}>

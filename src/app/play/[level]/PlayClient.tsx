@@ -8,6 +8,7 @@ import RoshiDisplay from '@/components/mascot/RoshiDisplay'
 import SpeechBubble from '@/components/ui/SpeechBubble'
 import { completedInLevel, markWordComplete, nextWordInLevel } from '@/lib/progress'
 import { playCorrect, playWrong } from '@/lib/audio'
+import { createClient } from '@/lib/supabase'
 import StarButton from '@/components/ui/StarButton'
 import type { GREWord } from '@/lib/gre-words'
 import styles from './play.module.css'
@@ -17,11 +18,12 @@ const WORDS_PER_LEVEL = 100
 type Stage = 'sentence' | 'definition' | 'result'
 
 interface Props {
-  level: number
-  words: GREWord[]
+  level:  number
+  words:  GREWord[]
+  userId: string | null
 }
 
-export default function PlayClient({ level, words }: Props) {
+export default function PlayClient({ level, words, userId }: Props) {
   const allWordNames = words.map(w => w.word)
 
   const [currentWord, setCurrentWord] = useState<GREWord | null>(() => {
@@ -74,6 +76,12 @@ export default function PlayClient({ level, words }: Props) {
     }, 1200)
   }, [answerResult, currentWord, sentences, level])
 
+  const recordPoints = useCallback(async (word: string, pts: number) => {
+    if (!userId || pts === 0) return
+    const supabase = createClient()
+    await supabase.from('point_events').insert({ user_id: userId, points: pts, word, source: 'level' })
+  }, [userId])
+
   const submitDefinition = useCallback(async () => {
     if (!currentWord) return
     setChecking(true)
@@ -84,12 +92,13 @@ export default function PlayClient({ level, words }: Props) {
         body: JSON.stringify({ word: currentWord.word, definition: userDef, actualDefinition: currentWord.definition }),
       })
       const { correct } = await res.json()
-      const earned = correct ? 10 : 3
+      const earned = correct ? 5 : 3
       if (correct) playCorrect(); else playWrong()
       setDefCorrect(correct)
       setPoints(earned)
       markWordComplete(currentWord.word, level)
       setWordsDoneThisSession(n => n + 1)
+      void recordPoints(currentWord.word, earned)
       setStage('result')
     } catch {
       playWrong()
@@ -97,11 +106,12 @@ export default function PlayClient({ level, words }: Props) {
       setPoints(3)
       markWordComplete(currentWord.word, level)
       setWordsDoneThisSession(n => n + 1)
+      void recordPoints(currentWord.word, 3)
       setStage('result')
     } finally {
       setChecking(false)
     }
-  }, [currentWord, userDef])
+  }, [currentWord, userDef, recordPoints, level])
 
   const handleNext = useCallback(() => {
     if (!currentWord) return

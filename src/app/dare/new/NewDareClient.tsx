@@ -23,6 +23,7 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
   const [selectedFriends, setSelectedFriends] = useState<string[]>([])
   const [friends, setFriends]             = useState<UserRow[]>([])
   const [sending, setSending]             = useState(false)
+  const [hasTrap, setHasTrap]             = useState(false)
   const [myId, setMyId]                   = useState<string | null>(null)
 
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
       word:      selectedWord,
       level:     1,
       status:    'pending',
+      has_trap:  hasTrap,
     }))
     const { data: inserted } = await supabase.from('dares').insert(rows).select('id')
     // If there's exactly one dare and Web Share API is available, offer to share the link
@@ -131,6 +133,22 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
             </div>
           ))}
         </div>
+
+        <button
+          className={[styles.trapToggle, hasTrap ? styles.trapActive : ''].filter(Boolean).join(' ')}
+          onClick={() => setHasTrap(t => !t)}
+        >
+          <span className={styles.trapIcon}>🪤</span>
+          <div className={styles.trapInfo}>
+            <div className={styles.trapLabel}>Set a trap</div>
+            <div className={styles.trapHint}>
+              {hasTrap
+                ? 'They fail → you get +10 pts. They nail it → they get +10 bonus.'
+                : 'Bet against them. Costs nothing.'}
+            </div>
+          </div>
+          <div className={[styles.trapDot, hasTrap ? styles.trapDotOn : ''].filter(Boolean).join(' ')} />
+        </button>
 
         <div className={styles.spacer} />
 

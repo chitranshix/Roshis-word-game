@@ -24,16 +24,25 @@ export default function ProfilePage() {
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) return
-      const { data: dares } = await supabase
-        .from('dares')
-        .select('from_user, to_user, from_points, to_points')
-        .eq('status', 'complete')
-        .or(`from_user.eq.${user.id},to_user.eq.${user.id}`)
+      const [{ data: dares }, { data: events }] = await Promise.all([
+        supabase
+          .from('dares')
+          .select('from_user, to_user, from_points, to_points, has_trap, trap_winner')
+          .eq('status', 'complete')
+          .or(`from_user.eq.${user.id},to_user.eq.${user.id}`),
+        supabase
+          .from('point_events')
+          .select('points')
+          .eq('user_id', user.id),
+      ])
       let pts = 0
       for (const d of dares ?? []) {
         if (d.from_user === user.id && d.from_points != null) pts += d.from_points
         if (d.to_user   === user.id && d.to_points   != null) pts += d.to_points
+        if (d.has_trap && d.trap_winner === 'trapper' && d.from_user === user.id) pts += 10
+        if (d.has_trap && d.trap_winner === 'target'  && d.to_user   === user.id) pts += 10
       }
+      for (const e of events ?? []) pts += e.points
       // eslint-disable-next-line react-hooks/set-state-in-effect -- async callback after await
       setPoints(pts)
     })

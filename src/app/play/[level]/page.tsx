@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
+import { createServerSupabase } from '@/lib/supabase-server'
 import PlayClient from './PlayClient'
 
 interface Props { params: Promise<{ level: string }> }
@@ -18,5 +19,8 @@ export default async function PlayPage({ params }: Props) {
     notFound()
   }
 
-  return <PlayClient level={levelNum} words={words as Parameters<typeof PlayClient>[0]['words']} />
+  const supabase = await createServerSupabase()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  return <PlayClient level={levelNum} words={words as Parameters<typeof PlayClient>[0]['words']} userId={user?.id ?? null} />
 }
