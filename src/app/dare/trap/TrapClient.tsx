@@ -48,7 +48,7 @@ export default function TrapClient({ word, friends, myId }: Props) {
           body: JSON.stringify({
             toUserId: row.to_user,
             title: `${me?.name ?? 'Someone'} set a trap.`,
-            body: `They think you'll fail "${word}". I'd say prove them wrong, but I don't have strong feelings either way.`,
+            body: `They're betting you'll fail. I'd say prove them wrong, but I don't have strong feelings either way.`,
             url: `/dare/${row.id}`,
           }),
         })

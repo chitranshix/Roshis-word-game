@@ -75,10 +75,10 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
     // Notify the challenger that the dare was completed (only when challengee finishes)
     if (isChallengee && challengerUserId) {
       const resultMsg = earned === 0
-        ? `${dare.to} failed "${dare.word}". Embarrassing, really.`
+        ? `${dare.to} failed. Embarrassing, really.`
         : earned === 10
-          ? `${dare.to} got "${dare.word}" right. Apparently they do know words.`
-          : `${dare.to} half-answered "${dare.word}". Not terrible. Not good either.`
+          ? `${dare.to} got it right. Apparently they do know words.`
+          : `${dare.to} half-answered. Not terrible. Not good either.`
       fetch('/api/push/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

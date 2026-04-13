@@ -94,7 +94,7 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
           body: JSON.stringify({
             toUserId: row.to_user,
             title: `${me?.name ?? 'Someone'} dared you.`,
-            body: `The word is "${selectedWord}". Whether you know it is, of course, another matter.`,
+            body: `They think you know this word. Whether that's true is, of course, another matter.`,
             url: `/dare/${row.id}`,
           }),
         })
