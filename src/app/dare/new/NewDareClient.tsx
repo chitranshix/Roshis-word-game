@@ -111,7 +111,7 @@ export default function NewDareClient({ words, preselectedWord }: Props) {
     // Create a dare with no to_user — stranger will claim it via the link
     const { data: inserted } = await supabase
       .from('dares')
-      .insert([{ from_user: myId, word: selectedWord, level: 1, status: 'pending', has_trap: hasTrap }])
+      .insert([{ from_user: myId, word: selectedWord, level: 1, status: 'pending', has_trap: false }])
       .select('id')
     setSending(false)
     if (!inserted?.length) return

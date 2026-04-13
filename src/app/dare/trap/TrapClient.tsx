@@ -47,7 +47,7 @@ export default function TrapClient({ word, friends, myId }: Props) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             toUserId: row.to_user,
-            title: '🪤 You've been trapped!',
+            title: '🪤 You have been trapped!',
             body: `${me?.name ?? 'Someone'} set a trap on "${word}". Can you escape it?`,
             url: `/dare/${row.id}`,
           }),
