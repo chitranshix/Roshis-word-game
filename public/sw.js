@@ -1,4 +1,4 @@
-const CACHE = 'roshi-v3'
+const CACHE = 'roshi-v4'
 const OFFLINE_URL = '/'
 
 self.addEventListener('install', event => {
@@ -30,7 +30,6 @@ self.addEventListener('push', event => {
   const options = {
     body: data.body ?? 'You have a new notification.',
     icon: '/icon-192.png',
-    badge: '/icon-192.png',
     data: { url: data.url ?? '/' },
   }
   event.waitUntil(self.registration.showNotification(title, options))
