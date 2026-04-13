@@ -10,9 +10,9 @@ const publicDir = resolve(__dirname, '../public')
 // We crop the viewBox tightly around the head+neck: roughly x=120 y=4 w=60 h=58
 const SW = 2.2
 
-const faceSvg = (size) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="129 3 52 50" width="${size}" height="${size}">
+const faceSvg = (size) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="132 4 48 46" width="${size}" height="${size}">
   <!-- rounded square background — dark theme bg colour -->
-  <rect x="129" y="3" width="52" height="50" rx="11" fill="#0a1628"/>
+  <rect x="132" y="4" width="48" height="46" rx="10" fill="#0a1628"/>
 
   <!-- neck -->
   <path d="M130,56 Q144,46 152,30" stroke="#5CB828" stroke-width="18" stroke-linecap="round" fill="none"/>
