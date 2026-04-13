@@ -1,3 +1,5 @@
+import { createClient } from '@/lib/supabase'
+
 const KEY = 'roshi_starred'
 
 export interface StarredWord {
@@ -18,17 +20,31 @@ export function isStarred(word: string): boolean {
   return getStarred().some(w => w.word === word)
 }
 
-export function toggleStar(word: string, definition: string): boolean {
+export async function toggleStar(word: string, definition: string): Promise<boolean> {
   const current = getStarred()
   const idx     = current.findIndex(w => w.word === word)
-  if (idx >= 0) {
-    localStorage.setItem(KEY, JSON.stringify(current.filter((_, i) => i !== idx)))
-    return false
-  } else {
+  const adding  = idx < 0
+
+  // Update localStorage immediately (fast)
+  if (adding) {
     localStorage.setItem(KEY, JSON.stringify([
       { word, definition, starredAt: new Date().toISOString() },
       ...current,
     ]))
-    return true
+  } else {
+    localStorage.setItem(KEY, JSON.stringify(current.filter((_, i) => i !== idx)))
   }
+
+  // Sync to Supabase in background
+  const supabase = createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (user) {
+    if (adding) {
+      await supabase.from('starred_words').upsert({ user_id: user.id, word, definition }, { onConflict: 'user_id,word' })
+    } else {
+      await supabase.from('starred_words').delete().eq('user_id', user.id).eq('word', word)
+    }
+  }
+
+  return adding
 }

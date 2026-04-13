@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import Avatar from '@/components/ui/Avatar'
+import { createClient } from '@/lib/supabase'
+import { syncAll } from '@/lib/sync'
 import styles from './AppShell.module.css'
 
 export default function AppShell({ children, gameplay }: { children: React.ReactNode, gameplay?: boolean }) {
@@ -25,6 +27,10 @@ export default function AppShell({ children, gameplay }: { children: React.React
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
     setPlayerName(name)
     setReady(true)
+    // Sync Supabase → localStorage in background
+    createClient().auth.getUser().then(({ data: { user } }) => {
+      if (user) syncAll(user.id)
+    })
   }, [router])
 
   useEffect(() => {

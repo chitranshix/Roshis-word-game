@@ -14,8 +14,8 @@ export default function StarredPage() {
     setWords(getStarred())
   }, [])
 
-  const unstar = (word: string, definition: string) => {
-    toggleStar(word, definition)
+  const unstar = async (word: string, definition: string) => {
+    await toggleStar(word, definition)
     setWords(getStarred())
   }
 

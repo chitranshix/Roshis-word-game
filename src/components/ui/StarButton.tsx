@@ -16,8 +16,8 @@ export default function StarButton({ word, definition }: Props) {
     setStarred(isStarred(word))
   }, [word])
 
-  const handle = () => {
-    const now = toggleStar(word, definition)
+  const handle = async () => {
+    const now = await toggleStar(word, definition)
     setStarred(now)
     if (navigator.vibrate) navigator.vibrate(30)
   }

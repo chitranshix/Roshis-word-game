@@ -79,7 +79,7 @@ export default function PlayClient({ level, words, userId }: Props) {
   const recordPoints = useCallback(async (word: string, pts: number) => {
     if (!userId || pts === 0) return
     const supabase = createClient()
-    await supabase.from('point_events').insert({ user_id: userId, points: pts, word, source: 'level' })
+    await supabase.from('point_events').insert({ user_id: userId, points: pts, word, source: 'level', level })
   }, [userId])
 
   const submitDefinition = useCallback(async () => {
