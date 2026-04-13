@@ -27,6 +27,9 @@ export default function DailyClient({ word, userId }: { word: GREWord; userId: s
   const [checking, setChecking]       = useState(false)
   const [defCorrect, setDefCorrect]   = useState<boolean | null>(null)
   const [streak, setStreak]           = useState(0)
+  const [commentary, setCommentary]   = useState<string | null>(null)
+  const [myRank, setMyRank]           = useState<number | null>(null)
+  const [totalPlayers, setTotalPlayers] = useState<number | null>(null)
 
   useEffect(() => {
     setAlreadyDone(hasDoneToday())
@@ -61,8 +64,11 @@ export default function DailyClient({ word, userId }: { word: GREWord; userId: s
   const recordPoints = useCallback(async (pts: number) => {
     if (!userId || pts === 0) return
     const supabase = createClient()
-    await supabase.from('point_events').insert({ user_id: userId, points: pts, word: word.word, source: 'daily' })
-  }, [userId, word.word])
+    await supabase.from('point_events').insert({
+      user_id: userId, points: pts, word: word.word,
+      definition: word.definition, source: 'daily',
+    })
+  }, [userId, word.word, word.definition])
 
   const submitDefinition = useCallback(async () => {
     setChecking(true)
@@ -93,6 +99,27 @@ export default function DailyClient({ word, userId }: { word: GREWord; userId: s
       setChecking(false)
     }
   }, [word, userDef, recordPoints])
+
+  // Fetch commentary + rank once result is shown
+  useEffect(() => {
+    if (stage !== 'result') return
+    // Commentary
+    fetch('/api/roshi-commentary', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ word: word.word, definition: word.definition }),
+    }).then(r => r.json()).then(d => { if (d.commentary) setCommentary(d.commentary) }).catch(() => {})
+    // Rank — slight delay so our insert has committed
+    if (!userId) return
+    setTimeout(() => {
+      fetch('/api/daily-leaderboard')
+        .then(r => r.json())
+        .then(d => {
+          const me = d.entries?.find((e: { userId: string }) => e.userId === userId)
+          if (me) { setMyRank(me.rank); setTotalPlayers(d.total) }
+        }).catch(() => {})
+    }, 800)
+  }, [stage, word.word, word.definition, userId])
 
   const resultExpression = !sentenceCorrect ? 'disappointed' : defCorrect === true ? 'happy' : 'idle'
 
@@ -216,10 +243,18 @@ export default function DailyClient({ word, userId }: { word: GREWord; userId: s
                 {!sentenceCorrect ? 'Better luck next time.' : defCorrect === true ? 'You nailed it.' : 'Close, but not quite.'}
               </div>
               {streak > 0 && <div className={styles.streakLine}>{streak} day streak 🔥</div>}
+              {myRank !== null && totalPlayers !== null && (
+                <div className={styles.rankLine}>
+                  <Link href="/daily/leaderboard" className={styles.rankLink}>
+                    #{myRank} today · {totalPlayers} {totalPlayers === 1 ? 'player' : 'players'} →
+                  </Link>
+                </div>
+              )}
               <div className={styles.definitionReveal}>
                 <div className={styles.definitionWord}>{word.word}</div>
                 <div className={styles.definitionText}>{word.definition}</div>
               </div>
+              {commentary && <div className={styles.commentary}>{commentary}</div>}
             </SpeechBubble>
             <div className={styles.actionRow}>
               <Link href={`/dare/new?word=${encodeURIComponent(word.word)}`} className={styles.actionPill}>

@@ -14,17 +14,17 @@ export default function ProfilePage() {
   const [saved, setSaved] = useState(false)
   const [streak, setStreak] = useState(0)
   const [points, setPoints] = useState<number | null>(null)
+  const [wordCount, setWordCount] = useState<number | null>(null)
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
     setName(localStorage.getItem('roshi_name') ?? '')
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
     setStreak(getStreak().count)
 
     const supabase = createClient()
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) return
-      const [{ data: dares }, { data: events }] = await Promise.all([
+      const [{ data: dares }, { data: events }, { data: words }] = await Promise.all([
         supabase
           .from('dares')
           .select('from_user, to_user, from_points, to_points, has_trap, trap_winner')
@@ -34,6 +34,11 @@ export default function ProfilePage() {
           .from('point_events')
           .select('points')
           .eq('user_id', user.id),
+        supabase
+          .from('point_events')
+          .select('word')
+          .eq('user_id', user.id)
+          .not('word', 'is', null),
       ])
       let pts = 0
       for (const d of dares ?? []) {
@@ -43,8 +48,9 @@ export default function ProfilePage() {
         if (d.has_trap && d.trap_winner === 'target'  && d.to_user   === user.id) pts += 10
       }
       for (const e of events ?? []) pts += e.points
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- async callback after await
+      const uniqueWords = new Set((words ?? []).map(w => w.word).filter(Boolean))
       setPoints(pts)
+      setWordCount(uniqueWords.size)
     })
   }, [])
 
@@ -65,6 +71,7 @@ export default function ProfilePage() {
           <div className={styles.statRow}>
             {streak > 0 && <div className={styles.streakBadge}>{streak} day streak 🔥</div>}
             {points !== null && <div className={styles.pointsBadge}>{points} pts</div>}
+            {wordCount !== null && <div className={styles.wordsBadge}>{wordCount} words</div>}
           </div>
         </div>
 
@@ -83,6 +90,15 @@ export default function ProfilePage() {
             {saved ? 'Saved ✓' : 'Save name'}
           </Button>
         </div>
+
+        <Link href="/profile/words" className={styles.menuRow}>
+          <span className={styles.menuIcon}>📖</span>
+          <span className={styles.menuLabel}>Words learned</span>
+          {wordCount !== null && <span className={styles.menuCount}>{wordCount}</span>}
+          <svg className={styles.menuChevron} width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </Link>
 
         <Link href="/profile/starred" className={styles.menuRow}>
           <span className={styles.menuIcon}>★</span>

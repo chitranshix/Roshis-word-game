@@ -33,6 +33,17 @@ export function dailyIndex(totalWords: number): number {
   return Math.floor(rng() * totalWords)
 }
 
+/** Pick today's word name from an array of GRE words (server-side use) */
+export function getDailyWordName(words: { word: string }[]): string {
+  const today = new Date().toISOString().slice(0, 10)
+  const seed  = today.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0)
+  const s = seed + 0x6D2B79F5 | 0
+  let t = Math.imul(s ^ s >>> 15, 1 | s)
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t
+  const idx = ((t ^ t >>> 14) >>> 0) % words.length
+  return words[idx].word
+}
+
 export function getStreak(): StreakData {
   if (typeof window === 'undefined') return { lastDate: '', count: 0 }
   try {

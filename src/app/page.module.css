@@ -256,42 +256,61 @@
   animation: shimmer 1.4s ease-in-out infinite;
 }
 
-/* ── Two-column tiles (Daily + Leaderboard) ── */
-.twoCol {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.tileCard {
+/* ── Daily hero card ── */
+.dailyHero {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 14px 16px;
+  gap: 6px;
+  padding: 18px 20px;
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 2px solid var(--accent);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   transition: background 0.15s;
-  box-shadow: var(--shadow);
 }
-.tileCard:active { background: var(--surface2); }
+.dailyHero:active { background: var(--surface2); }
 
-.tileLabel {
-  font-size: 17px;
+.dailyHeroDone {
+  border-color: var(--border);
+  opacity: 0.7;
+}
+
+.dailyHeroTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dailyHeroLabel {
+  font-size: 20px;
   font-weight: 700;
   color: var(--text);
+  letter-spacing: -0.02em;
 }
 
-.tileAction {
-  font-size: 11px;
-  color: var(--muted);
+.dailyHeroPlay {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
 }
 
-.tileStreak {
+.dailyHeroDoneTag {
   font-size: 12px;
   font-weight: 700;
+  color: var(--correct);
+}
+
+.dailyHeroStreak {
+  font-size: 13px;
+  font-weight: 700;
   color: var(--gold);
+}
+
+.dailyHeroHint {
+  font-size: 13px;
+  color: var(--muted);
 }
 
 /* ── FAB ── */

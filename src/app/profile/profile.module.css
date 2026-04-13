@@ -93,3 +93,16 @@
   color: var(--muted);
   flex-shrink: 0;
 }
+
+.menuCount {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.wordsBadge {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+}

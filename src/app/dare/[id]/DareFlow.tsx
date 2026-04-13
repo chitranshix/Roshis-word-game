@@ -135,6 +135,20 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
       : { from_points: earned, status: 'complete' }
     await supabase.from('dares').update(update).eq('id', dareId)
 
+    // Track word for "Words learned" — only for the challengee completing a dare
+    if (isChallengee) {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        await supabase.from('point_events').insert({
+          user_id:    user.id,
+          points:     earned,
+          word:       dare.word,
+          definition: definition ?? null,
+          source:     'dare',
+        })
+      }
+    }
+
     // Notify the challenger that the dare was completed (only when challengee finishes)
     if (isChallengee && challengerUserId) {
       const resultMsg = earned === 0
@@ -153,7 +167,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
         }),
       })
     }
-  }, [dareId, isChallengee, hasTrap, challengerUserId, dare.to, dare.word])
+  }, [dareId, isChallengee, hasTrap, challengerUserId, dare.to, dare.word, definition])
 
   const submitDefinition = useCallback(async () => {
     clearTimer()
@@ -180,7 +194,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
     } finally {
       setChecking(false)
     }
-  }, [dare.word, userDef, saveDareResult, clearTimer])
+  }, [dare.word, userDef, definition, saveDareResult, clearTimer])
 
   const resultExpression = !sentenceCorrect ? 'disappointed' : defCorrect === true ? 'happy' : 'idle'
 

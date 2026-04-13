@@ -53,7 +53,6 @@ function DaresSkeleton() {
 export default function Home() {
   const [dares, setDares]     = useState<DareRow[]>([])
   const [userId, setUserId]   = useState<string | null>(null)
-  const [myPoints, setMyPoints] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
   const [streak, setStreak]     = useState(0)
   const [dailyDone, setDailyDone] = useState(false)
@@ -62,7 +61,6 @@ export default function Home() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
     setStreak(getStreak().count)
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
     setDailyDone(hasDoneToday())
   }, [])
 
@@ -98,34 +96,13 @@ export default function Home() {
       if (!user) { setLoading(false); return }
       setUserId(user.id)
 
-      const [{ data: daresData }, { data: completedDares }, { data: playEvents }] = await Promise.all([
-        supabase
-          .from('dares')
-          .select('*, from_profile:from_user(name), to_profile:to_user(name)')
-          .or(`from_user.eq.${user.id},to_user.eq.${user.id}`)
-          .order('created_at', { ascending: false }),
-        supabase
-          .from('dares')
-          .select('from_user, to_user, from_points, to_points, has_trap, trap_winner')
-          .eq('status', 'complete')
-          .or(`from_user.eq.${user.id},to_user.eq.${user.id}`),
-        supabase
-          .from('point_events')
-          .select('points')
-          .eq('user_id', user.id),
-      ])
+      const { data: daresData } = await supabase
+        .from('dares')
+        .select('*, from_profile:from_user(name), to_profile:to_user(name)')
+        .or(`from_user.eq.${user.id},to_user.eq.${user.id}`)
+        .order('created_at', { ascending: false })
 
       setDares((daresData as DareRow[]) ?? [])
-
-      let pts = 0
-      for (const d of completedDares ?? []) {
-        if (d.from_user === user.id && d.from_points != null) pts += d.from_points
-        if (d.to_user   === user.id && d.to_points   != null) pts += d.to_points
-        if (d.has_trap && d.trap_winner === 'trapper' && d.from_user === user.id) pts += 10
-        if (d.has_trap && d.trap_winner === 'target'  && d.to_user   === user.id) pts += 10
-      }
-      for (const e of playEvents ?? []) pts += e.points
-      setMyPoints(pts)
       setLoading(false)
     })
   }, [])
@@ -139,21 +116,21 @@ export default function Home() {
     <AppShell>
       <div className={styles.page}>
 
-        <LevelHero />
-
-        <div className={styles.twoCol}>
-          <Link href="/daily" className={styles.tileCard}>
-            <span className={styles.tileLabel}>Roshi&apos;s Daily</span>
-            {streak > 0
-              ? <span className={styles.tileStreak}>{streak} day streak 🔥</span>
-              : <span className={styles.tileAction}>{dailyDone ? 'Done ✓' : 'Play →'}</span>
+        <Link href="/daily" className={[styles.dailyHero, dailyDone ? styles.dailyHeroDone : ''].filter(Boolean).join(' ')}>
+          <div className={styles.dailyHeroTop}>
+            <span className={styles.dailyHeroLabel}>Roshi&apos;s Daily</span>
+            {dailyDone
+              ? <span className={styles.dailyHeroDoneTag}>Done ✓</span>
+              : <span className={styles.dailyHeroPlay}>Play →</span>
             }
-          </Link>
-          <Link href="/leaderboard" className={styles.tileCard}>
-            <span className={styles.tileLabel}>Leaderboard</span>
-            <span className={styles.tileAction}>{myPoints !== null ? `${myPoints} pts →` : '→'}</span>
-          </Link>
-        </div>
+          </div>
+          {streak > 0
+            ? <span className={styles.dailyHeroStreak}>{streak} day streak 🔥</span>
+            : <span className={styles.dailyHeroHint}>{dailyDone ? 'Come back tomorrow.' : "Today&apos;s word is waiting."}</span>
+          }
+        </Link>
+
+        <LevelHero />
 
         {loading ? <DaresSkeleton /> : (
           <>

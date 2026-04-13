@@ -72,20 +72,106 @@
   gap: 10px;
 }
 
-.avatarBtn {
-  -webkit-tap-highlight-color: transparent;
+.hamburgerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  transition: opacity 0.15s;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
 }
-.avatarBtn:active { opacity: 0.7; }
+.hamburgerBtn:active { background: var(--surface2); }
 
-.avatar {
+/* ── Hamburger drawer ── */
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 20;
+  animation: fadeIn 0.2s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.menuDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 272px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menuDrawerOpen { transform: translateX(0); }
+
+.menuHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.menuPlayerName {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.menuClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--surface2);
-  border: 1px solid var(--border);
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
 }
+.menuClose:active { background: var(--surface2); }
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+.menuItem:last-child { border-bottom: none; }
+.menuItem:active { background: var(--surface2); }
 
 .content {
   flex: 1;
