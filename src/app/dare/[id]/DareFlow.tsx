@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import AppShell from '@/components/layout/AppShell'
 import Button from '@/components/ui/Button'
@@ -14,6 +14,9 @@ import type { Sentence } from '@/lib/gre-words'
 import styles from './dare.module.css'
 
 type Stage = 'sentence' | 'definition' | 'result'
+
+const SENTENCE_TIME  = 30
+const DEFINITION_TIME = 60
 
 interface DareFlowProps {
   dare:             Dare
@@ -36,9 +39,51 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
   const [checking, setChecking]               = useState(false)
   const [defCorrect, setDefCorrect]           = useState<boolean | null>(null)
   const [trapWinner, setTrapWinner]           = useState<'trapper' | 'target' | null>(null)
+  const [timeLeft, setTimeLeft]               = useState(SENTENCE_TIME)
+  const timerRef                              = useRef<ReturnType<typeof setInterval> | null>(null)
+  const timedOut                              = useRef(false)
+
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null }
+  }, [])
+
+  // Start/reset timer when stage changes
+  useEffect(() => {
+    if (stage === 'result') { clearTimer(); return }
+    timedOut.current = false
+    const limit = stage === 'sentence' ? SENTENCE_TIME : DEFINITION_TIME
+    setTimeLeft(limit)
+    timerRef.current = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) { clearInterval(timerRef.current!); timerRef.current = null; return 0 }
+        return prev - 1
+      })
+    }, 1000)
+    return clearTimer
+  }, [stage, clearTimer])
+
+  // Auto-fail on timeout
+  useEffect(() => {
+    if (timeLeft !== 0 || stage === 'result' || timedOut.current) return
+    timedOut.current = true
+    playWrong()
+    if (navigator.vibrate) navigator.vibrate([80])
+    if (stage === 'sentence') {
+      setPoints(0)
+      setStage('result')
+      saveDareResult(0)
+    } else {
+      // Got sentence right but timed out on definition — counts as 0
+      setDefCorrect(false)
+      setPoints(0)
+      setStage('result')
+      saveDareResult(0)
+    }
+  }, [timeLeft, stage, saveDareResult])
 
   const pickSentence = useCallback((i: number) => {
     if (answerResult) return
+    clearTimer()
     const isCorrect = sentences[i]?.correct ?? false
     setSelected(i)
     setSentenceCorrect(isCorrect)
@@ -55,7 +100,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
         saveDareResult(0)
       }
     }, 1200)
-  }, [answerResult, sentences])
+  }, [answerResult, sentences, clearTimer, saveDareResult])
 
   const saveDareResult = useCallback(async (earned: number) => {
     const supabase = createClient()
@@ -93,6 +138,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
   }, [dareId, isChallengee, hasTrap, challengerUserId, dare.to, dare.word])
 
   const submitDefinition = useCallback(async () => {
+    clearTimer()
     setChecking(true)
     try {
       const res = await fetch('/api/evaluate', {
@@ -116,7 +162,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
     } finally {
       setChecking(false)
     }
-  }, [dare.word, userDef, saveDareResult])
+  }, [dare.word, userDef, saveDareResult, clearTimer])
 
   const resultExpression = !sentenceCorrect ? 'disappointed' : defCorrect === true ? 'happy' : 'idle'
 
@@ -134,6 +180,9 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
             <div className={[styles.progressStep, stage === 'definition' ? styles.progressActive : styles.progressDim].join(' ')}>
               <div className={styles.progressDot} />
               <span>Definition</span>
+            </div>
+            <div className={[styles.timer, timeLeft <= 10 ? styles.timerUrgent : ''].filter(Boolean).join(' ')}>
+              {timeLeft}
             </div>
           </div>
         )}

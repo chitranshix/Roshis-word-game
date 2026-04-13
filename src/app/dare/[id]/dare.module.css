@@ -56,6 +56,18 @@
   border-radius: 1px;
 }
 
+.timer {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  min-width: 24px;
+  text-align: right;
+  transition: color 0.3s;
+}
+
+.timerUrgent { color: var(--wrong); }
+
 .eyebrow {
   font-size: 10px;
   font-weight: 600;
