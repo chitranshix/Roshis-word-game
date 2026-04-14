@@ -138,6 +138,16 @@ export default function ProfilePage() {
           </svg>
         </Link>
 
+        <button className={styles.menuRow} onClick={async () => {
+          const supabase = createClient()
+          await supabase.auth.signOut()
+          localStorage.removeItem('roshi_name')
+          window.location.href = '/login'
+        }}>
+          <span className={styles.menuIcon} style={{ color: 'var(--wrong)' }}>↩</span>
+          <span className={styles.menuLabel} style={{ color: 'var(--wrong)' }}>Log out</span>
+        </button>
+
       </div>
     </AppShell>
   )
