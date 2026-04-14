@@ -69,10 +69,15 @@ export default function OnboardingPage() {
     const { data, error: signUpError } = await supabase.auth.signUp({
       email: email.trim(),
       password,
-      options: { emailRedirectTo: `${window.location.origin}/auth/complete` },
     })
     if (signUpError) {
       setError(signUpError.message)
+      setSending(false)
+      return
+    }
+    if (!data.session) {
+      // Email confirmation is still required — shouldn't happen with setting off
+      setError('Check your Supabase settings: disable "Confirm email" under Authentication → Providers → Email.')
       setSending(false)
       return
     }
@@ -81,7 +86,7 @@ export default function OnboardingPage() {
     }
     setSending(false)
     setSent(true)
-    router.replace('/auth/complete')
+    router.replace('/')
 
     // Magic link OTP (commented out — requires verified domain on Resend)
     // await supabase.auth.signInWithOtp({
