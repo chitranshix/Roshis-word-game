@@ -28,6 +28,7 @@ export default function DailyClient({ word, userId }: { word: GREWord; userId: s
   const [defCorrect, setDefCorrect]   = useState<boolean | null>(null)
   const [streak, setStreak]           = useState(0)
   const [commentary, setCommentary]   = useState<string | null>(null)
+  const [showCommentary, setShowCommentary] = useState(false)
   const [myRank, setMyRank]           = useState<number | null>(null)
   const [totalPlayers, setTotalPlayers] = useState<number | null>(null)
 
@@ -254,7 +255,14 @@ export default function DailyClient({ word, userId }: { word: GREWord; userId: s
                 <div className={styles.definitionWord}>{word.word}</div>
                 <div className={styles.definitionText}>{word.definition}</div>
               </div>
-              {commentary && <div className={styles.commentary}>{commentary}</div>}
+              {commentary && (
+                <>
+                  <button className={styles.knowMoreBtn} onClick={() => setShowCommentary(v => !v)}>
+                    {showCommentary ? 'Show less ▲' : 'Know more ▼'}
+                  </button>
+                  {showCommentary && <div className={styles.commentary}>{commentary}</div>}
+                </>
+              )}
             </SpeechBubble>
             <div className={styles.actionRow}>
               <Link href={`/dare/new?word=${encodeURIComponent(word.word)}`} className={styles.actionPill}>

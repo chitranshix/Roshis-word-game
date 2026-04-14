@@ -92,6 +92,19 @@
   text-decoration: none;
 }
 
+.knowMoreBtn {
+  font-family: var(--font-roshi);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 6px 0 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  align-self: flex-start;
+}
+
 .commentary {
   font-family: var(--font-roshi);
   font-size: 13px;
