@@ -138,7 +138,7 @@ export default function ProfilePage() {
           </svg>
         </Link>
 
-        <button className={styles.menuRow} onClick={async () => {
+        <button className={styles.menuRow} style={{ width: '100%', cursor: 'pointer' }} onClick={async () => {
           const supabase = createClient()
           await supabase.auth.signOut()
           localStorage.removeItem('roshi_name')
