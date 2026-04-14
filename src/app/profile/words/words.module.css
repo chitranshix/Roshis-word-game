@@ -21,6 +21,29 @@
   color: var(--muted);
 }
 
+.filterRow {
+  display: flex;
+  gap: 8px;
+}
+
+.filterChip {
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filterActive {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .list {
   display: flex;
   flex-direction: column;

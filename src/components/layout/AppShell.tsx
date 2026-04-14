@@ -123,10 +123,6 @@ export default function AppShell({ children, gameplay }: { children: React.React
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="11" width="4" height="7" rx="1"/><rect x="8" y="7" width="4" height="11" rx="1"/><rect x="14" y="3" width="4" height="15" rx="1"/></svg>
             Leaderboard
           </Link>
-          <Link href="/profile/starred" className={styles.menuItem}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polygon points="10 2 12.5 7.5 18.5 8.2 14.2 12.2 15.5 18 10 15 4.5 18 5.8 12.2 1.5 8.2 7.5 7.5 10 2"/></svg>
-            Starred words
-          </Link>
           <Link href="/profile/words" className={styles.menuItem}>
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><line x1="7" y1="8" x2="13" y2="8"/><line x1="7" y1="12" x2="11" y2="12"/></svg>
             Words learned

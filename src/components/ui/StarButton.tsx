@@ -7,9 +7,10 @@ import styles from './StarButton.module.css'
 interface Props {
   word:       string
   definition: string
+  onToggle?:  () => void
 }
 
-export default function StarButton({ word, definition }: Props) {
+export default function StarButton({ word, definition, onToggle }: Props) {
   const [starred, setStarred] = useState(false)
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function StarButton({ word, definition }: Props) {
     const now = await toggleStar(word, definition)
     setStarred(now)
     if (navigator.vibrate) navigator.vibrate(30)
+    onToggle?.()
   }
 
   return (
