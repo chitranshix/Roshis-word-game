@@ -332,10 +332,10 @@ export default function PlayClient({ level, words, userId }: Props) {
             <Button onClick={handleNext}>Next word</Button>
             <div className={styles.actionRow}>
               <Link href={`/dare/new?word=${encodeURIComponent(currentWord.word)}`} className={styles.actionPill}>
-                <IconDare size={16} /> Send dare
+                <IconDare size={18} /> Send dare
               </Link>
               <Link href={`/dare/trap?word=${encodeURIComponent(currentWord.word)}`} className={[styles.actionPill, styles.actionPillTrap].join(' ')}>
-                <IconTrap size={16} /> Set trap
+                <IconTrap size={18} /> Set trap
               </Link>
             </div>
           </>

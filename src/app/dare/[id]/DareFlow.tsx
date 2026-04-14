@@ -292,10 +292,10 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
 
             <div className={styles.actionRow}>
               <Link href={`/dare/new?word=${encodeURIComponent(dare.word)}`} className={styles.actionPill}>
-                <IconDare size={16} /> {dare.from === 'Roshi' ? 'Send dare' : 'Dare back'}
+                <IconDare size={18} /> {dare.from === 'Roshi' ? 'Send dare' : 'Dare back'}
               </Link>
               <Link href={`/dare/trap?word=${encodeURIComponent(dare.word)}`} className={[styles.actionPill, styles.actionPillTrap].join(' ')}>
-                <IconTrap size={16} /> Set trap
+                <IconTrap size={18} /> Set trap
               </Link>
             </div>
 

@@ -3,36 +3,35 @@ interface IconProps {
   className?: string
 }
 
-/* ── Dare — pointing finger ── */
+/* ── Dare — bullseye target ── */
 export function IconDare({ size = 18, className }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      {/* index finger pointing right */}
-      <path d="M3 10.5 C3 10.5 6 10 8 8.5 L8 5 C8 4 9 3.5 9.5 4 C10 4.5 10 5.5 10 6.5" />
-      <path d="M10 6.5 C10 5.5 11 5 11.5 5.5 C12 6 12 7 12 7.5" />
-      <path d="M12 7.5 C12 6.8 13 6.5 13.5 7 C14 7.5 14 8.5 14 9" />
-      <path d="M14 9 C14 8.5 15 8.5 15.5 9.5 L16 11.5 C16.5 13.5 15 15.5 13 16 L9 16.5 C7 16.5 5.5 15 5 13.5 L3 10.5" />
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" className={className}>
+      <circle cx="10" cy="10" r="8" />
+      <circle cx="10" cy="10" r="5" />
+      <circle cx="10" cy="10" r="2" />
+      <circle cx="10" cy="10" r="0.9" fill="currentColor" stroke="none" />
     </svg>
   )
 }
 
-/* ── Trap — spider web ── */
+/* ── Trap — spider web (6 spokes + 3 hexagonal rings) ── */
 export function IconTrap({ size = 18, className }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className={className}>
-      {/* 4 radial spokes from centre */}
-      <line x1="10" y1="10" x2="10" y2="2" />
-      <line x1="10" y1="10" x2="10" y2="18" />
-      <line x1="10" y1="10" x2="2"  y2="10" />
-      <line x1="10" y1="10" x2="18" y2="10" />
-      <line x1="10" y1="10" x2="4.3"  y2="4.3" />
-      <line x1="10" y1="10" x2="15.7" y2="15.7" />
-      <line x1="10" y1="10" x2="15.7" y2="4.3" />
-      <line x1="10" y1="10" x2="4.3"  y2="15.7" />
-      {/* 3 concentric web rings */}
-      <path d="M10 4.5 L12.5 7 L15.5 10 L12.5 13 L10 15.5 L7.5 13 L4.5 10 L7.5 7 Z" strokeLinejoin="round" />
-      <path d="M10 7 L12 9 L13 10 L12 11 L10 13 L8 11 L7 10 L8 9 Z" strokeLinejoin="round" />
-      <circle cx="10" cy="10" r="1.2" fill="currentColor" stroke="none" />
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      {/* 6 spokes */}
+      <line x1="10" y1="10" x2="10"  y2="2.5"  />
+      <line x1="10" y1="10" x2="16.5" y2="6.25" />
+      <line x1="10" y1="10" x2="16.5" y2="13.75" />
+      <line x1="10" y1="10" x2="10"  y2="17.5" />
+      <line x1="10" y1="10" x2="3.5"  y2="13.75" />
+      <line x1="10" y1="10" x2="3.5"  y2="6.25" />
+      {/* Ring 1 */}
+      <polygon points="10,7.5 12.17,8.75 12.17,11.25 10,12.5 7.83,11.25 7.83,8.75" />
+      {/* Ring 2 */}
+      <polygon points="10,5 14.33,7.5 14.33,12.5 10,15 5.67,12.5 5.67,7.5" />
+      {/* Ring 3 */}
+      <polygon points="10,2.5 16.5,6.25 16.5,13.75 10,17.5 3.5,13.75 3.5,6.25" />
     </svg>
   )
 }
