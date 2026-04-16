@@ -14,6 +14,7 @@ interface WordEntry {
   sentence:   string | null
   points:     number
   source:     string
+  level:      number | null
   created_at: string
   revisit:    boolean
 }
@@ -59,7 +60,7 @@ export default function WordsPage() {
       setUserId(user.id)
       const { data } = await supabase
         .from('point_events')
-        .select('id, word, definition, sentence, points, source, created_at, revisit')
+        .select('id, word, definition, sentence, points, source, level, created_at, revisit')
         .eq('user_id', user.id)
         .not('word', 'is', null)
         .in('source', ['daily', 'level', 'dare'])
@@ -78,10 +79,34 @@ export default function WordsPage() {
           sentence:   row.sentence ?? null,
           points:     row.points ?? 0,
           source:     row.source ?? '',
+          level:      row.level ?? null,
           created_at: row.created_at,
           revisit:    row.revisit ?? false,
         })
       }
+
+      // Back-fill missing definitions from GRE data for level-sourced entries
+      const missing = unique.filter(e => !e.definition && e.level)
+      if (missing.length > 0) {
+        const levelNums = [...new Set(missing.map(e => e.level!))]
+        const levelWords = await Promise.all(
+          levelNums.map(lvl =>
+            fetch(`/data/gre-level-${lvl}.json`).then(r => r.json()).catch(() => [])
+          )
+        )
+        const wordMap = new Map<string, string>()
+        for (const words of levelWords) {
+          for (const w of words as { word: string; definition: string }[]) {
+            wordMap.set(w.word, w.definition)
+          }
+        }
+        for (const entry of unique) {
+          if (!entry.definition && wordMap.has(entry.word)) {
+            entry.definition = wordMap.get(entry.word)!
+          }
+        }
+      }
+
       setEntries(unique)
       setLoading(false)
     })

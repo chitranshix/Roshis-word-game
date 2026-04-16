@@ -125,11 +125,12 @@ export default function PlayClient({ level, words, userId }: Props) {
     if (!userId || pts === 0) return
     const supabase = createClient()
     await supabase.from('point_events').insert({
-      user_id:  userId,
-      points:   pts,
+      user_id:    userId,
+      points:     pts,
       word,
-      sentence: currentWord?.sentences.find(s => s.correct)?.sentence ?? null,
-      source:   'level',
+      definition: currentWord?.definition ?? null,
+      sentence:   currentWord?.sentences.find(s => s.correct)?.sentence ?? null,
+      source:     'level',
       level,
     })
   }, [userId, level, currentWord])
