@@ -21,6 +21,12 @@
   color: var(--muted);
 }
 
+/* ── Filter wrapper — keeps button and dropdown flush ── */
+.filterWrap {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ── Filter dropdown button ── */
 .filterBtn {
   display: flex;
@@ -38,6 +44,11 @@
 }
 
 .filterBtn:hover { border-color: var(--accent); }
+
+.filterWrap:has(.filterDropdown) .filterBtn {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-bottom-color: var(--border);
+}
 
 .filterBtnLabel {
   font-size: 14px;
@@ -61,9 +72,10 @@
   flex-direction: column;
   gap: 1px;
   background: var(--border);
-  border-radius: var(--radius-md);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border);
+  border-top: none;
 }
 
 .filterOption {

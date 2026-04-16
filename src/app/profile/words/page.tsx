@@ -129,30 +129,32 @@ export default function WordsPage() {
           {!loading && <span className={styles.count}>{displayed.length}</span>}
         </div>
 
-        <div className={styles.filterBtn} onClick={() => setFilterOpen(v => !v)}>
-          <span className={styles.filterBtnLabel}>{activeLabel}</span>
-          <svg
-            className={[styles.filterBtnChevron, filterOpen ? styles.filterBtnChevronOpen : ''].join(' ')}
-            width="14" height="14" viewBox="0 0 14 14" fill="none"
-          >
-            <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-
-        {filterOpen && (
-          <div className={styles.filterDropdown}>
-            {filterOptions.map(({ key, label, count }) => (
-              <button
-                key={key}
-                className={[styles.filterOption, filter === key ? styles.filterOptionActive : ''].join(' ')}
-                onClick={() => { setFilter(key); setFilterOpen(false) }}
-              >
-                <span className={styles.filterOptionLabel}>{label}</span>
-                <span className={styles.filterOptionCount}>{count}</span>
-              </button>
-            ))}
+        <div className={styles.filterWrap}>
+          <div className={styles.filterBtn} onClick={() => setFilterOpen(v => !v)}>
+            <span className={styles.filterBtnLabel}>{activeLabel}</span>
+            <svg
+              className={[styles.filterBtnChevron, filterOpen ? styles.filterBtnChevronOpen : ''].join(' ')}
+              width="14" height="14" viewBox="0 0 14 14" fill="none"
+            >
+              <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
-        )}
+
+          {filterOpen && (
+            <div className={styles.filterDropdown}>
+              {filterOptions.map(({ key, label, count }) => (
+                <button
+                  key={key}
+                  className={[styles.filterOption, filter === key ? styles.filterOptionActive : ''].join(' ')}
+                  onClick={() => { setFilter(key); setFilterOpen(false) }}
+                >
+                  <span className={styles.filterOptionLabel}>{label}</span>
+                  <span className={styles.filterOptionCount}>{count}</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         {loading ? (
           <div className={styles.empty}>Loading…</div>
