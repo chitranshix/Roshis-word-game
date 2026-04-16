@@ -62,6 +62,7 @@ export default function DareFlow({ dare, sentences, definition, dareId, isChalle
           points:     earned,
           word:       dare.word,
           definition: definition ?? null,
+          sentence:   sentences.find(s => s.correct)?.sentence ?? null,
           source:     'dare',
         })
       }

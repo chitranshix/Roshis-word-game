@@ -21,9 +21,20 @@
   color: var(--muted);
 }
 
+/* ── Filter chips (scrollable row) ── */
+.filterScroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -20px;
+  padding: 0 20px;
+}
+
+.filterScroll::-webkit-scrollbar { display: none; }
+
 .filterRow {
   display: flex;
   gap: 8px;
+  width: max-content;
 }
 
 .filterChip {
@@ -35,6 +46,7 @@
   font-weight: 700;
   color: var(--muted);
   cursor: pointer;
+  white-space: nowrap;
   transition: border-color 0.15s, color 0.15s;
   -webkit-tap-highlight-color: transparent;
 }
@@ -44,6 +56,7 @@
   color: var(--accent);
 }
 
+/* ── List ── */
 .list {
   display: flex;
   flex-direction: column;
@@ -58,16 +71,40 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 13px 16px;
   background: var(--surface);
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s;
 }
 
-.info {
+.row:active { background: var(--surface2); }
+
+.badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.badgeRight   { background: color-mix(in srgb, var(--correct) 15%, transparent); color: var(--correct); }
+.badgePartial { background: color-mix(in srgb, var(--accent)  15%, transparent); color: var(--accent); }
+.badgeWrong   { background: color-mix(in srgb, var(--wrong)   15%, transparent); color: var(--wrong); }
+
+.rowInfo {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
 }
 
 .word {
@@ -75,23 +112,30 @@
   font-weight: 700;
   color: var(--accent);
   letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
-.def {
-  font-size: 13px;
+.rowMeta {
+  font-size: 11px;
   color: var(--muted);
-  line-height: 1.4;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.defMissing {
-  font-size: 13px;
+.revisitDot {
+  color: var(--accent);
+  font-size: 11px;
+}
+
+.chevron {
+  font-size: 18px;
   color: var(--border);
+  flex-shrink: 0;
 }
 
+/* ── Empty ── */
 .empty {
   padding: 40px 0;
   text-align: center;
@@ -109,4 +153,114 @@
 .emptyHint {
   font-size: 13px;
   color: var(--muted);
+}
+
+/* ── Bottom sheet overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sheetWrap {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  background: var(--bg);
+  border-radius: 20px 20px 0 0;
+  padding: 12px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 80dvh;
+  overflow-y: auto;
+}
+
+.sheetHandle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  margin: 0 auto 4px;
+}
+
+.sheetHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sheetWord {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  flex: 1;
+}
+
+.sheetBadge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.sheetSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sheetLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sheetSentence {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.55;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.sheetDef {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* ── Revisit button ── */
+.revisitBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  width: 100%;
+  transition: border-color 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.revisitBtnOn {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.revisitIcon {
+  font-size: 16px;
 }

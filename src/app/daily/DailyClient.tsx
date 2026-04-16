@@ -66,10 +66,14 @@ export default function DailyClient({ word, userId }: { word: GREWord; userId: s
     if (!userId || pts === 0) return
     const supabase = createClient()
     await supabase.from('point_events').insert({
-      user_id: userId, points: pts, word: word.word,
-      definition: word.definition, source: 'daily',
+      user_id:    userId,
+      points:     pts,
+      word:       word.word,
+      definition: word.definition,
+      sentence:   word.sentences.find(s => s.correct)?.sentence ?? null,
+      source:     'daily',
     })
-  }, [userId, word.word, word.definition])
+  }, [userId, word.word, word.definition, word.sentences])
 
   const submitDefinition = useCallback(async () => {
     setChecking(true)
