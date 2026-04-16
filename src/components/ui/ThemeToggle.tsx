@@ -12,24 +12,21 @@ function useIsMounted() {
   )
 }
 
-function MountainIcon() {
+function SunIcon() {
   return (
-    <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* back peak — solid, drawn first so front overlaps it naturally */}
-      <path d="M2 17 L8 7 L14 17Z" fill="currentColor" />
-      {/* front peak — solid, taller, overlaps back */}
-      <path d="M8 17 L14 3 L20 17Z" fill="currentColor" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+        stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
     </svg>
   )
 }
 
-function OceanIcon() {
+function MoonIcon() {
   return (
-    <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1 6 Q4.5 2 8 6 Q11.5 10 15 6 Q18.5 2 21 6"
-        stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-      <path d="M1 11 Q4.5 7 8 11 Q11.5 15 15 11 Q18.5 7 21 11"
-        stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+        stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   )
 }
@@ -46,15 +43,9 @@ export default function ThemeToggle() {
     <button
       className={styles.toggle}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      aria-label={isDark ? 'Switch to land (light)' : 'Switch to water (dark)'}
-      title={isDark ? 'Play on land' : 'Play in water'}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      <span className={[styles.option, !isDark ? styles.active : ''].join(' ')}>
-        <MountainIcon />
-      </span>
-      <span className={[styles.option, isDark ? styles.active : ''].join(' ')}>
-        <OceanIcon />
-      </span>
+      {isDark ? <SunIcon /> : <MoonIcon />}
     </button>
   )
 }

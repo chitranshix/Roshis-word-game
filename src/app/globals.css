@@ -12,9 +12,9 @@ a { color: inherit; text-decoration: none; }
   --surface2:   #ede8de;
   --text:       #1c1408;
   --muted:      #7a6e60;
-  --accent:     #2a9d8f;   /* teal — words, CTAs, correct */
+  --accent:     #c86010;   /* amber-orange — words, CTAs, interactive */
   --gold:       #c08a20;   /* reward moments — points, streaks, scores */
-  --correct:    #2a9d8f;
+  --correct:    #2a9d8f;   /* teal — correct answers, success states */
   --wrong:      #c0442a;
   --border:     rgba(26, 22, 18, 0.12);
   --shadow:     0 1px 4px rgba(0, 0, 0, 0.07);
@@ -33,9 +33,9 @@ a { color: inherit; text-decoration: none; }
   --surface2:   #1a2d47;
   --text:       #dce8f8;
   --muted:      #7090b8;
-  --accent:     #4bbfb0;   /* lighter teal for dark bg contrast */
+  --accent:     #f07828;   /* amber-orange, brightened for dark bg */
   --gold:       #e8a835;   /* brighter gold for dark contrast */
-  --correct:    #4bbfb0;
+  --correct:    #4bbfb0;   /* teal — correct answers, success states */
   --wrong:      #e05a3a;
   --border:     rgba(255, 255, 255, 0.09);
   --shadow:     0 1px 6px rgba(0, 0, 0, 0.28);

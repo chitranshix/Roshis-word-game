@@ -1,34 +1,22 @@
 .toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 5px 10px;
-  transition: background 0.15s;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--muted);
+  background: none;
+  transition: background 0.15s, color 0.15s;
   -webkit-tap-highlight-color: transparent;
 }
 
-.toggle:active { background: var(--surface2); }
-
-.option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-  color: var(--muted);
-  transition: background 0.15s, color 0.15s;
-}
-
-.active {
-  background: var(--accent);
-  color: #fff;
+.toggle:active {
+  background: var(--surface2);
+  color: var(--text);
 }
 
 .placeholder {
-  width: 62px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
 }

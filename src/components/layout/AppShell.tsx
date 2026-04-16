@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import ThemeToggle from '@/components/ui/ThemeToggle'
-import Avatar from '@/components/ui/Avatar'
 import { createClient } from '@/lib/supabase'
 import { syncAll } from '@/lib/sync'
 import styles from './AppShell.module.css'
@@ -14,28 +13,20 @@ export default function AppShell({ children, gameplay }: { children: React.React
   const pathname = usePathname()
   const isHome   = pathname === '/'
 
-  const [scrolled, setScrolled]     = useState(false)
-  const [playerName, setPlayerName] = useState('')
-  const [ready, setReady]           = useState(false)
-  const [menuOpen, setMenuOpen]     = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [ready, setReady]       = useState(false)
 
   useEffect(() => {
     const name = localStorage.getItem('roshi_name')
     if (!name) {
-      // Check if they have a session but lost localStorage (e.g. device switch)
       createClient().auth.getUser().then(({ data: { user } }) => {
-        if (!user) {
-          router.replace('/login')
-          return
-        }
-        // Has session — restore name from DB
+        if (!user) { router.replace('/login'); return }
         createClient().from('users').select('name').eq('id', user.id).single()
           .then(({ data: profile }) => {
             const restoredName = profile?.name ?? ''
             if (!restoredName) { router.replace('/login'); return }
             localStorage.setItem('roshi_name', restoredName)
-            // eslint-disable-next-line react-hooks/set-state-in-effect -- async callback
-            setPlayerName(restoredName)
+            // eslint-disable-next-line react-hooks/set-state-in-effect -- async auth callback
             setReady(true)
             syncAll(user.id)
           })
@@ -43,22 +34,11 @@ export default function AppShell({ children, gameplay }: { children: React.React
       return
     }
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage must happen in useEffect
-    setPlayerName(name)
     setReady(true)
     createClient().auth.getUser().then(({ data: { user } }) => {
       if (user) syncAll(user.id)
     })
   }, [router])
-
-  // Close drawer on navigation
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- state sync on pathname change, no external system involved
-  useEffect(() => { setMenuOpen(false) }, [pathname])
-
-  // Lock body scroll when drawer open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [menuOpen])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4)
@@ -68,14 +48,21 @@ export default function AppShell({ children, gameplay }: { children: React.React
 
   if (!ready) return null
 
+  const activeTab =
+    pathname === '/' ? 'home'
+    : pathname.startsWith('/practice') || pathname === '/profile/words' ? 'practice'
+    : pathname.startsWith('/dares') || pathname.startsWith('/dare') ? 'dares'
+    : pathname.startsWith('/profile') || pathname.startsWith('/leaderboard') ? 'me'
+    : ''
+
   return (
     <div className={styles.shell}>
       <header className={[styles.header, scrolled ? styles.scrolled : ''].join(' ')}>
         <div className={styles.headerInner}>
           {isHome ? (
             <Link href="/">
-              <img src="/logo-light.png" alt="Roshi's Word Game" className={`${styles.logo} ${styles.logoLight}`} />
-              <img src="/logo-dark.png"  alt="Roshi's Word Game" className={`${styles.logo} ${styles.logoDark}`} />
+              <img src="/logo-light.png" alt="Roshi" className={`${styles.logo} ${styles.logoLight}`} />
+              <img src="/logo-dark.png"  alt="Roshi" className={`${styles.logo} ${styles.logoDark}`} />
             </Link>
           ) : (
             <button className={styles.backBtn} onClick={() => router.back()} aria-label="Go back">
@@ -86,57 +73,48 @@ export default function AppShell({ children, gameplay }: { children: React.React
           )}
           <div className={styles.headerRight}>
             <ThemeToggle />
-            <button className={styles.hamburgerBtn} onClick={() => setMenuOpen(true)} aria-label="Menu">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <line x1="3" y1="6"  x2="19" y2="6" />
-                <line x1="3" y1="11" x2="19" y2="11" />
-                <line x1="3" y1="16" x2="19" y2="16" />
-              </svg>
-            </button>
           </div>
         </div>
       </header>
 
-      {/* Drawer overlay */}
-      {menuOpen && (
-        <div className={styles.menuOverlay} onClick={() => setMenuOpen(false)} aria-hidden="true" />
-      )}
-
-      {/* Slide-in drawer */}
-      <div className={[styles.menuDrawer, menuOpen ? styles.menuDrawerOpen : ''].join(' ')} role="dialog" aria-label="Menu">
-        <div className={styles.menuHeader}>
-          <Avatar name={playerName} size={44} />
-          <div className={styles.menuPlayerName}>{playerName}</div>
-          <button className={styles.menuClose} onClick={() => setMenuOpen(false)} aria-label="Close menu">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="4" y1="4" x2="16" y2="16" />
-              <line x1="16" y1="4" x2="4" y2="16" />
-            </svg>
-          </button>
-        </div>
-        <nav className={styles.menuNav}>
-          <Link href="/profile" className={styles.menuItem}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
-            Profile
-          </Link>
-          <Link href="/leaderboard" className={styles.menuItem}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="11" width="4" height="7" rx="1"/><rect x="8" y="7" width="4" height="11" rx="1"/><rect x="14" y="3" width="4" height="15" rx="1"/></svg>
-            Leaderboard
-          </Link>
-          <Link href="/dares" className={styles.menuItem}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h12a1 1 0 011 1v6a1 1 0 01-1 1H8l-4 4V5a1 1 0 011-1z"/></svg>
-            Past dares
-          </Link>
-          <Link href="/profile/words" className={styles.menuItem}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="14" height="14" rx="2"/><line x1="7" y1="8" x2="13" y2="8"/><line x1="7" y1="12" x2="11" y2="12"/></svg>
-            Words Journal
-          </Link>
-        </nav>
-      </div>
-
       <main className={[styles.content, gameplay ? styles.contentGameplay : ''].filter(Boolean).join(' ')}>
         {children}
       </main>
+
+      {!gameplay && (
+        <nav className={styles.bottomNav} aria-label="Main navigation">
+          <Link href="/" className={[styles.navItem, activeTab === 'home' ? styles.navActive : ''].join(' ')}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1v-9.5z" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M9 21V13h6v8" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className={styles.navLabel}>Home</span>
+          </Link>
+
+          <Link href="/practice" className={[styles.navItem, activeTab === 'practice' ? styles.navActive : ''].join(' ')}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="9" width="13" height="10" rx="2" stroke="currentColor" strokeWidth="1.9"/>
+              <rect x="8" y="5" width="13" height="10" rx="2" stroke="currentColor" strokeWidth="1.9"/>
+            </svg>
+            <span className={styles.navLabel}>Practice</span>
+          </Link>
+
+          <Link href="/dares" className={[styles.navItem, activeTab === 'dares' ? styles.navActive : ''].join(' ')}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M13 2L4 13h7l-1 9 10-12h-7z" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className={styles.navLabel}>Dares</span>
+          </Link>
+
+          <Link href="/profile" className={[styles.navItem, activeTab === 'me' ? styles.navActive : ''].join(' ')}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.9"/>
+              <path d="M4 20c0-3.9 3.6-7 8-7s8 3.1 8 7" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round"/>
+            </svg>
+            <span className={styles.navLabel}>Me</span>
+          </Link>
+        </nav>
+      )}
     </div>
   )
 }

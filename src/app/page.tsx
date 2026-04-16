@@ -105,6 +105,8 @@ export default function Home() {
     <AppShell>
       <div className={styles.page}>
 
+        <LevelHero />
+
         <Link href="/daily" className={[styles.dailyHero, dailyDone ? styles.dailyHeroDone : ''].filter(Boolean).join(' ')}>
           <div className={styles.dailyHeroTop}>
             <span className={styles.dailyHeroLabel}>Roshi&apos;s Word of the Day</span>
@@ -118,8 +120,6 @@ export default function Home() {
             : <span className={styles.dailyHeroHint}>{dailyDone ? 'Come back tomorrow.' : "Today's word is waiting."}</span>
           }
         </Link>
-
-        <LevelHero />
 
         {loading ? <DaresSkeleton /> : (
           <div className={styles.section}>

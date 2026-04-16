@@ -5,6 +5,19 @@
   padding-bottom: 60px;
 }
 
+.headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.newBtn {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  -webkit-tap-highlight-color: transparent;
+}
+
 .heading {
   font-size: 20px;
   font-weight: 700;

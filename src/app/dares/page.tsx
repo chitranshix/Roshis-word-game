@@ -59,7 +59,10 @@ export default function DaresPage() {
   return (
     <AppShell>
       <div className={styles.page}>
-        <div className={styles.heading}>Dares</div>
+        <div className={styles.headingRow}>
+          <div className={styles.heading}>Dares</div>
+          <Link href="/dare/new" className={styles.newBtn}>+ New</Link>
+        </div>
 
         <div className={styles.tabs}>
           <button
