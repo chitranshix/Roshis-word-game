@@ -17,7 +17,7 @@ export const MISSION_NAMES: Record<number, string> = {
 
 const DIFF: Record<number, string> = {
   1: 'EASY', 2: 'EASY', 3: 'EASY',
-  4: 'MID',  5: 'MID',  6: 'MID',
+  4: 'MEDIUM',  5: 'MEDIUM',  6: 'MEDIUM',
   7: 'HARD', 8: 'HARD', 9: 'HARD', 10: 'HARD', 11: 'HARD',
 }
 
@@ -57,10 +57,17 @@ const GRID: GridCell[] = (() => {
   )
 })()
 
-// ── Symbol colours ────────────────────────────────────────────────
+// ── Symbol colours — 4 distinct hues cycling ─────────────────────
 const SYM_COLORS = [
-  '#3ecb48', '#ff4060', '#f0c000', '#4a90f5',
-  '#ff6b35', '#c840e8', '#00cbb8', '#e8304a', '#2ecc71',
+  '#e8304a', // red
+  '#f0c000', // yellow
+  '#3ecb48', // green
+  '#c840e8', // purple
+  '#e8304a',
+  '#f0c000',
+  '#3ecb48',
+  '#c840e8',
+  '#e8304a',
 ]
 
 // ── Slot-machine-style symbols ────────────────────────────────────
@@ -76,23 +83,22 @@ function Gloss() {
   )
 }
 
-// Lily pad — top-down view with notch, veins, small flower
+// Lily pad — simple top-down oval with V-notch + white vein network, no flower
 function SymLilypad({ c }: { c: string }) {
   return (
     <g>
-      {/* Pad body: circle with V-notch at bottom */}
-      <path d="M0,0 L-8,22 A24,24 0 1,1 8,22 Z"
+      {/* Pad body: near-circle with V-notch at top */}
+      <path d="M0,1 L-7,-23 A24,24 0 1,0 7,-23 Z"
         fill={c} stroke="#111" strokeWidth="4" strokeLinejoin="round"/>
-      {/* Radiating veins */}
-      <line x1="0" y1="0" x2="0"   y2="-24" stroke="#111" strokeWidth="2"   opacity="0.45"/>
-      <line x1="0" y1="0" x2="-22" y2="-8"  stroke="#111" strokeWidth="1.8" opacity="0.35"/>
-      <line x1="0" y1="0" x2="22"  y2="-8"  stroke="#111" strokeWidth="1.8" opacity="0.35"/>
-      <line x1="0" y1="0" x2="-20" y2="14"  stroke="#111" strokeWidth="1.5" opacity="0.3"/>
-      <line x1="0" y1="0" x2="20"  y2="14"  stroke="#111" strokeWidth="1.5" opacity="0.3"/>
-      {/* Small flower */}
-      <circle cx={0} cy={-10} r={7}   fill="#ff80c0" stroke="#111" strokeWidth="3"/>
-      <circle cx={0} cy={-10} r={3}   fill="#FFD700" stroke="#111" strokeWidth="1.5"/>
-      <ellipse cx={-5} cy={-16} rx={4} ry={2.5} fill="white" opacity="0.4" transform="rotate(-25,-5,-16)"/>
+      {/* Main vein down */}
+      <line x1="0" y1="1" x2="0"   y2="24"  stroke="white" strokeWidth="2"   opacity="0.6"/>
+      {/* Side veins radiating out */}
+      <line x1="0" y1="1" x2="-23" y2="10"  stroke="white" strokeWidth="1.7" opacity="0.5"/>
+      <line x1="0" y1="1" x2="23"  y2="10"  stroke="white" strokeWidth="1.7" opacity="0.5"/>
+      <line x1="0" y1="1" x2="-24" y2="-6"  stroke="white" strokeWidth="1.5" opacity="0.42"/>
+      <line x1="0" y1="1" x2="24"  y2="-6"  stroke="white" strokeWidth="1.5" opacity="0.42"/>
+      <line x1="0" y1="1" x2="-15" y2="22"  stroke="white" strokeWidth="1.3" opacity="0.35"/>
+      <line x1="0" y1="1" x2="15"  y2="22"  stroke="white" strokeWidth="1.3" opacity="0.35"/>
     </g>
   )
 }
@@ -140,15 +146,24 @@ function SymWaves({ c }: { c: string }) {
   )
 }
 
-// Starfish — rounded arms, more organic
+// Starfish — simple wobbly star + dots + cute eyes
 function SymStarfish({ c }: { c: string }) {
   return (
     <g>
-      <path d="M0,-24 C5,-16 10,-12 7,-6 C12,-4 18,-2 22,2 C16,6 12,10 8,8 C8,14 6,20 0,24 C-6,20 -8,14 -8,8 C-12,10 -16,6 -22,2 C-18,-2 -12,-4 -7,-6 C-10,-12 -5,-16 0,-24 Z"
+      {/* Slightly irregular 5-pointed star body */}
+      <path d="M0,-26 C3,-18 5,-13 8,-7 C14,-11 21,-13 23,-8 C18,-3 13,1 12,5 C16,10 19,18 16,22 C11,17 7,11 2,10 C2,17 0,22 0,26 C0,22 -2,17 -2,10 C-7,11 -11,17 -16,22 C-19,18 -16,10 -12,5 C-13,1 -18,-3 -23,-8 C-21,-13 -14,-11 -8,-7 C-5,-13 -3,-18 0,-26 Z"
         fill={c} stroke="#111" strokeWidth="4" strokeLinejoin="round"/>
-      {/* Centre disk */}
-      <circle r={7} fill={c} stroke="#111" strokeWidth="3"/>
-      <circle r={3.5} fill="white" opacity="0.35"/>
+      {/* Dots near each arm tip */}
+      <circle cx={0}   cy={-19} r={2.2} fill="white" opacity="0.65"/>
+      <circle cx={17}  cy={-5}  r={2.2} fill="white" opacity="0.65"/>
+      <circle cx={11}  cy={15}  r={2.2} fill="white" opacity="0.65"/>
+      <circle cx={-11} cy={15}  r={2.2} fill="white" opacity="0.65"/>
+      <circle cx={-17} cy={-5}  r={2.2} fill="white" opacity="0.65"/>
+      {/* Eyes */}
+      <circle cx={-5} cy={1} r={3.8} fill="white" stroke="#111" strokeWidth="1.5"/>
+      <circle cx={5}  cy={1} r={3.8} fill="white" stroke="#111" strokeWidth="1.5"/>
+      <circle cx={-4.5} cy={1} r={2} fill="#111"/>
+      <circle cx={5.5}  cy={1} r={2} fill="#111"/>
       <Gloss/>
     </g>
   )
@@ -192,50 +207,66 @@ function SymAnchor({ c }: { c: string }) {
   )
 }
 
-// Bird — seagull silhouette in flight
-function SymBird({ c }: { c: string }) {
+// Lily flower — lotus with layered petals + golden centre
+function SymLilyFlower({ c }: { c: string }) {
   return (
     <g>
-      {/* Left wing */}
-      <path d="M-2,-6 C-8,-20 -20,-22 -26,-13 C-22,-9 -12,-10 -2,-6 Z"
-        fill={c} stroke="#111" strokeWidth="3.5" strokeLinejoin="round"/>
-      {/* Right wing */}
-      <path d="M2,-6 C8,-20 20,-22 26,-13 C22,-9 12,-10 2,-6 Z"
-        fill={c} stroke="#111" strokeWidth="3.5" strokeLinejoin="round"/>
-      {/* Body */}
-      <ellipse cx={0} cy={-1} rx={5} ry={9} fill={c} stroke="#111" strokeWidth="3.5"/>
-      {/* Head */}
-      <circle cx={0} cy={-12} r={7} fill={c} stroke="#111" strokeWidth="3.5"/>
-      {/* Beak */}
-      <path d="M5,-11 L13,-9 L5,-7 Z" fill="#f0a800" stroke="#111" strokeWidth="2" strokeLinejoin="round"/>
-      {/* Eye */}
-      <circle cx={2} cy={-13} r={2.2} fill="#111"/>
-      <circle cx={1.5} cy={-13.5} r={0.9} fill="white"/>
-      {/* Small background bird */}
-      <path d="M-20,10 C-16,4 -10,4 -6,10" fill="none" stroke={c} strokeWidth="3.5" strokeLinecap="round"/>
-      <ellipse cx={-5} cy={-14} rx={3.5} ry={2} fill="white" opacity="0.4" transform="rotate(-25,-5,-14)"/>
+      {/* Outer ring of 5 petals — wider, lower */}
+      {[0, 72, 144, 216, 288].map((a, i) => (
+        <ellipse key={i} cx={0} cy={-17} rx={7} ry={13}
+          fill={c} stroke="#111" strokeWidth="3"
+          transform={`rotate(${a})`} opacity="0.72"
+        />
+      ))}
+      {/* Inner ring of 5 petals — taller, rotated 36° */}
+      {[36, 108, 180, 252, 324].map((a, i) => (
+        <ellipse key={i + 5} cx={0} cy={-13} rx={6} ry={10}
+          fill={c} stroke="#111" strokeWidth="3"
+          transform={`rotate(${a})`}
+        />
+      ))}
+      {/* Golden centre */}
+      <circle r={9} fill="#FFD700" stroke="#111" strokeWidth="3.5"/>
+      <circle r={4.5} fill="#e07000" stroke="#111" strokeWidth="1.5"/>
+      <Gloss/>
     </g>
   )
 }
 
-// Leaves — broad turtle-food leaves
+// Leaves — three elongated pointed leaves with midrib + side veins
 function SymLeaves({ c }: { c: string }) {
   return (
     <g stroke="#111" strokeLinejoin="round">
-      {/* Left leaf */}
-      <path d="M0,20 C-22,12 -24,-8 -8,-20 C-2,-8 -2,8 0,20 Z"
-        fill={c} fillOpacity="0.7" strokeWidth="3.5"/>
-      {/* Right leaf */}
-      <path d="M0,20 C22,12 24,-8 8,-20 C2,-8 2,8 0,20 Z"
-        fill={c} fillOpacity="0.85" strokeWidth="3.5"/>
-      {/* Centre leaf */}
-      <path d="M0,22 C-10,8 -8,-16 0,-26 C8,-16 10,8 0,22 Z"
+      {/* Left leaf — lanceolate, angled left */}
+      <path d="M0,22 C-6,14 -20,2 -22,-14 C-16,-24 -7,-14 0,22 Z"
+        fill={c} fillOpacity="0.75" strokeWidth="3.5"/>
+      {/* Left midrib */}
+      <path d="M0,22 C-8,8 -16,-6 -22,-14" stroke="white" strokeWidth="1.5" fill="none" opacity="0.55"/>
+      {/* Left side veins */}
+      <line x1="-7" y1="12" x2="-14" y2="5"   stroke="white" strokeWidth="1" opacity="0.4"/>
+      <line x1="-12" y1="2" x2="-18" y2="-5"  stroke="white" strokeWidth="1" opacity="0.4"/>
+
+      {/* Right leaf — lanceolate, angled right */}
+      <path d="M0,22 C6,14 20,2 22,-14 C16,-24 7,-14 0,22 Z"
+        fill={c} fillOpacity="0.88" strokeWidth="3.5"/>
+      {/* Right midrib */}
+      <path d="M0,22 C8,8 16,-6 22,-14" stroke="white" strokeWidth="1.5" fill="none" opacity="0.55"/>
+      {/* Right side veins */}
+      <line x1="7"  y1="12" x2="14" y2="5"   stroke="white" strokeWidth="1" opacity="0.4"/>
+      <line x1="12" y1="2"  x2="18" y2="-5"  stroke="white" strokeWidth="1" opacity="0.4"/>
+
+      {/* Centre leaf — tall, straight */}
+      <path d="M0,24 C-9,12 -7,-10 0,-26 C7,-10 9,12 0,24 Z"
         fill={c} strokeWidth="3.5"/>
-      {/* Veins */}
-      <line x1="0" y1="22"  x2="0"  y2="-22" stroke="#111" strokeWidth="1.8" opacity="0.4"/>
-      <line x1="-8" y1="20" x2="-5" y2="-18" stroke="#111" strokeWidth="1.5" opacity="0.3"/>
-      <line x1="8"  y1="20" x2="5"  y2="-18" stroke="#111" strokeWidth="1.5" opacity="0.3"/>
-      <ellipse cx={-4} cy={-14} rx={5} ry={3} fill="white" opacity="0.35" transform="rotate(-20,-4,-14)"/>
+      {/* Centre midrib */}
+      <line x1="0" y1="24" x2="0" y2="-24" stroke="white" strokeWidth="1.6" opacity="0.55"/>
+      {/* Centre side veins */}
+      <line x1="0" y1="8"  x2="7"  y2="2"   stroke="white" strokeWidth="1" opacity="0.4"/>
+      <line x1="0" y1="-4" x2="7"  y2="-10" stroke="white" strokeWidth="1" opacity="0.4"/>
+      <line x1="0" y1="8"  x2="-7" y2="2"   stroke="white" strokeWidth="1" opacity="0.4"/>
+      <line x1="0" y1="-4" x2="-7" y2="-10" stroke="white" strokeWidth="1" opacity="0.4"/>
+
+      <ellipse cx={-5} cy={-14} rx={4} ry={2.5} fill="white" opacity="0.3" transform="rotate(-20,-5,-14)"/>
     </g>
   )
 }
@@ -259,7 +290,7 @@ function SymPearl({ c }: { c: string }) {
 
 const SYM_FNS = [
   SymLilypad, SymHeads, SymWaves, SymStarfish, SymFish,
-  SymAnchor, SymBird, SymLeaves, SymPearl,
+  SymAnchor, SymLilyFlower, SymLeaves, SymPearl,
 ]
 
 // ── Mission cell number + labels ──────────────────────────────────
@@ -288,7 +319,7 @@ function MissionFace({
       <text x="50" y={ny} textAnchor="middle"
         fontFamily="Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"
         fontSize={fs} fontWeight="900"
-        stroke="#000" strokeWidth="10" strokeLinejoin="round"
+        stroke="#000" strokeWidth="14" strokeLinejoin="round"
         fill="none"
       >{mission}</text>
       {/* Number — fill pass */}
