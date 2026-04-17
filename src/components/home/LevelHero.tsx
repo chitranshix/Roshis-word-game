@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { completedInLevel, isLevelUnlocked } from '@/lib/progress'
 import styles from './LevelHero.module.css'
 
@@ -68,101 +67,6 @@ function buildFullPath() {
     return `C${p.x},${p.y + h} ${x},${y - h} ${x},${y}`
   }).join(' ')
 }
-
-// ── TinyRoshi (hero card corner) ─────────────────────────────────
-
-function TinyRoshi() {
-  return (
-    <g>
-      <path d="M112 82 Q124 80 136 96 Q138 102 134 108 Q126 112 116 96 Q112 90 112 82Z" fill="#2DAF7A" />
-      <path d="M84 88 Q78 100 76 114 Q76 120 82 120 Q88 118 92 106 Q92 94 84 88Z" fill="#2DAF7A" />
-      <ellipse cx="80" cy="96" rx="38" ry="9" fill="#D4C878" />
-      <path d="M38 90 Q34 62 58 44 Q82 28 114 50 Q130 66 122 90Z" fill="#8B6420" />
-      <path d="M50 82 Q46 62 66 50 Q86 38 110 56 Q120 68 114 82Z" fill="#A87830" opacity="0.4" />
-      <path d="M44 82 Q26 78 8 96 Q6 102 8 108 Q18 116 40 96 Q44 88 44 82Z" fill="#3DBF90" />
-      <path d="M42 68 Q34 60 28 56 Q26 50 30 46 Q38 42 46 50 Q50 58 46 68Z" fill="#3DBF90" />
-      <g className={styles.miniHeadBob}>
-        <circle cx="28" cy="36" r="22" fill="#3DBF90" />
-        <circle cx="18" cy="34" r="10" fill="white" />
-        <circle cx="38" cy="34" r="10" fill="white" />
-        <circle cx="19" cy="35" r="5.5" fill="#1A1A08" className={styles.miniPupil} />
-        <circle cx="39" cy="35" r="5.5" fill="#1A1A08" className={styles.miniPupil} />
-        <circle cx="21" cy="32" r="2.2" fill="white" className={styles.miniPupil} />
-        <circle cx="41" cy="32" r="2.2" fill="white" className={styles.miniPupil} />
-        <path d="M18 50 Q28 51 38 45" stroke="#1A1A08" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-        <g className={styles.miniLeafChew}>
-          <path d="M38 45 Q52 30 62 36 Q58 50 38 45Z" fill="#4DB330" stroke="#2D8018" strokeWidth="1.4" />
-          <path d="M38 45 Q52 32 60 37" stroke="#2D8018" strokeWidth="1" fill="none" opacity="0.7" />
-        </g>
-      </g>
-    </g>
-  )
-}
-
-// ── Hero card world illustrations ────────────────────────────────
-
-const SNOWFLAKES = [
-  { x: 10, dur: '3.8s', delay: '0s' }, { x: 28, dur: '5.2s', delay: '1.2s' },
-  { x: 48, dur: '4.4s', delay: '0.5s' }, { x: 65, dur: '3.5s', delay: '2.4s' },
-  { x: 82, dur: '5.8s', delay: '0.9s' }, { x: 100, dur: '4.1s', delay: '1.8s' },
-  { x: 118, dur: '4.9s', delay: '3.1s' }, { x: 133, dur: '3.3s', delay: '0.3s' },
-]
-
-function CoastHero() {
-  return (
-    <svg className={styles.worldSvg} width="240" height="80" viewBox="0 0 240 80" fill="none" aria-hidden="true">
-      <defs><clipPath id="ch"><rect width="240" height="80"/></clipPath></defs>
-      <g clipPath="url(#ch)">
-        <g className={styles.waveScroll}>
-          <path d="M-80,28 C-60,8 -20,48 0,28 C20,8 60,48 80,28 C100,8 140,48 160,28 C180,8 220,48 240,28 C260,8 300,48 320,28 C340,8 380,48 400,28 L400,80 L-80,80 Z" fill="currentColor" opacity="0.13"/>
-          <path d="M-80,28 C-60,8 -20,48 0,28 C20,8 60,48 80,28 C100,8 140,48 160,28 C180,8 220,48 240,28 C260,8 300,48 320,28 C340,8 380,48 400,28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5"/>
-        </g>
-        <g className={styles.waveScrollSlow}>
-          <path d="M-80,46 C-60,40 -20,52 0,46 C20,40 60,52 80,46 C100,40 140,52 160,46 C180,40 220,52 240,46 C260,40 300,52 320,46 C340,40 380,52 400,46" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.35"/>
-        </g>
-      </g>
-      <g transform="translate(82,2) scale(0.48)">
-        <g className={styles.oceanBob}><TinyRoshi /></g>
-      </g>
-    </svg>
-  )
-}
-
-function WildHero() {
-  return (
-    <svg className={styles.worldSvg} width="240" height="80" viewBox="0 0 240 80" fill="none" aria-hidden="true">
-      <path d="M0,80 C20,78 36,52 72,44 C108,36 114,62 144,58 C174,54 184,36 214,32 C244,28 260,56 280,62 L280,80 Z" fill="currentColor" opacity="0.14"/>
-      <path d="M0,80 C20,78 36,52 72,44 C108,36 114,62 144,58 C174,54 184,36 214,32 C244,28 260,56 280,62" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.4"/>
-      <line x1="78" y1="44" x2="78" y2="62" stroke="currentColor" strokeWidth="1.8" opacity="0.32" strokeLinecap="round"/>
-      <path d="M67,48 Q78,29 89,48Z" fill="currentColor" opacity="0.24"/>
-      <line x1="198" y1="33" x2="198" y2="52" stroke="currentColor" strokeWidth="1.8" opacity="0.32" strokeLinecap="round"/>
-      <path d="M187,38 Q198,19 209,38Z" fill="currentColor" opacity="0.24"/>
-      <g transform="translate(108,12) scale(0.46)">
-        <g className={styles.miniHeadBob}><TinyRoshi /></g>
-      </g>
-    </svg>
-  )
-}
-
-function SummitHero() {
-  return (
-    <svg className={styles.worldSvg} width="240" height="80" viewBox="0 -42 240 122" overflow="visible" fill="none" aria-hidden="true">
-      {SNOWFLAKES.map((s, i) => (
-        <circle key={i} cx={s.x} cy={-20} r={3.5} fill="#c8e8ff"
-          className={styles.snowflake}
-          style={{ '--dur': s.dur, '--delay': s.delay } as React.CSSProperties}
-        />
-      ))}
-      <path d="M0,80 C25,78 35,22 65,10 C90,0 92,44 115,50 C138,56 142,14 172,20 C198,26 210,58 240,74 L240,80 Z" fill="currentColor" opacity="0.14"/>
-      <path d="M0,80 C25,78 35,22 65,10 C90,0 92,44 115,50 C138,56 142,14 172,20 C198,26 210,58 240,74" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
-      <path d="M46,28 C55,16 60,10 65,10 C70,6 76,10 82,14 L78,19 L74,14 L70,19 L65,14 L60,19 L55,14 L50,19 Z" fill="#c8e8ff" opacity="0.85"/>
-      <path d="M152,34 C162,22 168,20 172,20 C178,20 183,24 190,28 L186,33 L182,28 L178,33 L174,28 L170,33 L166,28 L162,33 L158,28 L154,33 Z" fill="#c8e8ff" opacity="0.9"/>
-      <g transform="translate(119,-39) scale(0.66)"><TinyRoshi /></g>
-    </svg>
-  )
-}
-
-const TIER_HEROES = { coast: CoastHero, wild: WildHero, summit: SummitHero }
 
 // ── Roshi on map disk (current node) ─────────────────────────────
 // Coords relative to disk centre (0,0). Head floats above disk edge.
@@ -314,46 +218,10 @@ export default function LevelHero() {
     return 11
   })
 
-  const completed   = completedInLevel(currentLevel).length
-  const remaining   = WORDS_PER_LEVEL - completed
-  const pct         = Math.round((completed / WORDS_PER_LEVEL) * 100)
-  const currentND   = NODE_DEFS[currentLevel - 1]
-  const currentTier = WORLDS[currentND.world]
-  const HeroIll     = TIER_HEROES[currentND.world]
-
   return (
     <div className={styles.wrap}>
 
-      {/* ── Active mission hero card ── */}
-      <Link href={`/play/${currentLevel}`} className={styles.heroLink}>
-        <div className={styles.heroCard} style={{ borderTopColor: currentTier.color }}>
-          <div className={styles.heroBody}>
-            <div className={styles.heroLeft}>
-              <div className={styles.heroEyebrow} style={{ color: currentTier.color }}>
-                Mission {currentLevel}
-                <span className={styles.heroEyebrowDot}>·</span>
-                {DIFF[currentLevel]}
-              </div>
-              <div className={styles.heroTitle}>{LEVEL_NAMES[currentLevel]}</div>
-              <div className={styles.heroStats}>
-                <span className={styles.heroStatNum}>{remaining}</span>
-                <span className={styles.heroStatLabel}> words left</span>
-                {completed > 0 && <span className={styles.heroStatSub}> · {pct}%</span>}
-              </div>
-            </div>
-            <div style={{ color: currentTier.color }}>
-              <HeroIll />
-            </div>
-          </div>
-          <div className={styles.playBtn}>
-            {completed === 0 ? 'Begin Mission' : 'Continue'}
-          </div>
-        </div>
-      </Link>
-
       {/* ── Mission path map ── */}
-      <div className={styles.mapLabel}>All missions</div>
-
       <div className={styles.mapWrap}>
         <svg
           width="100%"
