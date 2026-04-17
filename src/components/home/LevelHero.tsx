@@ -6,9 +6,9 @@ import styles from './LevelHero.module.css'
 
 // ── Data ─────────────────────────────────────────────────────────
 
-const WORDS_PER_LEVEL = 100
+const WORDS_PER_MISSION = 100
 
-export const LEVEL_NAMES: Record<number, string> = {
+export const MISSION_NAMES: Record<number, string> = {
   1: 'Foundations',    2: 'Essentials',    3: 'Building Blocks',
   4: 'Expanding',      5: 'Intermediate',  6: 'Advanced',
   7: 'Proficient',     8: 'Expert',        9: 'Master',
@@ -23,36 +23,43 @@ const DIFF: Record<number, string> = {
 
 type WorldKey = 'coast' | 'wild' | 'summit'
 
-const WORLDS: Record<WorldKey, { color: string; label: string; from: number; to: number }> = {
-  coast:  { color: '#2a9d8f', label: 'The Coast',  from: 0, to: 2  },
-  wild:   { color: '#5a8a3a', label: 'The Wild',   from: 3, to: 5  },
-  summit: { color: '#5272a0', label: 'The Summit', from: 6, to: 10 },
+const WORLDS: Record<WorldKey, { color: string; label: string }> = {
+  coast:  { color: '#2a9d8f', label: 'The Coast'  },
+  wild:   { color: '#5a8a3a', label: 'The Wild'   },
+  summit: { color: '#5272a0', label: 'The Summit' },
 }
 
-interface NodeDef { level: number; col: 0|1|2|3; world: WorldKey }
+interface NodeDef { mission: number; col: 0|1|2; world: WorldKey; icon: string }
 
 const NODE_DEFS: NodeDef[] = [
-  { level: 1,  col: 1, world: 'coast'  },
-  { level: 2,  col: 3, world: 'coast'  },
-  { level: 3,  col: 2, world: 'coast'  },
-  { level: 4,  col: 0, world: 'wild'   },
-  { level: 5,  col: 2, world: 'wild'   },
-  { level: 6,  col: 3, world: 'wild'   },
-  { level: 7,  col: 1, world: 'summit' },
-  { level: 8,  col: 3, world: 'summit' },
-  { level: 9,  col: 0, world: 'summit' },
-  { level: 10, col: 2, world: 'summit' },
-  { level: 11, col: 1, world: 'summit' },
+  { mission: 1,  col: 1, world: 'coast',  icon: 'wave'   },
+  { mission: 2,  col: 2, world: 'coast',  icon: 'anchor' },
+  { mission: 3,  col: 0, world: 'coast',  icon: 'boat'   },
+  { mission: 4,  col: 1, world: 'wild',   icon: 'hill'   },
+  { mission: 5,  col: 2, world: 'wild',   icon: 'tree'   },
+  { mission: 6,  col: 0, world: 'wild',   icon: 'fire'   },
+  { mission: 7,  col: 1, world: 'summit', icon: 'peak'   },
+  { mission: 8,  col: 2, world: 'summit', icon: 'snow'   },
+  { mission: 9,  col: 0, world: 'summit', icon: 'gem'    },
+  { mission: 10, col: 1, world: 'summit', icon: 'book'   },
+  { mission: 11, col: 2, world: 'summit', icon: 'star'   },
+]
+
+// World transitions: after which node index does each new world start
+// coast→wild after index 2, wild→summit after index 5
+const WORLD_BREAKS = [
+  { afterIndex: 2, world: 'wild'   as WorldKey },
+  { afterIndex: 5, world: 'summit' as WorldKey },
 ]
 
 // ── SVG map geometry ─────────────────────────────────────────────
 
 const MAP_W   = 390
-const MAP_R   = 30
-const MAP_ROW = 130
-const MAP_TOP = 90
-const COLS    = [58, 148, 242, 332]
-const MAP_H   = MAP_TOP + (NODE_DEFS.length - 1) * MAP_ROW + 120
+const MAP_R   = 44
+const MAP_ROW = 152
+const MAP_TOP = 100
+const COLS    = [82, 195, 308]
+const MAP_H   = MAP_TOP + (NODE_DEFS.length - 1) * MAP_ROW + 140
 
 function nodeXY(i: number) {
   return { x: COLS[NODE_DEFS[i].col], y: MAP_TOP + i * MAP_ROW }
@@ -63,277 +70,306 @@ function buildFullPath() {
     const { x, y } = nodeXY(i)
     if (i === 0) return `M${x},${y}`
     const p = nodeXY(i - 1)
-    const h = MAP_ROW * 0.46
+    const h = MAP_ROW * 0.48
     return `C${p.x},${p.y + h} ${x},${y - h} ${x},${y}`
   }).join(' ')
 }
 
-// ── Snowglobe scenes ─────────────────────────────────────────────
-// Each centred at (0,0), sized to fit within radius MAP_R.
+// ── Mission icons ─────────────────────────────────────────────────
+// All drawn at (0,0) centre, sized for MAP_R = 44.
 
-function CoastScene() {
-  const r = MAP_R
+function IconWave({ c }: { c: string }) {
+  return (
+    <g stroke={c} strokeLinecap="round" fill="none">
+      <path d="M-19,2 C-12,-11 -5,15 3,2 C11,-11 16,11 22,2" strokeWidth="3.5"/>
+      <path d="M-19,11 C-12,5 -5,18 3,11 C11,5 16,16 22,11" strokeWidth="2" opacity="0.45"/>
+    </g>
+  )
+}
+function IconAnchor({ c }: { c: string }) {
+  return (
+    <g stroke={c} strokeWidth="3" fill="none" strokeLinecap="round">
+      <circle cx={0} cy={-12} r={5}/>
+      <line x1="0" y1="-7" x2="0" y2="13"/>
+      <path d="M-11,4 Q-11,16 0,16 Q11,16 11,4"/>
+      <line x1="-8" y1="-12" x2="8" y2="-12"/>
+    </g>
+  )
+}
+function IconBoat({ c }: { c: string }) {
+  return (
+    <g stroke={c} strokeWidth="2.5" strokeLinecap="round">
+      <path d="M-16,10 Q0,18 16,10" fill={c} fillOpacity="0.2"/>
+      <line x1="0" y1="-13" x2="0" y2="10"/>
+      <path d="M0,-13 L16,6 L0,6 Z" fill={c} fillOpacity="0.3" strokeLinejoin="round"/>
+    </g>
+  )
+}
+function IconHill({ c }: { c: string }) {
   return (
     <g>
-      {/* Sky */}
-      <rect x={-r} y={-r} width={r * 2} height={r * 1.5} fill="#a8dff0"/>
-      {/* Sun */}
-      <circle cx={14} cy={-18} r={7} fill="#f9d94e" opacity="0.9"/>
-      {/* Sea base */}
-      <rect x={-r} y={r * 0.1} width={r * 2} height={r * 0.9} fill="#1e8c80"/>
-      {/* Wave crest */}
-      <path
-        d={`M${-r},${r * 0.1} Q${-r * 0.75},${-r * 0.1} ${-r * 0.5},${r * 0.1} Q${-r * 0.25},${r * 0.3} 0,${r * 0.1} Q${r * 0.25},${-r * 0.1} ${r * 0.5},${r * 0.1} Q${r * 0.75},${r * 0.3} ${r},${r * 0.1} L${r},${r} L${-r},${r} Z`}
-        fill="#2abfad" opacity="0.85"
-      />
-      {/* Foam lines */}
-      <path
-        d={`M${-r},${r * 0.1} Q${-r * 0.75},${-r * 0.1} ${-r * 0.5},${r * 0.1}`}
-        stroke="white" strokeWidth="1.3" fill="none" opacity="0.55"
-      />
-      <path
-        d={`M0,${r * 0.1} Q${r * 0.25},${-r * 0.1} ${r * 0.5},${r * 0.1}`}
-        stroke="white" strokeWidth="1.3" fill="none" opacity="0.55"
-      />
+      <path d="M-22,12 Q-10,-11 0,-1 Q10,-11 22,12 Z"
+        fill={c} fillOpacity="0.25" stroke={c} strokeWidth="2.8"
+        strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M-22,17 C-6,9 6,13 22,17"
+        stroke={c} strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.4"/>
+    </g>
+  )
+}
+function IconTree({ c }: { c: string }) {
+  return (
+    <g stroke={c} strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="0,-18 -13,0 13,0"  fill={c} fillOpacity="0.25" strokeWidth="2.2"/>
+      <polygon points="0,-8 -17,10 17,10" fill={c} fillOpacity="0.18" strokeWidth="2.2"/>
+      <line x1="0" y1="10" x2="0" y2="17" strokeWidth="3"/>
+    </g>
+  )
+}
+function IconFire({ c }: { c: string }) {
+  return (
+    <g>
+      <path d="M0,-18 Q13,-3 8,8 Q5,17 0,15 Q-5,17 -8,8 Q-13,-3 0,-18 Z"
+        fill={c} fillOpacity="0.22" stroke={c} strokeWidth="2.2" strokeLinecap="round"/>
+      <path d="M0,-6 Q7,3 4,10 Q0,13 -4,10 Q-7,3 0,-6 Z"
+        fill={c} fillOpacity="0.5"/>
+    </g>
+  )
+}
+function IconPeak({ c }: { c: string }) {
+  return (
+    <g>
+      <path d="M-22,14 L0,-17 L22,14 Z"
+        fill={c} fillOpacity="0.2" stroke={c} strokeWidth="2.8" strokeLinejoin="round"/>
+      <path d="M-9,-4 L0,-17 L9,-4 L6,-1 L-6,-1 Z"
+        fill="white" fillOpacity="0.9"/>
+    </g>
+  )
+}
+function IconSnow({ c }: { c: string }) {
+  return (
+    <g stroke={c} strokeWidth="3" strokeLinecap="round">
+      <line x1="0"     y1="-16" x2="0"     y2="16"/>
+      <line x1="-13.9" y1="-8"  x2="13.9"  y2="8"/>
+      <line x1="-13.9" y1="8"   x2="13.9"  y2="-8"/>
+      <line x1="-6"    y1="-16" x2="0"     y2="-11"/>
+      <line x1="6"     y1="-16" x2="0"     y2="-11"/>
+    </g>
+  )
+}
+function IconGem({ c }: { c: string }) {
+  return (
+    <g>
+      <path d="M0,-16 L13,-4 L8,14 L-8,14 L-13,-4 Z"
+        fill={c} fillOpacity="0.22" stroke={c} strokeWidth="2.2" strokeLinejoin="round"/>
+      <line x1="-13" y1="-4" x2="13" y2="-4" stroke={c} strokeWidth="2"/>
+      <line x1="-13" y1="-4" x2="0"  y2="14" stroke={c} strokeWidth="1.2" opacity="0.4"/>
+      <line x1="13"  y1="-4" x2="0"  y2="14" stroke={c} strokeWidth="1.2" opacity="0.4"/>
+    </g>
+  )
+}
+function IconBook({ c }: { c: string }) {
+  return (
+    <g stroke={c} strokeWidth="2.2" fill="none" strokeLinecap="round">
+      <path d="M-14,-13 L-14,13 Q0,10 0,13 Q0,10 14,13 L14,-13 Q0,-10 0,-13 Q0,-10 -14,-13 Z"
+        fill={c} fillOpacity="0.18"/>
+      <line x1="0" y1="-13" x2="0" y2="13"/>
+      <line x1="-9" y1="-5" x2="-3" y2="-5" opacity="0.5"/>
+      <line x1="-9" y1="1"  x2="-3" y2="1"  opacity="0.5"/>
+      <line x1="-9" y1="7"  x2="-3" y2="7"  opacity="0.5"/>
+    </g>
+  )
+}
+function IconStar({ c }: { c: string }) {
+  return (
+    <path d="M0,-17 L4,-6 L16,-6 L7,2 L11,13 L0,6 L-11,13 L-7,2 L-16,-6 L-4,-6 Z"
+      fill={c} fillOpacity="0.25" stroke={c} strokeWidth="2.2" strokeLinejoin="round"/>
+  )
+}
+function IconLock() {
+  return (
+    <g stroke="var(--muted)" strokeWidth="2.8" fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <rect x={-9} y={-2} width={18} height={14} rx={3} fill="var(--muted)" fillOpacity="0.15"/>
+      <path d="M-6,-2 L-6,-7 Q-6,-15 0,-15 Q6,-15 6,-7 L6,-2"/>
+      <circle cx={0} cy={6} r={2.5} fill="var(--muted)" stroke="none"/>
     </g>
   )
 }
 
-function WildScene() {
-  const r = MAP_R
-  return (
-    <g>
-      {/* Sky */}
-      <rect x={-r} y={-r} width={r * 2} height={r * 2} fill="#c3e6b8"/>
-      {/* Back hills */}
-      <path
-        d={`M${-r},${r * 0.4} Q${-r * 0.5},${-r * 0.15} 0,${r * 0.15} Q${r * 0.5},${r * 0.45} ${r},${r * 0.15} L${r},${r} L${-r},${r} Z`}
-        fill="#5a8a3a" opacity="0.28"
-      />
-      {/* Front ground */}
-      <path
-        d={`M${-r},${r * 0.65} Q${-r * 0.4},${r * 0.28} 0,${r * 0.5} Q${r * 0.4},${r * 0.72} ${r},${r * 0.5} L${r},${r} L${-r},${r} Z`}
-        fill="#4a7a2e" opacity="0.7"
-      />
-      {/* Pine tree */}
-      <polygon points={`-4,${r * 0.18} 4,${r * 0.18} 0,${-r * 0.05}`} fill="#2d5a1a" opacity="0.85"/>
-      <polygon points={`-6,${r * 0.35} 6,${r * 0.35} 0,${r * 0.12}`}  fill="#3a7022" opacity="0.85"/>
-      <rect x={-1.5} y={r * 0.35} width={3} height={r * 0.18} fill="#7a5230" opacity="0.75"/>
-    </g>
-  )
-}
-
-function SummitScene() {
-  const r = MAP_R
-  return (
-    <g>
-      {/* Night-ish sky */}
-      <rect x={-r} y={-r} width={r * 2} height={r * 2} fill="#ccddf0"/>
-      {/* Far mountain */}
-      <path
-        d={`M${-r},${r * 0.55} L${-r * 0.25},${-r * 0.3} L${r * 0.38},${r * 0.35} L${r},${r * 0.55} L${r},${r} L${-r},${r} Z`}
-        fill="#7090b8" opacity="0.3"
-      />
-      {/* Main mountain */}
-      <path
-        d={`M${-r * 0.5},${r * 0.75} L0,${-r * 0.45} L${r * 0.5},${r * 0.75} Z`}
-        fill="#4a6890" opacity="0.7"
-      />
-      {/* Snow cap */}
-      <path
-        d={`M${-r * 0.2},${-r * 0.08} L0,${-r * 0.45} L${r * 0.2},${-r * 0.08} L${r * 0.12},${-r * 0.02} L${-r * 0.12},${-r * 0.02} Z`}
-        fill="white" opacity="0.93"
-      />
-      {/* Stars */}
-      <circle cx={-19} cy={-20} r={1.6} fill="white" opacity="0.85"/>
-      <circle cx={16}  cy={-22} r={1.1} fill="white" opacity="0.7"/>
-      <circle cx={-6}  cy={-25} r={1.3} fill="white" opacity="0.65"/>
-      <circle cx={22}  cy={-14} r={0.9} fill="white" opacity="0.6"/>
-    </g>
-  )
-}
-
-type SceneFn = () => React.ReactElement
-const SCENES: Record<WorldKey, SceneFn> = {
-  coast:  CoastScene,
-  wild:   WildScene,
-  summit: SummitScene,
+type IllFn = ({ c }: { c: string }) => React.ReactNode
+const ICONS: Record<string, IllFn> = {
+  wave: IconWave, anchor: IconAnchor, boat: IconBoat, hill: IconHill,
+  tree: IconTree, fire: IconFire,    peak: IconPeak, snow: IconSnow,
+  gem: IconGem,  book: IconBook,     star: IconStar,
 }
 
 // ── Main component ────────────────────────────────────────────────
 
 export default function LevelHero() {
-  const [currentLevel] = useState(() => {
-    for (let lvl = 1; lvl <= 11; lvl++) {
-      if (isLevelUnlocked(lvl) && completedInLevel(lvl).length < WORDS_PER_LEVEL) return lvl
+  const [currentMission] = useState(() => {
+    for (let m = 1; m <= 11; m++) {
+      if (isLevelUnlocked(m) && completedInLevel(m).length < WORDS_PER_MISSION) return m
     }
     return 11
   })
+
+  const fullPath = buildFullPath()
 
   return (
     <div className={styles.wrap}>
 
       <p className={styles.mapLabel}>Missions</p>
 
-      {/* ── Mission path map ── */}
       <div className={styles.mapWrap}>
         <svg
           width="100%"
           viewBox={`0 0 ${MAP_W} ${MAP_H}`}
           style={{ display: 'block' }}
         >
-          {/* Globe clip paths */}
-          <defs>
-            {NODE_DEFS.map((nd, i) => {
-              const { x, y } = nodeXY(i)
-              return (
-                <clipPath key={nd.level} id={`gc-${nd.level}`}>
-                  <circle cx={x} cy={y} r={MAP_R}/>
-                </clipPath>
-              )
-            })}
-          </defs>
-
-          {/* Trail — full dashed grey */}
+          {/* ── Trail — grey base ── */}
           <path
-            d={buildFullPath()}
+            d={fullPath}
             fill="none"
-            stroke="var(--border)"
-            strokeWidth="5"
+            stroke="var(--surface2)"
+            strokeWidth="20"
             strokeLinecap="round"
-            strokeDasharray="11 9"
           />
 
-          {/* Trail — completed portion */}
-          {NODE_DEFS.slice(0, currentLevel - 1).map((_, i) => {
+          {/* ── Trail — completed segments, world-coloured ── */}
+          {NODE_DEFS.slice(0, currentMission - 1).map((_, i) => {
             const from = nodeXY(i)
             const to   = nodeXY(i + 1)
-            const h    = MAP_ROW * 0.46
+            const h    = MAP_ROW * 0.48
             const wc   = WORLDS[NODE_DEFS[i].world].color
             return (
               <path key={i}
                 d={`M${from.x},${from.y} C${from.x},${from.y + h} ${to.x},${to.y - h} ${to.x},${to.y}`}
-                fill="none" stroke={wc} strokeWidth="4"
-                strokeLinecap="round" opacity="0.55"
+                fill="none" stroke={wc} strokeWidth="20"
+                strokeLinecap="round" opacity="0.65"
               />
             )
           })}
 
-          {/* Nodes */}
+          {/* ── World section banners ── */}
+          {WORLD_BREAKS.map(({ afterIndex, world }) => {
+            const from = nodeXY(afterIndex)
+            const to   = nodeXY(afterIndex + 1)
+            const by   = (from.y + to.y) / 2
+            const bx   = MAP_W / 2
+            const wc   = WORLDS[world].color
+            const bw   = 160
+            const bh   = 32
+            return (
+              <g key={world}>
+                {/* Banner pill */}
+                <rect x={bx - bw / 2} y={by - bh / 2} width={bw} height={bh}
+                  rx={bh / 2}
+                  fill={wc} fillOpacity="0.12"
+                  stroke={wc} strokeWidth="1.5" strokeOpacity="0.35"
+                />
+                {/* World label */}
+                <text
+                  x={bx} y={by + 5}
+                  textAnchor="middle"
+                  fontFamily="var(--font-ui), system-ui, sans-serif"
+                  fontSize="10" fontWeight="800"
+                  letterSpacing="0.1em"
+                  fill={wc} fillOpacity="0.8"
+                >
+                  {WORLDS[world].label.toUpperCase()}
+                </text>
+              </g>
+            )
+          })}
+
+          {/* ── Nodes ── */}
           {NODE_DEFS.map((nd, i) => {
             const { x, y }  = nodeXY(i)
             const wc         = WORLDS[nd.world].color
-            const isCurrent  = nd.level === currentLevel
-            const isDone     = nd.level <  currentLevel
-            const isLocked   = nd.level >  currentLevel
-            const done       = completedInLevel(nd.level).length
-            const nodePct    = Math.round((done / WORDS_PER_LEVEL) * 100)
-            const SceneComp  = SCENES[nd.world]
+            const isCurrent  = nd.mission === currentMission
+            const isDone     = nd.mission <  currentMission
+            const isLocked   = nd.mission >  currentMission
+            const done       = completedInLevel(nd.mission).length
+            const pct        = Math.round((done / WORDS_PER_MISSION) * 100)
+            const IconComp   = ICONS[nd.icon] as IllFn
+
+            // Fill color per state
+            const fill = isCurrent
+              ? 'var(--accent)'
+              : isDone
+                ? wc
+                : 'var(--surface2)'
 
             return (
-              <g key={nd.level}
+              <g key={nd.mission} transform={`translate(${x},${y})`}
                 style={{ cursor: isLocked ? 'default' : 'pointer' }}
-                onClick={isLocked ? undefined : () => { window.location.href = `/play/${nd.level}` }}
+                onClick={isLocked ? undefined : () => { window.location.href = `/play/${nd.mission}` }}
               >
-                {/* Label above — LVL # */}
-                <text
-                  x={x} y={y - MAP_R - 22}
+                {/* Outer glow ring — current only */}
+                {isCurrent && (
+                  <>
+                    <circle r={MAP_R + 12} fill="none"
+                      stroke="var(--accent)" strokeWidth="2" opacity="0.12"/>
+                    <circle r={MAP_R + 6} fill="none"
+                      stroke="var(--accent)" strokeWidth="2.5" opacity="0.22"/>
+                  </>
+                )}
+
+                {/* Node circle */}
+                <circle r={MAP_R}
+                  fill={fill}
+                  fillOpacity={isLocked ? 0.45 : 1}
+                />
+
+                {/* Inner content */}
+                {isLocked ? (
+                  <IconLock/>
+                ) : isDone ? (
+                  // Checkmark
+                  <path d="M-14,0 L-4,11 L14,-11"
+                    stroke="white" strokeWidth="4" fill="none"
+                    strokeLinecap="round" strokeLinejoin="round"
+                    opacity="0.9"
+                  />
+                ) : (
+                  // Current mission — show icon
+                  <g opacity="1">
+                    <IconComp c="white"/>
+                  </g>
+                )}
+
+                {/* Mission number chip — bottom of circle */}
+                <text y={MAP_R - 10}
                   textAnchor="middle"
                   fontFamily="var(--font-ui), system-ui, sans-serif"
-                  fontSize="8" fontWeight="700"
-                  letterSpacing="0.07em"
-                  fill={wc}
-                  opacity={isLocked ? 0.4 : 0.7}
+                  fontSize="10" fontWeight="800"
+                  letterSpacing="0.04em"
+                  fill={isLocked ? 'var(--muted)' : 'rgba(255,255,255,0.6)'}
                 >
-                  {`LVL ${nd.level}`}
+                  {nd.mission}
                 </text>
 
-                {/* Label above — mission name */}
-                <text
-                  x={x} y={y - MAP_R - 9}
+                {/* Label: mission name */}
+                <text y={MAP_R + 20}
                   textAnchor="middle"
                   fontFamily="var(--font-ui), system-ui, sans-serif"
-                  fontSize="11"
+                  fontSize="13"
                   fontWeight={isCurrent ? '800' : '600'}
                   fill={isCurrent ? 'var(--accent)' : isLocked ? 'var(--muted)' : 'var(--text)'}
                   opacity={isLocked ? 0.55 : 1}
                 >
-                  {LEVEL_NAMES[nd.level]}
+                  {MISSION_NAMES[nd.mission]}
                 </text>
 
-                {/* Pulse rings on current node */}
-                {isCurrent && (
-                  <>
-                    <circle cx={x} cy={y} r={MAP_R + 11} fill="none"
-                      stroke="var(--accent)" strokeWidth="1.5" opacity="0.14"/>
-                    <circle cx={x} cy={y} r={MAP_R + 5} fill="none"
-                      stroke="var(--accent)" strokeWidth="2" opacity="0.22"/>
-                  </>
-                )}
-
-                {/* Globe scene (clipped inside globe circle) */}
-                <g clipPath={`url(#gc-${nd.level})`} opacity={isLocked ? 0.4 : 1}>
-                  <g transform={`translate(${x},${y})`}>
-                    <SceneComp/>
-                  </g>
-                </g>
-
-                {/* Done overlay: soft tint + checkmark */}
-                {isDone && (
-                  <g transform={`translate(${x},${y})`}>
-                    <circle r={MAP_R} fill={wc} opacity="0.1"/>
-                    <path d="M-10,0 L-3,8 L10,-8"
-                      stroke="white" strokeWidth="2.8" fill="none"
-                      strokeLinecap="round" strokeLinejoin="round"
-                      opacity="0.85"
-                    />
-                  </g>
-                )}
-
-                {/* Current: warm glow tint */}
-                {isCurrent && (
-                  <g transform={`translate(${x},${y})`}>
-                    <circle r={MAP_R} fill="var(--accent)" opacity="0.08"/>
-                  </g>
-                )}
-
-                {/* Glass rim + glare + pedestal */}
-                <g transform={`translate(${x},${y})`}>
-                  {/* Rim */}
-                  <circle r={MAP_R}
-                    fill="none"
-                    stroke={isCurrent ? 'var(--accent)' : isDone ? wc : 'var(--border)'}
-                    strokeWidth={isCurrent ? 2.5 : 1.8}
-                    opacity={isCurrent ? 0.85 : isDone ? 0.55 : 0.45}
-                  />
-                  {/* Glass glare highlight */}
-                  <ellipse cx={-10} cy={-13} rx={9} ry={6}
-                    fill="white" opacity="0.2"
-                    transform="rotate(-25,-10,-13)"
-                  />
-                  {/* Pedestal */}
-                  <rect x={-13} y={MAP_R - 1} width={26} height={5} rx={2.5}
-                    fill={isLocked ? 'var(--border)' : wc}
-                    opacity={isLocked ? 0.25 : 0.4}
-                  />
-                  <rect x={-9} y={MAP_R - 1} width={18} height={2} rx={1}
-                    fill="white" opacity="0.18"
-                  />
-                </g>
-
-                {/* Label below — difficulty or progress */}
-                <text
-                  x={x} y={y + MAP_R + 20}
+                {/* Label: difficulty / progress */}
+                <text y={MAP_R + 35}
                   textAnchor="middle"
                   fontFamily="var(--font-ui), system-ui, sans-serif"
-                  fontSize="9" fontWeight="700"
-                  letterSpacing="0.07em"
+                  fontSize="10" fontWeight="700"
+                  letterSpacing="0.06em"
                   fill={isCurrent ? 'var(--accent)' : isLocked ? 'var(--border)' : 'var(--muted)'}
-                  opacity={isLocked ? 0.6 : 0.85}
+                  opacity={isLocked ? 0.55 : 0.8}
                 >
-                  {isCurrent && nodePct > 0
-                    ? `${nodePct}% DONE`
-                    : DIFF[nd.level].toUpperCase()}
+                  {isCurrent && pct > 0 ? `${pct}% DONE` : DIFF[nd.mission].toUpperCase()}
                 </text>
               </g>
             )
