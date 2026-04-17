@@ -12,7 +12,7 @@
 
 .heroCard {
   background: var(--surface);
-  border-top: 3px solid var(--tier-color, var(--accent));
+  border-top: 3px solid var(--accent);
   border-radius: var(--radius-lg);
   padding: 20px;
   display: flex;
@@ -97,179 +97,15 @@
   margin-top: 4px;
 }
 
-/* ── Tier section ── */
-.tierSection {
+/* ── Mission path map ── */
+.mapWrap {
+  background: var(--surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow);
 }
 
-.tierBanner {
-  position: relative;
-  background: color-mix(in srgb, var(--tier-color) 12%, var(--surface));
-  overflow: hidden;
-  color: var(--tier-color);
-}
-
-.bannerSvg {
-  display: block;
-  width: 100%;
-  height: 60px;
-}
-
-.tierMeta {
-  position: absolute;
-  top: 12px;
-  left: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.tierName {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--tier-color);
-  letter-spacing: -0.01em;
-}
-
-.tierSub {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--tier-color);
-  opacity: 0.65;
-}
-
-/* ── Nodes ── */
-.nodesWrap {
-  position: relative;
-  background: var(--surface);
-  display: flex;
-  flex-direction: column;
-  padding: 8px 0 16px;
-}
-
-/* Vertical connector line */
-.nodeLine {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: color-mix(in srgb, var(--tier-color) 20%, var(--surface2));
-  transform: translateX(-50%);
-  border-radius: 1px;
-}
-
-.nodeRow {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  padding: 6px 16px;
-  -webkit-tap-highlight-color: transparent;
-  text-decoration: none;
-}
-
-/* ── Node outer (positions node left or right) ── */
-.nodeOuter {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nodeLeft  { flex-direction: row; }
-.nodeRight { flex-direction: row-reverse; margin-left: auto; }
-
-/* ── Node circle ── */
-.nodeCircle {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 2.5px solid var(--surface2);
-  background: var(--surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  position: relative;
-  transition: transform 0.15s;
-}
-
-.nodeRow:active .nodeCircle { transform: scale(0.94); }
-
-/* Active / current level */
-.nodeCurrent {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-}
-
-/* Completed */
-.nodeComplete {
-  border-color: transparent;
-  color: #fff;
-}
-
-/* Locked */
-.nodeLocked {
-  background: var(--surface2);
-  border-color: var(--surface2);
-  color: var(--muted);
-  opacity: 0.5;
-}
-
-/* Pulsing ring on current node */
-.nodeRing {
-  position: absolute;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  opacity: 0.4;
-  animation: nodeRingPulse 2s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes nodeRingPulse {
-  0%, 100% { transform: scale(1);    opacity: 0.4; }
-  50%       { transform: scale(1.15); opacity: 0;   }
-}
-
-.nodeNum {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--muted);
-  line-height: 1;
-}
-
-.nodeCurrent .nodeNum { color: #fff; }
-
-.nodeMeta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  max-width: 100px;
-}
-
-.nodeRight .nodeMeta { text-align: right; }
-
-.nodeName {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.nodePct {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-/* ── Roshi animations (reused by TinyRoshi) ── */
+/* ── Roshi animations ── */
 .miniHeadBob {
   animation: miniHeadBob 1.4s ease-in-out infinite;
 }
