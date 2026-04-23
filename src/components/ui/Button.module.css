@@ -6,14 +6,14 @@
   padding: 15px 20px;
   border-radius: var(--radius-md);
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  transition: opacity 0.15s ease, transform 0.1s ease;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: opacity 0.15s, transform 0.1s;
   -webkit-tap-highlight-color: transparent;
 }
 
 .btn:active { transform: scale(0.98); }
-.btn:disabled { opacity: 0.4; pointer-events: none; }
+.btn:disabled { opacity: 0.35; pointer-events: none; }
 
 .primary {
   background: var(--accent);
@@ -22,8 +22,8 @@
 
 .ghost {
   background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
+  color: var(--text);
+  border: 1.5px solid var(--text);
 }
 
 .subtle {

@@ -1,8 +1,8 @@
-/* ── Slot machine frame ── */
+/* ── Frame ── */
 .machine {
   background: var(--surface);
-  border-radius: 14px;
-  border: 2px solid var(--gold);
+  border: 2px solid var(--text);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
@@ -11,43 +11,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 12px 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 10px 12px 9px;
+  border-bottom: 1px solid var(--border);
 }
 
 .machineTitle {
-  font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.28em;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
-  text-shadow: none;
-}
-
-.machineDiamond {
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  transform: rotate(45deg);
-  display: block;
-  flex-shrink: 0;
-  opacity: 0.6;
+  color: var(--muted);
 }
 
 /* ── Grid ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
+  gap: 1px;
   background: var(--border);
-  padding: 2px;
 }
 
 /* ── Base cell ── */
 .cell {
   aspect-ratio: 1;
-  background: var(--surface2);
+  background: var(--surface);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -55,10 +43,23 @@
   justify-content: center;
 }
 
-/* ── Symbol SVG ── */
-.symSvg {
-  width: 84%;
-  height: 84%;
+/* ── Symbol cell — empty rhythm tile ── */
+.symbolCell {
+  background: var(--surface2);
+}
+
+/* ── Mission cell ── */
+.missionCell {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.1s;
+}
+
+.missionCell:active { opacity: 0.75; }
+
+/* ── Current mission — solid accent fill ── */
+.current {
+  background: var(--accent);
 }
 
 /* ── Number SVG ── */
@@ -67,61 +68,7 @@
   height: 100%;
 }
 
-/* ── Mission cell ── */
-.missionCell {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: filter 0.1s;
-}
-
-.missionCell:active { filter: brightness(0.92); }
-
-/* ── Current — gold inset glow ── */
-.current {
-  border-radius: 8px;
-  animation: goldPulse 2s ease-in-out infinite;
-}
-
-@keyframes goldPulse {
-  0%, 100% {
-    box-shadow: inset 0 0 0 2.5px #FFD700, inset 0 0 12px rgba(255, 210, 0, 0.25);
-  }
-  50% {
-    box-shadow: inset 0 0 0 2.5px #FFD700, inset 0 0 22px rgba(255, 210, 0, 0.5);
-  }
-}
-
-/* ── Dark theme overrides ── */
+/* ── Dark theme ── */
 :global([data-theme='dark']) .machine {
-  background: #0a0010;
-  border-color: #a07818;
-}
-
-:global([data-theme='dark']) .machineHeader {
-  border-bottom-color: rgba(160, 120, 24, 0.3);
-}
-
-:global([data-theme='dark']) .machineTitle {
-  color: #FFD700;
-  text-shadow:
-     1px  1px 0 #000,
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000;
-}
-
-:global([data-theme='dark']) .machineDiamond {
-  background: #a07818;
-}
-
-:global([data-theme='dark']) .grid {
-  background: #3a2800;
-}
-
-:global([data-theme='dark']) .cell {
-  background: #0e0820;
-}
-
-:global([data-theme='dark']) .missionCell:active {
-  filter: brightness(1.2);
+  border-color: var(--text);
 }

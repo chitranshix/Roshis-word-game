@@ -7,38 +7,36 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── Light theme ────────────────────────────────────────────── */
 :root {
-  --bg:         #f8f9fa;
-  --surface:    #ffffff;
-  --surface2:   #efefef;
-  --text:       #111113;
-  --muted:      #6e6e78;
-  --accent:     #e05e10;   /* amber-orange — words, CTAs, interactive */
-  --gold:       #f0a800;   /* bright gold — reward moments, points, streaks */
-  --correct:    #00b5a5;   /* vibrant teal — correct answers, success */
-  --wrong:      #e03a2a;
-  --border:     rgba(0, 0, 0, 0.1);
-  --shadow:     0 2px 16px rgba(0, 0, 0, 0.1);
+  --bg:       #ffffff;
+  --surface:  #ffffff;
+  --surface2: #f2f2f2;
+  --text:     #121212;
+  --muted:    #6b6b6b;
+  --accent:   #C4511A;   /* burnt orange — words, CTAs, current mission */
+  --gold:     #a07018;   /* dark amber — points, streaks */
+  --correct:  #538D4E;   /* Wordle green — correct answers */
+  --wrong:    #CC3333;
+  --border:   #e0e0e0;   /* solid visible border */
 
-  --font-ui:      'Nunito', system-ui, sans-serif;
+  --font-ui:    'DM Sans', system-ui, sans-serif;
 
-  --radius-sm:  10px;
-  --radius-md:  16px;
-  --radius-lg:  22px;
+  --radius-sm:  2px;
+  --radius-md:  4px;
+  --radius-lg:  8px;
 }
 
 /* ─── Dark theme ─────────────────────────────────────────────── */
 [data-theme='dark'] {
-  --bg:         #0d0d12;
-  --surface:    #1a1a20;
-  --surface2:   #26262e;
-  --text:       #f0f0f4;
-  --muted:      #888893;
-  --accent:     #ff7520;   /* vivid orange, pops on dark */
-  --gold:       #ffb830;   /* bright coin gold */
-  --correct:    #00cfbc;
-  --wrong:      #e85a3a;
-  --border:     rgba(255, 255, 255, 0.08);
-  --shadow:     0 2px 20px rgba(0, 0, 0, 0.55);
+  --bg:       #121212;
+  --surface:  #1c1c1c;
+  --surface2: #262626;
+  --text:     #e8e8e8;
+  --muted:    #909090;
+  --accent:   #e06020;
+  --gold:     #d4a017;
+  --correct:  #6aaa64;
+  --wrong:    #e05555;
+  --border:   #333333;
 }
 
 /* ─── Base ───────────────────────────────────────────────────── */
@@ -64,4 +62,4 @@ body {
 /* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }

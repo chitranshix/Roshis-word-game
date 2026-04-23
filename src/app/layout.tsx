@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Nunito, Shizuru, Sunshiney } from 'next/font/google'
+import { DM_Sans, Shizuru, Sunshiney } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import './globals.css'
 
@@ -17,7 +17,7 @@ const sunshiney = Sunshiney({
   display: 'swap',
 })
 
-const nunito = Nunito({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-ui',
   display: 'swap',
@@ -42,7 +42,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${nunito.variable} ${sunshiney.variable} ${shizuru.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${dmSans.variable} ${sunshiney.variable} ${shizuru.variable}`}>
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
           {children}
